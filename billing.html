@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>KUDI Hospital Billing</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      color: #222;
+    }
+
+    /* FORM */
+
+    .form-container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #16325c;
+      margin-top: 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background: #16325c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* RECEIPT */
+
+    .receipt {
+      width: 100%;
+      max-width: 700px;
+      margin: 25px auto;
+      background: white;
+      border: 2px solid #16325c;
+      padding: 20px;
+    }
+
+    .hospital-header {
+      text-align: center;
+      border-bottom: 2px solid #16325c;
+      padding-bottom: 10px;
+    }
+
+    .hospital-header img {
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
+    }
+
+    .hospital-header h1 {
+      margin: 5px 0;
+      font-size: 22px;
+      color: #16325c;
+    }
+
+    .hospital-header p {
+      margin: 3px 0;
+      font-size: 12px;
+    }
+
+    .bill-title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .patient-info {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 15px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid #333;
+      padding: 8px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    th {
+      background: #16325c;
+      color: white;
+    }
+
+    .total {
+      margin-top: 15px;
+      text-align: right;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .footer {
+      margin-top: 25px;
+      border-top: 1px solid #16325c;
+      padding-top: 8px;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .form-grid,
+      .patient-info {
+        grid-template-columns: 1fr;
+      }
+
+      body {
+        padding: 10px;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .form-container {
+        display: none;
+      }
+
+      .receipt {
+        border: 2px solid #16325c;
+        margin: 0;
+        width: 100%;
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+
+    <h2>Create Bill</h2>
+
+    <div class="form-grid">
+
+      <div>
+        <label>Patient Name</label>
+        <input type="text" id="patientName">
+      </div>
+
+      <div>
+        <label>Reg. No.</label>
+        <input type="text" id="regNo">
+      </div>
+
+      <div>
+        <label>Mobile Number</label>
+        <input type="text" id="mobile">
+      </div>
+
+      <div>
+        <label>Treatment</label>
+        <input type="text" id="treatment">
+      </div>
+
+      <div>
+        <label>Sessions</label>
+        <input type="number" id="sessions" oninput="calculateAmount()">
+      </div>
+
+      <div>
+        <label>Rate</label>
+        <input type="number" id="rate" oninput="calculateAmount()">
+      </div>
+
+      <div>
+        <label>Amount</label>
+        <input type="number" id="amount" readonly>
+      </div>
+
+      <div>
+        <label>Total Amount</label>
+        <input type="number" id="totalAmount" readonly>
+      </div>
+
+    </div>
+
+    <button onclick="printBill()">Print Bill</button>
+
+  </div>
+
+  <div class="receipt">
+
+    <div class="hospital-header">
+
+      <img src="logo.png" alt="KUDI Hospital Logo">
+
+      <h1>KUDI Hospital And Rehabilitation Center</h1>
+
+      <p>
+        Bheruji Mod, NH52, Near Raghu Palace Hotel,
+        Reengus (Raj.) - 332404
+      </p>
+
+      <p>
+        Contact: 8504001220 |
+        Email: kudihospitals@gmail.com
+      </p>
+
+    </div>
+
+    <div class="bill-title">
+      BILL / RECEIPT
+    </div>
+
+    <div class="patient-info">
+
+      <div>
+        <strong>Patient Name:</strong>
+        <span id="printName"></span>
+      </div>
+
+      <div>
+        <strong>Reg. No.:</strong>
+        <span id="printRegNo"></span>
+      </div>
+
+      <div>
+        <strong>Mobile:</strong>
+        <span id="printMobile"></span>
+      </div>
+
+      <div>
+        <strong>Date:</strong>
+        <span id="printDate"></span>
+      </div>
+
+    </div>
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Treatment</th>
+          <th>Sessions</th>
+          <th>Rate</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td id="printTreatment"></td>
+          <td id="printSessions"></td>
+          <td id="printRate"></td>
+          <td id="printAmount"></td>
+        </tr>
+      </tbody>
+
+    </table>
+
+    <div class="total">
+      Total Amount: ₹ <span id="printTotal"></span>
+    </div>
+
+    <div class="footer">
+      KUDI Hospital And Rehabilitation Center<br>
+      Contact: 8504001220 |
+      Email: kudihospitals@gmail.com
+    </div>
+
+  </div>
+
+  <script>
+
+    function calculateAmount() {
+      const sessions =
+        Number(document.getElementById("sessions").value) || 0;
+
+      const rate =
+        Number(document.getElementById("rate").value) || 0;
+
+      const amount = sessions * rate;
+
+      document.getElementById("amount").value = amount;
+      document.getElementById("totalAmount").value = amount;
+    }
+
+    function printBill() {
+
+      calculateAmount();
+
+      document.getElementById("printName").textContent =
+        document.getElementById("patientName").value;
+
+      document.getElementById("printRegNo").textContent =
+        document.getElementById("regNo").value;
+
+      document.getElementById("printMobile").textContent =
+        document.getElementById("mobile").value;
+
+      document.getElementById("printTreatment").textContent =
+        document.getElementById("treatment").value;
+
+      document.getElementById("printSessions").textContent =
+        document.getElementById("sessions").value;
+
+      document.getElementById("printRate").textContent =
+        "₹ " + document.getElementById("rate").value;
+
+      document.getElementById("printAmount").textContent =
+        "₹ " + document.getElementById("amount").value;
+
+      document.getElementById("printTotal").textContent =
+        document.getElementById("totalAmount").value;
+
+      document.getElementById("printDate").textContent =
+        new Date().toLocaleDateString("en-IN");
+
+      window.print();
+    }
+
+  </script>
+
+</body>
+</html>
