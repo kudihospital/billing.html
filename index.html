@@ -239,13 +239,6 @@ th {
     display: none;
   }
 
-  /*
-    A4 Height = 297mm
-    Half A4 = लगभग 148.5mm
-
-    Bill को आधे A4 में रखा गया है
-  */
-
   .receipt {
     width: 100%;
     max-width: none;
@@ -273,104 +266,281 @@ th {
 
 <div class="form-grid">
 
+
+<!-- PATIENT NAME -->
+
 <div>
 <label>Patient Name</label>
 <input type="text" id="patientName">
 </div>
 
+
+<!-- AUTOMATIC REGISTRATION NUMBER -->
+
 <div>
-<label>Reg. No.</label>
-<input type="text" id="regNo">
+<label>Patient Reg. No.</label>
+<input type="text" id="regNo" readonly>
 </div>
+
+
+<!-- MOBILE -->
 
 <div>
 <label>Mobile Number</label>
 <input type="text" id="mobile">
 </div>
 
+
+<!-- AGE -->
+
 <div>
 <label>Age</label>
 <input type="number" id="age">
 </div>
+
+
+<!-- ADDRESS -->
 
 <div class="full-width">
 <label>Address</label>
 <textarea id="address"></textarea>
 </div>
 
+
+<!-- CONSULTANT / DOCTOR -->
+
 <div>
 <label>Consultant / Doctor</label>
-<input type="text" id="consultant">
+
+<select id="consultant">
+
+<option value="">Select Doctor</option>
+
+<option value="Dr Rakesh Kudi (PT)">
+Dr Rakesh Kudi (PT)
+</option>
+
+<option value="Dr Bhupinder Choudhary (PT)">
+Dr Bhupinder Choudhary (PT)
+</option>
+
+</select>
+
 </div>
+
+
+<!-- DEPARTMENT -->
 
 <div>
 <label>Department</label>
-<input type="text" id="department">
+
+<select id="department">
+
+<option value="">Select Department</option>
+
+<option value="Physiotherapy">
+Physiotherapy
+</option>
+
+<option value="Cardio Exercises">
+Cardio Exercises
+</option>
+
+</select>
+
 </div>
+
+
+<!-- TREATMENT -->
 
 <div>
 <label>Treatment / Particulars</label>
-<input type="text" id="treatment">
+
+<select id="treatment">
+
+<option value="">Select Treatment</option>
+
+<option value="Physiotherapy Session">
+Physiotherapy Session
+</option>
+
+<option value="Cardio Exercise Session">
+Cardio Exercise Session
+</option>
+
+<option value="TENS Therapy">
+TENS Therapy
+</option>
+
+<option value="IFT Therapy">
+IFT Therapy
+</option>
+
+<option value="Ultrasound Therapy">
+Ultrasound Therapy
+</option>
+
+<option value="Exercise Therapy">
+Exercise Therapy
+</option>
+
+<option value="Manual Therapy">
+Manual Therapy
+</option>
+
+<option value="Heat Therapy">
+Heat Therapy
+</option>
+
+<option value="Cold Therapy">
+Cold Therapy
+</option>
+
+<option value="Other">
+Other
+</option>
+
+</select>
+
 </div>
+
+
+<!-- SESSIONS -->
 
 <div>
 <label>Qty / Sessions</label>
-<input type="number" id="sessions" oninput="calculateAmount()">
+
+<input
+type="number"
+id="sessions"
+oninput="calculateAmount()"
+>
 </div>
+
+
+<!-- RATE -->
 
 <div>
 <label>Rate</label>
-<input type="number" id="rate" oninput="calculateAmount()">
+
+<input
+type="number"
+id="rate"
+oninput="calculateAmount()"
+>
 </div>
+
+
+<!-- GROSS -->
 
 <div>
 <label>Gross Amount</label>
-<input type="number" id="amount" readonly>
+
+<input
+type="number"
+id="amount"
+readonly
+>
 </div>
+
+
+<!-- DISCOUNT -->
 
 <div>
 <label>Discount</label>
-<input type="number" id="discount" value="0" oninput="calculateAmount()">
+
+<input
+type="number"
+id="discount"
+value="0"
+oninput="calculateAmount()"
+>
 </div>
+
+
+<!-- PAYMENT MODE -->
 
 <div>
 <label>Payment Mode</label>
 
 <select id="paymentMode">
+
 <option value="Cash">Cash</option>
+
 <option value="Online">Online</option>
+
 <option value="UPI">UPI</option>
+
 <option value="Card">Card</option>
+
 </select>
 
 </div>
 
+
+<!-- RECEIVED -->
+
 <div>
 <label>Received Amount</label>
-<input type="number" id="receivedAmount" oninput="calculateAmount()">
+
+<input
+type="number"
+id="receivedAmount"
+oninput="calculateAmount()"
+>
 </div>
+
+
+<!-- NET -->
 
 <div>
 <label>Net Amount</label>
-<input type="number" id="totalAmount" readonly>
+
+<input
+type="number"
+id="totalAmount"
+readonly
+>
 </div>
+
+
+<!-- PERFORMED BY -->
 
 <div>
 <label>Performed By</label>
-<input type="text" id="performedBy">
+
+<input
+type="text"
+id="performedBy"
+>
 </div>
+
+
+<!-- PREPARED BY -->
 
 <div>
 <label>Prepared By</label>
-<input type="text" id="preparedBy">
+
+<input
+type="text"
+id="preparedBy"
+value="Saroj"
+>
 </div>
+
+
+<!-- REMARKS -->
 
 <div class="full-width">
+
 <label>Invoice Remarks</label>
+
 <textarea id="remarks"></textarea>
+
 </div>
 
 </div>
+
 
 <button onclick="printBill()">
 Print Bill
@@ -402,11 +572,9 @@ Website: www.kudihospital.in
 </div>
 
 
-
 <div class="bill-title">
 OPD BILL CUM RECEIPT
 </div>
-
 
 
 <div class="top-info">
@@ -424,7 +592,6 @@ OPD BILL CUM RECEIPT
 </div>
 
 
-
 <!-- PATIENT DETAILS -->
 
 <div class="patient-info">
@@ -433,14 +600,14 @@ OPD BILL CUM RECEIPT
 <strong>Patient Name:</strong>
 <span id="printName"></span>
 </div>
+
+<div>
 <strong>Reg. No:</strong>
 <span id="printRegNo"></span>
 </div>
 
 <div>
 <strong>Mobile No:</strong>
-
-<div>
 <span id="printMobile"></span>
 </div>
 
@@ -465,7 +632,6 @@ OPD BILL CUM RECEIPT
 </div>
 
 </div>
-
 
 
 <!-- TREATMENT TABLE -->
@@ -505,7 +671,6 @@ OPD BILL CUM RECEIPT
 </table>
 
 
-
 <!-- AMOUNT SUMMARY -->
 
 <div class="amount-section">
@@ -514,7 +679,9 @@ OPD BILL CUM RECEIPT
 
 <span>Gross Amount</span>
 
-<span>Rs. <span id="printGross"></span></span>
+<span>
+Rs. <span id="printGross"></span>
+</span>
 
 </div>
 
@@ -523,7 +690,9 @@ OPD BILL CUM RECEIPT
 
 <span>Discount</span>
 
-<span>Rs. <span id="printDiscount"></span></span>
+<span>
+Rs. <span id="printDiscount"></span>
+</span>
 
 </div>
 
@@ -532,7 +701,9 @@ OPD BILL CUM RECEIPT
 
 <span>Net Amount</span>
 
-<span>Rs. <span id="printTotal"></span></span>
+<span>
+Rs. <span id="printTotal"></span>
+</span>
 
 </div>
 
@@ -541,7 +712,9 @@ OPD BILL CUM RECEIPT
 
 <span>Received</span>
 
-<span>Rs. <span id="printReceived"></span></span>
+<span>
+Rs. <span id="printReceived"></span>
+</span>
 
 </div>
 
@@ -550,12 +723,13 @@ OPD BILL CUM RECEIPT
 
 <span>Due Amount</span>
 
-<span>Rs. <span id="printDue"></span></span>
+<span>
+Rs. <span id="printDue"></span>
+</span>
 
 </div>
 
 </div>
-
 
 
 <!-- EXTRA DETAILS -->
@@ -582,6 +756,17 @@ OPD BILL CUM RECEIPT
 
 <div>
 
+<strong>Performed By:</strong>
+
+<span id="printPerformedBy"></span>
+
+</div>
+
+
+<div>
+
+<strong>Prepared By:</strong>
+
 <span id="printPreparedBy"></span>
 
 </div>
@@ -598,13 +783,12 @@ OPD BILL CUM RECEIPT
 </div>
 
 
-
 <!-- SIGNATURE -->
 
 <div class="signature-section">
 
 <div>
-<strong>Prepared By:saroj </strong>
+<strong>Prepared By: Saroj</strong>
 </div>
 
 <div>
@@ -612,7 +796,6 @@ OPD BILL CUM RECEIPT
 </div>
 
 </div>
-
 
 
 <div class="footer">
@@ -630,332 +813,326 @@ Website: www.kudihospital.in
 
 <script>
 
-/* ================= RECEIPT NUMBER ================= */
+
+/* =====================================================
+   AUTOMATIC PATIENT REGISTRATION NUMBER
+   KHRC/001 → KHRC/002 → KHRC/003...
+   ===================================================== */
+
+function getPatientRegNumber() {
+
+    let currentNumber =
+        Number(
+            localStorage.getItem("kudiPatientRegNumber")
+        ) || 1;
+
+    return "KHRC/" +
+        String(currentNumber).padStart(3, "0");
+
+}
+
+
+function increasePatientRegNumber() {
+
+    let currentNumber =
+        Number(
+            localStorage.getItem("kudiPatientRegNumber")
+        ) || 1;
+
+    localStorage.setItem(
+        "kudiPatientRegNumber",
+        currentNumber + 1
+    );
+
+}
+
+
+
+/* =====================================================
+   AUTOMATIC RECEIPT NUMBER
+   ===================================================== */
 
 function getReceiptNumber() {
 
-let currentNumber =
-Number(localStorage.getItem("kudiReceiptNumber")) || 1;
+    let currentNumber =
+        Number(
+            localStorage.getItem("kudiReceiptNumber")
+        ) || 1;
 
-return "KHRC/" +
-String(currentNumber).padStart(3, "0");
+    return "KHRC/" +
+        String(currentNumber).padStart(3, "0");
 
 }
 
 
 function increaseReceiptNumber() {
 
-let currentNumber =
-Number(localStorage.getItem("kudiReceiptNumber")) || 1;
+    let currentNumber =
+        Number(
+            localStorage.getItem("kudiReceiptNumber")
+        ) || 1;
 
-localStorage.setItem(
-"kudiReceiptNumber",
-currentNumber + 1
-);
+    localStorage.setItem(
+        "kudiReceiptNumber",
+        currentNumber + 1
+    );
 
 }
 
 
 
-/* ================= CALCULATE ================= */
+/* =====================================================
+   CALCULATE AMOUNT
+   ===================================================== */
 
 function calculateAmount() {
 
-const sessions =
-Number(document.getElementById("sessions").value) || 0;
-
-const rate =
-Number(document.getElementById("rate").value) || 0;
-
-const discount =
-Number(document.getElementById("discount").value) || 0;
+    const sessions =
+        Number(
+            document.getElementById("sessions").value
+        ) || 0;
 
 
-const grossAmount =
-sessions * rate;
+    const rate =
+        Number(
+            document.getElementById("rate").value
+        ) || 0;
 
 
-let netAmount =
-grossAmount - discount;
+    const discount =
+        Number(
+            document.getElementById("discount").value
+        ) || 0;
 
 
-if (netAmount < 0) {
-netAmount = 0;
+    const grossAmount =
+        sessions * rate;
+
+
+    let netAmount =
+        grossAmount - discount;
+
+
+    if (netAmount < 0) {
+
+        netAmount = 0;
+
+    }
+
+
+    document.getElementById("amount").value =
+        grossAmount;
+
+
+    document.getElementById("totalAmount").value =
+        netAmount;
+
 }
 
 
-document.getElementById("amount").value =
-grossAmount;
 
-
-document.getElementById("totalAmount").value =
-netAmount;
-
-}
-
-
-
-/* ================= PRINT BILL ================= */
+/* =====================================================
+   PRINT BILL
+   ===================================================== */
 
 function printBill() {
 
-calculateAmount();
 
+    calculateAmount();
 
-/* Receipt Number */
 
-const receiptNumber =
-getReceiptNumber();
+    /* ================= PATIENT REGISTRATION ================= */
 
+    const patientRegNumber =
+        getPatientRegNumber();
 
-document.getElementById(
-"printReceiptNo"
-).textContent =
-receiptNumber;
 
+    document.getElementById("regNo").value =
+        patientRegNumber;
 
-/* Patient Details */
 
-document.getElementById(
-"printName"
-).textContent =
-document.getElementById(
-"patientName"
-).value;
+    document.getElementById("printRegNo").textContent =
+        patientRegNumber;
 
 
-document.getElementById(
-"printRegNo"
-).textContent =
-document.getElementById(
-"regNo"
-).value;
 
+    /* ================= RECEIPT NUMBER ================= */
 
-document.getElementById(
-"printMobile"
-).textContent =
-document.getElementById(
-"mobile"
-).value;
+    const receiptNumber =
+        getReceiptNumber();
 
 
-document.getElementById(
-"printAge"
-).textContent =
-document.getElementById(
-"age"
-).value;
+    document.getElementById("printReceiptNo").textContent =
+        receiptNumber;
 
 
-document.getElementById(
-"printAddress"
-).textContent =
-document.getElementById(
-"address"
-).value;
 
+    /* ================= PATIENT DETAILS ================= */
 
-document.getElementById(
-"printConsultant"
-).textContent =
-document.getElementById(
-"consultant"
-).value;
+    document.getElementById("printName").textContent =
+        document.getElementById("patientName").value;
 
 
-document.getElementById(
-"printDepartment"
-).textContent =
-document.getElementById(
-"department"
-).value;
+    document.getElementById("printMobile").textContent =
+        document.getElementById("mobile").value;
 
 
-/* Treatment */
+    document.getElementById("printAge").textContent =
+        document.getElementById("age").value;
 
-document.getElementById(
-"printTreatment"
-).textContent =
-document.getElementById(
-"treatment"
-).value;
 
+    document.getElementById("printAddress").textContent =
+        document.getElementById("address").value;
 
-document.getElementById(
-"printSessions"
-).textContent =
-document.getElementById(
-"sessions"
-).value;
 
+    document.getElementById("printConsultant").textContent =
+        document.getElementById("consultant").value;
 
-document.getElementById(
-"printRate"
-).textContent =
-document.getElementById(
-"rate"
-).value;
 
+    document.getElementById("printDepartment").textContent =
+        document.getElementById("department").value;
 
-document.getElementById(
-"printAmount"
-).textContent =
-document.getElementById(
-"amount"
-).value;
 
 
-/* Amount */
+    /* ================= TREATMENT ================= */
 
-const gross =
-Number(
-document.getElementById(
-"amount"
-).value
-) || 0;
+    document.getElementById("printTreatment").textContent =
+        document.getElementById("treatment").value;
 
 
-const discount =
-Number(
-document.getElementById(
-"discount"
-).value
-) || 0;
+    document.getElementById("printSessions").textContent =
+        document.getElementById("sessions").value;
 
 
-const total =
-Number(
-document.getElementById(
-"totalAmount"
-).value
-) || 0;
+    document.getElementById("printRate").textContent =
+        document.getElementById("rate").value;
 
 
-const received =
-Number(
-document.getElementById(
-"receivedAmount"
-).value
-) || 0;
+    document.getElementById("printAmount").textContent =
+        document.getElementById("amount").value;
 
 
-const due =
-Math.max(
-total - received,
-0
-);
 
+    /* ================= AMOUNT ================= */
 
-document.getElementById(
-"printGross"
-).textContent =
-gross.toFixed(2);
+    const gross =
+        Number(
+            document.getElementById("amount").value
+        ) || 0;
 
 
-document.getElementById(
-"printDiscount"
-).textContent =
-discount.toFixed(2);
+    const discount =
+        Number(
+            document.getElementById("discount").value
+        ) || 0;
 
 
-document.getElementById(
-"printTotal"
-).textContent =
-total.toFixed(2);
+    const total =
+        Number(
+            document.getElementById("totalAmount").value
+        ) || 0;
 
 
-document.getElementById(
-"printReceived"
-).textContent =
-received.toFixed(2);
+    const received =
+        Number(
+            document.getElementById("receivedAmount").value
+        ) || 0;
 
 
-document.getElementById(
-"printDue"
-).textContent =
-due.toFixed(2);
+    const due =
+        Math.max(
+            total - received,
+            0
+        );
 
 
-/* ================= PAYMENT MODE ================= */
+    document.getElementById("printGross").textContent =
+        gross.toFixed(2);
 
-document.getElementById(
-"printPaymentMode"
-).textContent =
-document.getElementById(
-"paymentMode"
-).value;
 
+    document.getElementById("printDiscount").textContent =
+        discount.toFixed(2);
 
-/* ================= AUTOMATIC AMOUNT TEXT ================= */
 
+    document.getElementById("printTotal").textContent =
+        total.toFixed(2);
 
 
-document.getElementById(
-"printAmountInEnglish"
-).textContent =
-Number(total) + " Rupees Only";
+    document.getElementById("printReceived").textContent =
+        received.toFixed(2);
 
 
-/* Performed By */
+    document.getElementById("printDue").textContent =
+        due.toFixed(2);
 
-document.getElementById(
-"printPerformedBy"
-).textContent =
-document.getElementById(
-"performedBy"
-).value;
 
 
-/* Prepared By */
+    /* ================= PAYMENT MODE ================= */
 
-document.getElementById(
-"printPreparedBy"
-).textContent =
-document.getElementById(
-"preparedBy"
-).value;
+    document.getElementById("printPaymentMode").textContent =
+        document.getElementById("paymentMode").value;
 
 
-/* Remarks */
 
-document.getElementById(
-"printRemarks"
-).textContent =
-document.getElementById(
-"remarks"
-).value;
+    /* ================= AMOUNT IN ENGLISH ================= */
 
+    document.getElementById("printAmountInEnglish").textContent =
+        Number(total) + " Rupees Only";
 
-/* Date & Time */
 
-const now =
-new Date();
 
+    /* ================= PERFORMED BY ================= */
 
-document.getElementById(
-"printDate"
-).textContent =
-now.toLocaleString(
-"en-IN",
-{
-day: "2-digit",
-month: "2-digit",
-year: "numeric",
-hour: "2-digit",
-minute: "2-digit"
-}
-);
+    document.getElementById("printPerformedBy").textContent =
+        document.getElementById("performedBy").value;
 
 
-/* Increase Receipt Number */
 
-increaseReceiptNumber();
+    /* ================= PREPARED BY ================= */
 
+    document.getElementById("printPreparedBy").textContent =
+        document.getElementById("preparedBy").value;
 
-/* Print */
 
-window.print();
+
+    /* ================= REMARKS ================= */
+
+    document.getElementById("printRemarks").textContent =
+        document.getElementById("remarks").value;
+
+
+
+    /* ================= DATE & TIME ================= */
+
+    const now =
+        new Date();
+
+
+    document.getElementById("printDate").textContent =
+        now.toLocaleString(
+            "en-IN",
+            {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit"
+            }
+        );
+
+
+
+    /* ================= INCREASE NUMBERS ================= */
+
+    increasePatientRegNumber();
+
+    increaseReceiptNumber();
+
+
+
+    /* ================= PRINT ================= */
+
+    window.print();
 
 }
 
