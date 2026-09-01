@@ -927,6 +927,112 @@ function calculateAmount() {
     document.getElementById("totalAmount").value =
         netAmount;
 
+}/* ================= A4 HALF PAGE PRINT ================= */
+
+@media print {
+
+  @page {
+    size: A4 portrait;
+    margin: 5mm;
+  }
+
+  body {
+    background: white;
+    padding: 0;
+    margin: 0;
+  }
+
+  .form-container {
+    display: none;
+  }
+
+  .receipt {
+    width: 100%;
+    max-width: none;
+
+    /* Half A4 के अंदर पूरा bill */
+    height: 145mm;
+
+    margin: 0;
+    padding: 5mm;
+
+    border: 1.5px solid #16325c;
+
+    /* नीचे का content कटे नहीं */
+    overflow: visible;
+
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  .hospital-header {
+    padding-bottom: 6px;
+  }
+
+  .hospital-header h1 {
+    margin: 3px 0;
+    font-size: 20px;
+  }
+
+  .hospital-header p {
+    margin: 2px 0;
+    font-size: 10px;
+  }
+
+  .bill-title {
+    font-size: 16px;
+    margin: 7px 0;
+  }
+
+  .top-info {
+    margin-bottom: 5px;
+    font-size: 10px;
+  }
+
+  .patient-info {
+    padding: 5px;
+    margin-bottom: 6px;
+    gap: 4px;
+    font-size: 10px;
+  }
+
+  th,
+  td {
+    padding: 4px;
+    font-size: 10px;
+  }
+
+  .amount-section {
+    margin-top: 6px;
+    width: 250px;
+  }
+
+  .amount-row {
+    padding: 3px;
+    font-size: 10px;
+  }
+
+  .net-total {
+    font-size: 12px;
+  }
+
+  .extra-info {
+    margin-top: 6px;
+    gap: 4px;
+    font-size: 10px;
+  }
+
+  .signature-section {
+    margin-top: 12px;
+    font-size: 10px;
+  }
+
+  .footer {
+    margin-top: 8px;
+    padding-top: 4px;
+    font-size: 8px;
+  }
+
 }
 
 
