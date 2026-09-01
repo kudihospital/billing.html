@@ -766,28 +766,9 @@ formattedTime;
 setTimeout(
 async function(){
 try{
-const result =
-await window.electronAPI
-.saveAndPrintBill(
-receiptNumber
-);
-if(
-result.success
 ){
 increaseReceiptNumber();
 }else{
-alert(
-"Bill save error: " +
-result.error
-);
-}
-}catch(error){
-alert(
-"Electron App Error: " +
-error.message
-);
-}
-},
 300
 );
 }
