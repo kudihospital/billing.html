@@ -23,7 +23,7 @@ body {
 /* ================= FORM ================= */
 
 .form-container {
-  max-width: 900px;
+  max-width: 850px;
   margin: auto;
   background: white;
   padding: 25px;
@@ -84,7 +84,7 @@ button {
 
 .receipt {
   width: 100%;
-  max-width: 900px;
+  max-width: 850px;
   margin: 25px auto;
   background: white;
   border: 2px solid #16325c;
@@ -94,43 +94,43 @@ button {
 .hospital-header {
   text-align: center;
   border-bottom: 2px solid #16325c;
-  padding-bottom: 12px;
+  padding-bottom: 10px;
 }
 
 .hospital-header h1 {
   margin: 5px 0;
-  font-size: 24px;
+  font-size: 22px;
   color: #16325c;
 }
 
 .hospital-header p {
-  margin: 4px 0;
-  font-size: 12px;
+  margin: 3px 0;
+  font-size: 11px;
 }
 
 .bill-title {
   text-align: center;
-  font-size: 21px;
+  font-size: 18px;
   font-weight: bold;
-  margin: 15px 0;
+  margin: 10px 0;
 }
 
 .top-info {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
-  font-size: 14px;
-  margin-bottom: 12px;
+  gap: 10px;
+  font-size: 12px;
+  margin-bottom: 8px;
 }
 
 .patient-info {
   border: 1px solid #333;
-  padding: 10px;
-  margin-bottom: 15px;
+  padding: 7px;
+  margin-bottom: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  font-size: 14px;
+  gap: 6px;
+  font-size: 11px;
 }
 
 table {
@@ -141,8 +141,8 @@ table {
 th,
 td {
   border: 1px solid #333;
-  padding: 8px;
-  font-size: 14px;
+  padding: 5px;
+  font-size: 11px;
   text-align: center;
 }
 
@@ -152,51 +152,45 @@ th {
 }
 
 .amount-section {
-  margin-top: 15px;
+  margin-top: 10px;
   margin-left: auto;
-  width: 350px;
+  width: 280px;
 }
 
 .amount-row {
   display: flex;
   justify-content: space-between;
-  padding: 7px;
+  padding: 5px;
   border-bottom: 1px solid #ccc;
-}
-
-.net-total {
-  font-size: 19px;
-  font-weight: bold;
-}
-
-.amount-words {
-  margin-top: 15px;
-  border: 1px solid #333;
-  padding: 10px;
-  font-size: 14px;
-}
-
-.extra-info {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  font-size: 14px;
-}
-
-.footer {
-  margin-top: 25px;
-  border-top: 1px solid #16325c;
-  padding-top: 10px;
-  text-align: center;
   font-size: 11px;
 }
 
+.net-total {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.extra-info {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  font-size: 11px;
+}
+
+.footer {
+  margin-top: 15px;
+  border-top: 1px solid #16325c;
+  padding-top: 6px;
+  text-align: center;
+  font-size: 9px;
+}
+
 .signature-section {
-  margin-top: 35px;
+  margin-top: 25px;
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
+  font-size: 11px;
 }
 
 
@@ -226,30 +220,47 @@ th {
 }
 
 
-/* ================= PRINT ================= */
+/* ================= A4 HALF PAGE PRINT ================= */
 
 @media print {
+
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
 
   body {
     background: white;
     padding: 0;
+    margin: 0;
   }
 
   .form-container {
     display: none;
   }
 
+  /*
+    A4 Height = 297mm
+    Half A4 = लगभग 148.5mm
+
+    Bill को आधे A4 में रखा गया है
+  */
+
   .receipt {
-    margin: 0;
     width: 100%;
     max-width: none;
+    height: 140mm;
+    margin: 0;
+    padding: 8mm;
+    border: 1.5px solid #16325c;
+    overflow: hidden;
+    page-break-after: avoid;
   }
 
 }
 
 </style>
 </head>
-
 
 <body>
 
@@ -298,12 +309,12 @@ th {
 </div>
 
 <div>
-<label>Treatment </label>
+<label>Treatment / Particulars</label>
 <input type="text" id="treatment">
 </div>
 
 <div>
-<label>Sessions</label>
+<label>Qty / Sessions</label>
 <input type="number" id="sessions" oninput="calculateAmount()">
 </div>
 
@@ -345,7 +356,7 @@ th {
 </div>
 
 <div>
-</label>
+<label>Performed By</label>
 <input type="text" id="performedBy">
 </div>
 
@@ -465,7 +476,7 @@ OPD BILL CUM RECEIPT
 
 <tr>
 <th>S.No.</th>
-<th>Treatment</th>
+<th>Particulars</th>
 <th>Qty</th>
 <th>Rate</th>
 <th>Amount (Rs.)</th>
@@ -473,10 +484,10 @@ OPD BILL CUM RECEIPT
 
 </thead>
 
-
 <tbody>
 
 <tr>
+
 <td>1</td>
 
 <td id="printTreatment"></td>
@@ -547,18 +558,6 @@ OPD BILL CUM RECEIPT
 
 
 
-<!-- AMOUNT IN WORDS -->
-
-<div class="amount-words">
-
-<strong>Amount in Words:</strong>
-
-<span id="printAmountWords"></span>
-
-</div>
-
-
-
 <!-- EXTRA DETAILS -->
 
 <div class="extra-info">
@@ -574,14 +573,32 @@ OPD BILL CUM RECEIPT
 
 <div>
 
-</strong>
+<strong>Amount:</strong>
+
+<span id="printAmountInEnglish"></span>
+
+</div>
+
+
+<div>
+
+<strong>Performed By:</strong>
+
+<span id="printPerformedBy"></span>
+
+</div>
+
+
+<div>
+
+<strong>Prepared By:</strong>
 
 <span id="printPreparedBy"></span>
 
 </div>
 
 
-<div>
+<div class="full-width">
 
 <strong>Invoice Remarks:</strong>
 
@@ -598,7 +615,7 @@ OPD BILL CUM RECEIPT
 <div class="signature-section">
 
 <div>
-<strong>Prepared By:- Saroj kudi </strong>
+<strong>Prepared By</strong>
 </div>
 
 <div>
@@ -623,7 +640,6 @@ Website: www.kudihospital.in
 
 
 <script>
-
 
 /* ================= RECEIPT NUMBER ================= */
 
@@ -665,9 +681,6 @@ Number(document.getElementById("rate").value) || 0;
 const discount =
 Number(document.getElementById("discount").value) || 0;
 
-const received =
-Number(document.getElementById("receivedAmount").value) || 0;
-
 
 const grossAmount =
 sessions * rate;
@@ -693,148 +706,9 @@ netAmount;
 
 
 
-/* ================= NUMBER TO WORDS ================= */
-
-function numberToWords(number) {
-
-number = Math.floor(Number(number));
-
-if (number === 0) {
-return "Rupees Zero Only";
-}
-
-const ones = [
-"",
-"One",
-"Two",
-"Three",
-"Four",
-"Five",
-"Six",
-"Seven",
-"Eight",
-"Nine",
-"Ten",
-"Eleven",
-"Twelve",
-"Thirteen",
-"Fourteen",
-"Fifteen",
-"Sixteen",
-"Seventeen",
-"Eighteen",
-"Nineteen"
-];
-
-
-const tens = [
-"",
-"",
-"Twenty",
-"Thirty",
-"Forty",
-"Fifty",
-"Sixty",
-"Seventy",
-"Eighty",
-"Ninety"
-];
-
-
-function convertBelowThousand(n) {
-
-let result = "";
-
-
-if (n >= 100) {
-
-result += ones[Math.floor(n / 100)] + " Hundred ";
-
-n = n % 100;
-
-}
-
-
-if (n >= 20) {
-
-result += tens[Math.floor(n / 10)] + " ";
-
-n = n % 10;
-
-}
-
-
-if (n > 0) {
-
-result += ones[n] + " ";
-
-}
-
-
-return result;
-
-}
-
-
-let result = "";
-
-
-if (number >= 10000000) {
-
-result +=
-convertBelowThousand(
-Math.floor(number / 10000000)
-) + "Crore ";
-
-number %= 10000000;
-
-}
-
-
-if (number >= 100000) {
-
-result +=
-convertBelowThousand(
-Math.floor(number / 100000)
-) + "Lakh ";
-
-number %= 100000;
-
-}
-
-
-if (number >= 1000) {
-
-result +=
-convertBelowThousand(
-Math.floor(number / 1000)
-) + "Thousand ";
-
-number %= 1000;
-
-}
-
-
-if (number > 0) {
-
-result +=
-convertBelowThousand(number);
-
-}
-
-
-return "Rupees " +
-result.trim() +
-" Only";
-
-}
-
-
-
 /* ================= PRINT BILL ================= */
 
 function printBill() {
-
 
 calculateAmount();
 
@@ -849,7 +723,6 @@ document.getElementById(
 "printReceiptNo"
 ).textContent =
 receiptNumber;
-
 
 
 /* Patient Details */
@@ -910,7 +783,6 @@ document.getElementById(
 ).value;
 
 
-
 /* Treatment */
 
 document.getElementById(
@@ -943,7 +815,6 @@ document.getElementById(
 document.getElementById(
 "amount"
 ).value;
-
 
 
 /* Amount */
@@ -1017,17 +888,7 @@ document.getElementById(
 due.toFixed(2);
 
 
-
-/* Amount in English Words */
-
-document.getElementById(
-"printAmountWords"
-).textContent =
-numberToWords(total);
-
-
-
-/* Payment Mode */
+/* ================= PAYMENT MODE ================= */
 
 document.getElementById(
 "printPaymentMode"
@@ -1036,6 +897,19 @@ document.getElementById(
 "paymentMode"
 ).value;
 
+
+/* ================= AUTOMATIC AMOUNT TEXT ================= */
+
+/*
+50  → 50 Rupees Only
+60  → 60 Rupees Only
+500 → 500 Rupees Only
+*/
+
+document.getElementById(
+"printAmountInEnglish"
+).textContent =
+Number(total) + " Rupees Only";
 
 
 /* Performed By */
@@ -1048,7 +922,6 @@ document.getElementById(
 ).value;
 
 
-
 /* Prepared By */
 
 document.getElementById(
@@ -1059,7 +932,6 @@ document.getElementById(
 ).value;
 
 
-
 /* Remarks */
 
 document.getElementById(
@@ -1068,7 +940,6 @@ document.getElementById(
 document.getElementById(
 "remarks"
 ).value;
-
 
 
 /* Date & Time */
@@ -1092,11 +963,9 @@ minute: "2-digit"
 );
 
 
-
 /* Increase Receipt Number */
 
 increaseReceiptNumber();
-
 
 
 /* Print */
@@ -1104,7 +973,6 @@ increaseReceiptNumber();
 window.print();
 
 }
-
 
 </script>
 
