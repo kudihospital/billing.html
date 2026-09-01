@@ -3,11 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>KUDI Hospital Billing</title>
+
 <style>
+
 *{
 box-sizing:border-box;
 }
+
 body{
 margin:0;
 padding:20px;
@@ -15,6 +19,7 @@ font-family:Arial,sans-serif;
 background:#f2f2f2;
 color:#222;
 }
+
 .form-container{
 max-width:850px;
 margin:auto;
@@ -22,21 +27,25 @@ background:#fff;
 padding:25px;
 border-radius:10px;
 }
+
 h2{
 text-align:center;
 color:#16325c;
 margin-top:0;
 }
+
 .form-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
 }
+
 label{
 display:block;
 font-weight:bold;
 margin-bottom:5px;
 }
+
 input,
 select,
 textarea{
@@ -46,13 +55,16 @@ border:1px solid #ccc;
 border-radius:5px;
 font-size:15px;
 }
+
 textarea{
 min-height:45px;
 resize:vertical;
 }
+
 .full-width{
 grid-column:1/-1;
 }
+
 button{
 display:block;
 width:100%;
@@ -66,10 +78,13 @@ font-size:17px;
 font-weight:bold;
 cursor:pointer;
 }
+
 button:hover{
 background:#0e2445;
 }
-/* RECEIPT */
+
+/* ================= RECEIPT ================= */
+
 .receipt{
 width:100%;
 max-width:850px;
@@ -78,26 +93,31 @@ background:white;
 border:2px solid #16325c;
 padding:20px;
 }
+
 .hospital-header{
 text-align:center;
 border-bottom:2px solid #16325c;
 padding-bottom:8px;
 }
+
 .hospital-header h1{
 margin:4px 0;
 font-size:22px;
 color:#16325c;
 }
+
 .hospital-header p{
 margin:3px 0;
 font-size:11px;
 }
+
 .bill-title{
 text-align:center;
 font-size:18px;
 font-weight:bold;
 margin:8px 0;
 }
+
 .top-info{
 display:flex;
 justify-content:space-between;
@@ -105,6 +125,7 @@ gap:10px;
 font-size:12px;
 margin-bottom:8px;
 }
+
 .patient-info{
 border:1px solid #333;
 padding:7px;
@@ -114,10 +135,12 @@ grid-template-columns:1fr 1fr;
 gap:6px;
 font-size:11px;
 }
+
 table{
 width:100%;
 border-collapse:collapse;
 }
+
 th,
 td{
 border:1px solid #333;
@@ -125,15 +148,18 @@ padding:5px;
 font-size:11px;
 text-align:center;
 }
+
 th{
 background:#16325c;
 color:#fff;
 }
+
 .amount-section{
 margin-top:8px;
 margin-left:auto;
 width:280px;
 }
+
 .amount-row{
 display:flex;
 justify-content:space-between;
@@ -141,10 +167,12 @@ padding:4px 5px;
 border-bottom:1px solid #ccc;
 font-size:11px;
 }
+
 .net-total{
 font-size:14px;
 font-weight:bold;
 }
+
 .extra-info{
 margin-top:8px;
 display:grid;
@@ -152,6 +180,7 @@ grid-template-columns:1fr 1fr;
 gap:6px;
 font-size:11px;
 }
+
 .signature-section{
 margin-top:18px;
 display:flex;
@@ -159,6 +188,7 @@ justify-content:space-between;
 font-size:11px;
 min-height:25px;
 }
+
 .footer{
 margin-top:10px;
 border-top:1px solid #16325c;
@@ -166,38 +196,55 @@ padding-top:5px;
 text-align:center;
 font-size:9px;
 }
-/* MOBILE */
+
+/* ================= MOBILE ================= */
+
 @media screen and (max-width:600px){
+
 .form-grid,
 .patient-info,
 .extra-info{
 grid-template-columns:1fr;
 }
+
 .top-info{
 flex-direction:column;
 }
+
+.signature-section{
+flex-direction:row;
+}
+
 .amount-section{
 width:100%;
 }
+
 body{
 padding:10px;
 }
+
 }
-/* PRINT */
+
+/* ================= PRINT ================= */
+
 @media print{
+
 @page{
 size:A4 portrait;
 margin:5mm;
 }
+
 html,
 body{
 margin:0!important;
 padding:0!important;
 background:#fff!important;
 }
+
 .form-container{
 display:none!important;
 }
+
 .receipt{
 display:block!important;
 width:100%!important;
@@ -205,301 +252,775 @@ max-width:none!important;
 margin:0!important;
 padding:5mm!important;
 border:1.5px solid #16325c!important;
+height:auto!important;
+min-height:0!important;
+overflow:visible!important;
+page-break-inside:avoid!important;
+page-break-after:avoid!important;
 }
+
 .hospital-header{
 padding-bottom:5px;
 }
+
 .hospital-header h1{
 font-size:19px;
 margin:2px 0;
 }
+
 .hospital-header p{
 font-size:9px;
 margin:2px 0;
 }
+
 .bill-title{
 font-size:15px;
 margin:5px 0;
 }
+
 .top-info{
 font-size:9px;
 margin-bottom:5px;
 }
+
 .patient-info{
 font-size:9px;
 padding:5px;
 gap:4px;
 margin-bottom:5px;
 }
+
 th,
 td{
 font-size:9px;
 padding:3px;
 }
+
 .amount-section{
 width:230px;
 margin-top:5px;
 }
+
 .amount-row{
 font-size:9px;
 padding:3px;
 }
+
 .net-total{
 font-size:11px;
 }
+
 .extra-info{
 font-size:9px;
 gap:4px;
 margin-top:5px;
 }
+
 .signature-section{
 font-size:9px;
 margin-top:12px;
 display:flex!important;
 justify-content:space-between!important;
 }
+
 .footer{
 font-size:8px;
 margin-top:6px;
 padding-top:4px;
 }
+
 }
+
 </style>
 </head>
+
 <body>
+
+<!-- ================= FORM ================= -->
+
 <div class="form-container">
+
 <h2>Create Hospital Bill</h2>
+
 <div class="form-grid">
+
 <div>
 <label>Patient Name</label>
 <input type="text" id="patientName">
 </div>
+
 <div>
 <label>Patient Reg. No.</label>
 <input type="text" id="regNo" value="KHRC/00">
 </div>
+
 <div>
 <label>Mobile Number</label>
 <input type="text" id="mobile">
 </div>
+
 <div>
 <label>Age</label>
 <input type="number" id="age">
 </div>
+
 <div class="full-width">
 <label>Address</label>
 <textarea id="address"></textarea>
 </div>
+
 <div>
 <label>Consultant / Doctor</label>
+
 <select id="consultant">
-<option value="">Select Doctor</option>
-<option value="Dr Rakesh Kudi (PT)">Dr Rakesh Kudi (PT)</option>
-<option value="Dr Bhupinder Choudhary (PT)">Dr Bhupinder Choudhary (PT)</option>
+
+<option value="">
+Select Doctor
+</option>
+
+<option value="Dr Rakesh Kudi (PT)">
+Dr Rakesh Kudi (PT)
+</option>
+
+<option value="Dr Bhupinder Choudhary (PT)">
+Dr Bhupinder Choudhary (PT)
+</option>
+
 </select>
 </div>
+
 <div>
 <label>Department</label>
+
 <select id="department">
-<option value="">Select Department</option>
-<option value="Physiotherapy">Physiotherapy</option>
-<option value="Cardio Exercises">Cardio Exercises</option>
+
+<option value="">
+Select Department
+</option>
+
+<option value="Physiotherapy">
+Physiotherapy
+</option>
+
+<option value="Cardio Exercises">
+Cardio Exercises
+</option>
+
 </select>
+
 </div>
+
 <div>
+
 <label>Treatment / Particulars</label>
+
 <select id="treatment">
-<option value="">Select Treatment</option>
-<option value="Physiotherapy Session">Physiotherapy Session</option>
-<option value="Cardio Exercise Session">Cardio Exercise Session</option>
-<option value="TENS Therapy">TENS Therapy</option>
-<option value="IFT Therapy">IFT Therapy</option>
-<option value="Ultrasound Therapy">Ultrasound Therapy</option>
-<option value="Exercise Therapy">Exercise Therapy</option>
-<option value="Manual Therapy">Manual Therapy</option>
-<option value="Heat Therapy">Heat Therapy</option>
-<option value="Cold Therapy">Cold Therapy</option>
-<option value="Other">Other</option>
+
+<option value="">
+Select Treatment
+</option>
+
+<option value="Physiotherapy Session">
+Physiotherapy Session
+</option>
+
+<option value="Cardio Exercise Session">
+Cardio Exercise Session
+</option>
+
+<option value="TENS Therapy">
+TENS Therapy
+</option>
+
+<option value="IFT Therapy">
+IFT Therapy
+</option>
+
+<option value="Ultrasound Therapy">
+Ultrasound Therapy
+</option>
+
+<option value="Exercise Therapy">
+Exercise Therapy
+</option>
+
+<option value="Manual Therapy">
+Manual Therapy
+</option>
+
+<option value="Heat Therapy">
+Heat Therapy
+</option>
+
+<option value="Cold Therapy">
+Cold Therapy
+</option>
+
+<option value="Other">
+Other
+</option>
+
 </select>
+
 </div>
+
 <div>
 <label>Qty / Sessions</label>
-<input type="number" id="sessions" min="0" oninput="calculateAmount()">
+
+<input
+type="number"
+id="sessions"
+min="0"
+oninput="calculateAmount()"
+>
+
 </div>
+
 <div>
 <label>Rate</label>
-<input type="number" id="rate" min="0" oninput="calculateAmount()">
+
+<input
+type="number"
+id="rate"
+min="0"
+oninput="calculateAmount()"
+>
+
 </div>
+
 <div>
 <label>Gross Amount</label>
-<input type="number" id="amount" readonly>
+
+<input
+type="number"
+id="amount"
+readonly
+>
+
 </div>
+
 <div>
 <label>Discount</label>
-<input type="number" id="discount" value="0" min="0" oninput="calculateAmount()">
+
+<input
+type="number"
+id="discount"
+value="0"
+min="0"
+oninput="calculateAmount()"
+>
+
 </div>
+
 <div>
+
 <label>Payment Mode</label>
+
 <select id="paymentMode">
-<option value="Cash">Cash</option>
-<option value="Online">Online</option>
-<option value="UPI">UPI</option>
-<option value="Card">Card</option>
+
+<option value="Cash">
+Cash
+</option>
+
+<option value="Online">
+Online
+</option>
+
+<option value="UPI">
+UPI
+</option>
+
+<option value="Card">
+Card
+</option>
+
 </select>
+
 </div>
+
 <div>
+
 <label>Received Amount</label>
-<input type="number" id="receivedAmount" min="0">
+
+<input
+type="number"
+id="receivedAmount"
+min="0"
+>
+
 </div>
+
 <div>
+
 <label>Net Amount</label>
-<input type="number" id="totalAmount" readonly>
+
+<input
+type="number"
+id="totalAmount"
+readonly
+>
+
 </div>
+
 <div>
+
 <label>Performed By</label>
-<input type="text" id="performedBy">
+
+<input
+type="text"
+id="performedBy"
+>
+
 </div>
+
 <div>
+
 <label>Prepared By</label>
-<input type="text" id="preparedBy" value="Saroj">
+
+<input
+type="text"
+id="preparedBy"
+value="Saroj"
+>
+
 </div>
+
 <div class="full-width">
+
 <label>Invoice Remarks</label>
-<textarea id="remarks"></textarea>
+
+<textarea
+id="remarks"
+></textarea>
+
 </div>
+
 </div>
-<button type="button" onclick="printBill()">
+
+<button
+type="button"
+onclick="printBill()"
+>
+
 PRINT BILL
+
 </button>
+
 </div>
-<!-- RECEIPT -->
-<div class="receipt" id="receipt">
+
+
+<!-- ================= RECEIPT ================= -->
+
+<div
+class="receipt"
+id="receipt"
+>
+
 <div class="hospital-header">
-<h1>KUDI Hospital And Rehabilitation Center</h1>
+
+<h1>
+KUDI Hospital And Rehabilitation Center
+</h1>
+
 <p>
 Bheruji Mod, NH52, Near Raghu Palace Hotel,
 Reengus (Raj.) - 332404
 </p>
+
 <p>
 Contact: 8504001220 |
 Website: www.kudihospital.in
 </p>
+
 </div>
+
+
 <div class="bill-title">
+
 OPD BILL CUM RECEIPT
+
 </div>
+
+
 <div class="top-info">
+
 <div>
-<strong>Receipt No:</strong>
-<span id="printReceiptNo"></span>
+
+<strong>
+Receipt No:
+</strong>
+
+<span
+id="printReceiptNo"
+></span>
+
 </div>
+
+
 <div>
-<strong>Date & Time:</strong>
-<span id="printDate"></span>
+
+<strong>
+Date & Time:
+</strong>
+
+<span
+id="printDate"
+></span>
+
 </div>
+
 </div>
+
+
+<!-- PATIENT DETAILS -->
+
 <div class="patient-info">
+
 <div>
-<strong>Patient Name:</strong>
-<span id="printName"></span>
+
+<strong>
+Patient Name:
+</strong>
+
+<span
+id="printName"
+></span>
+
 </div>
+
+
 <div>
-<strong>Reg. No:</strong>
-<span id="printRegNo"></span>
+
+<strong>
+Reg. No:
+</strong>
+
+<span
+id="printRegNo"
+></span>
+
 </div>
+
+
 <div>
-<strong>Mobile No:</strong>
-<span id="printMobile"></span>
+
+<strong>
+Mobile No:
+</strong>
+
+<span
+id="printMobile"
+></span>
+
 </div>
+
+
 <div>
-<strong>Age:</strong>
-<span id="printAge"></span>
+
+<strong>
+Age:
+</strong>
+
+<span
+id="printAge"
+></span>
+
 </div>
+
+
 <div>
-<strong>Consultant:</strong>
-<span id="printConsultant"></span>
+
+<strong>
+Consultant:
+</strong>
+
+<span
+id="printConsultant"
+></span>
+
 </div>
+
+
 <div>
-<strong>Department:</strong>
-<span id="printDepartment"></span>
+
+<strong>
+Department:
+</strong>
+
+<span
+id="printDepartment"
+></span>
+
 </div>
+
+
 <div class="full-width">
-<strong>Address:</strong>
-<span id="printAddress"></span>
+
+<strong>
+Address:
+</strong>
+
+<span
+id="printAddress"
+></span>
+
 </div>
+
 </div>
+
+
+<!-- TREATMENT TABLE -->
+
 <table>
+
 <thead>
+
 <tr>
-<th>S.No.</th>
-<th>Particulars</th>
-<th>Qty</th>
-<th>Rate</th>
-<th>Amount (Rs.)</th>
+
+<th>
+S.No.
+</th>
+
+<th>
+Particulars
+</th>
+
+<th>
+Qty
+</th>
+
+<th>
+Rate
+</th>
+
+<th>
+Amount (Rs.)
+</th>
+
 </tr>
+
 </thead>
+
+
 <tbody>
+
 <tr>
-<td>1</td>
-<td id="printTreatment"></td>
-<td id="printSessions"></td>
-<td id="printRate"></td>
-<td id="printAmount"></td>
+
+<td>
+1
+</td>
+
+<td
+id="printTreatment"
+></td>
+
+<td
+id="printSessions"
+></td>
+
+<td
+id="printRate"
+></td>
+
+<td
+id="printAmount"
+></td>
+
 </tr>
+
 </tbody>
+
 </table>
+
+
+<!-- AMOUNT SUMMARY -->
+
 <div class="amount-section">
+
 <div class="amount-row">
+
 Gross Amount
-<span>Rs. <span id="printGross"></span></span>
+
+<span>
+
+Rs.
+
+<span
+id="printGross"
+></span>
+
+</span>
+
 </div>
+
+
 <div class="amount-row">
+
 Discount
-<span>Rs. <span id="printDiscount"></span></span>
+
+<span>
+
+Rs.
+
+<span
+id="printDiscount"
+></span>
+
+</span>
+
 </div>
+
+
 <div class="amount-row net-total">
+
 Net Amount
-<span>Rs. <span id="printTotal"></span></span>
+
+<span>
+
+Rs.
+
+<span
+id="printTotal"
+></span>
+
+</span>
+
 </div>
+
+
 <div class="amount-row">
+
 Received
-<span>Rs. <span id="printReceived"></span></span>
+
+<span>
+
+Rs.
+
+<span
+id="printReceived"
+></span>
+
+</span>
+
 </div>
+
+
 <div class="amount-row">
+
 Due Amount
-<span>Rs. <span id="printDue"></span></span>
+
+<span>
+
+Rs.
+
+<span
+id="printDue"
+></span>
+
+</span>
+
 </div>
+
 </div>
+
+
+<!-- EXTRA DETAILS -->
+
 <div class="extra-info">
+
 <div>
-<strong>Payment Mode:</strong>
-<span id="printPaymentMode"></span>
+
+<strong>
+Payment Mode:
+</strong>
+
+<span
+id="printPaymentMode"
+></span>
+
 </div>
+
+
 <div>
-<strong>Amount:</strong>
-<span id="printAmountInEnglish"></span>
+
+<strong>
+Amount:
+</strong>
+
+<span
+id="printAmountInEnglish"
+></span>
+
 </div>
+
+
 <div>
-<strong>Performed By:</strong>
-<span id="printPerformedBy"></span>
+
+<strong>
+Performed By:
+</strong>
+
+<span
+id="printPerformedBy"
+></span>
+
 </div>
+
+
 <div>
-<strong>Prepared By:</strong>
-<span id="printPreparedBy"></span>
+
+<strong>
+Prepared By:
+</strong>
+
+<span
+id="printPreparedBy"
+></span>
+
 </div>
+
+
 <div class="full-width">
-<strong>Invoice Remarks:</strong>
-<span id="printRemarks"></span>
+
+<strong>
+Invoice Remarks:
+</strong>
+
+<span
+id="printRemarks"
+></span>
+
 </div>
+
 </div>
+
+
+<!-- SIGNATURE -->
+
 <div class="signature-section">
+
 <div>
-<strong>Prepared By: Saroj</strong>
+
+<strong>
+Prepared By: Saroj
+</strong>
+
 </div>
+
+
 <div>
-<strong>Authorized Signature</strong>
+
+<strong>
+Authorized Signature
+</strong>
+
 </div>
+
 </div>
+
+
+<!-- FOOTER -->
+
 <div class="footer">
 
 KUDI Hospital And Rehabilitation Center
@@ -507,237 +1028,351 @@ KUDI Hospital And Rehabilitation Center
 <br>
 
 Contact: 8504001220 |
+
 Website: www.kudihospital.in
 
 </div>
+
 </div>
+
+
 <script>
-/* RECEIPT NUMBER */
+
+/* =====================================================
+   RECEIPT NUMBER
+   ===================================================== */
+
 function getReceiptNumber(){
+
 let number =
 Number(
 localStorage.getItem(
 "kudiReceiptNumber"
 )
 ) || 1;
+
 return "KHRC/" +
 String(number).padStart(
 3,
 "0"
 );
+
 }
+
+
 function increaseReceiptNumber(){
+
 let number =
 Number(
 localStorage.getItem(
 "kudiReceiptNumber"
 )
 ) || 1;
+
 localStorage.setItem(
 "kudiReceiptNumber",
 number + 1
 );
+
 }
-/* CALCULATE */
+
+
+/* =====================================================
+   CALCULATE AMOUNT
+   ===================================================== */
+
 function calculateAmount(){
+
 const sessions =
 Number(
 document.getElementById(
 "sessions"
 ).value
 ) || 0;
+
+
 const rate =
 Number(
 document.getElementById(
 "rate"
 ).value
 ) || 0;
+
+
 const discount =
 Number(
 document.getElementById(
 "discount"
 ).value
 ) || 0;
+
+
 const gross =
 sessions * rate;
+
+
 const total =
 Math.max(
 gross - discount,
 0
 );
+
+
 document.getElementById(
 "amount"
 ).value =
 gross;
+
+
 document.getElementById(
 "totalAmount"
 ).value =
 total;
+
 }
-/* PRINT BILL */
-async function printBill(){
+
+
+/* =====================================================
+   PRINT BILL
+   ===================================================== */
+
+function printBill(){
+
 calculateAmount();
+
+
+/* PATIENT REGISTRATION NUMBER */
+
 const patientReg =
 document.getElementById(
 "regNo"
 ).value;
+
+
 document.getElementById(
 "printRegNo"
 ).textContent =
 patientReg;
-/* RECEIPT */
+
+
+/* RECEIPT NUMBER */
+
 const receiptNumber =
 getReceiptNumber();
+
+
 document.getElementById(
 "printReceiptNo"
 ).textContent =
 receiptNumber;
-/* PATIENT */
+
+
+/* PATIENT DETAILS */
+
 document.getElementById(
 "printName"
 ).textContent =
 document.getElementById(
 "patientName"
 ).value;
+
+
 document.getElementById(
 "printMobile"
 ).textContent =
 document.getElementById(
 "mobile"
 ).value;
+
+
 document.getElementById(
 "printAge"
 ).textContent =
 document.getElementById(
 "age"
 ).value;
+
+
 document.getElementById(
 "printAddress"
 ).textContent =
 document.getElementById(
 "address"
 ).value;
+
+
 document.getElementById(
 "printConsultant"
 ).textContent =
 document.getElementById(
 "consultant"
 ).value;
+
+
 document.getElementById(
 "printDepartment"
 ).textContent =
 document.getElementById(
 "department"
 ).value;
+
+
 /* TREATMENT */
+
 document.getElementById(
 "printTreatment"
 ).textContent =
 document.getElementById(
 "treatment"
 ).value;
+
+
 document.getElementById(
 "printSessions"
 ).textContent =
 document.getElementById(
 "sessions"
 ).value;
+
+
 document.getElementById(
 "printRate"
 ).textContent =
 document.getElementById(
 "rate"
 ).value;
+
+
 /* AMOUNT */
+
 const gross =
 Number(
 document.getElementById(
 "amount"
 ).value
 ) || 0;
+
+
 const discount =
 Number(
 document.getElementById(
 "discount"
 ).value
 ) || 0;
+
+
 const total =
 Number(
 document.getElementById(
 "totalAmount"
 ).value
 ) || 0;
+
+
 const received =
 Number(
 document.getElementById(
 "receivedAmount"
 ).value
 ) || 0;
+
+
 const due =
 Math.max(
 total - received,
 0
 );
+
+
 document.getElementById(
 "printAmount"
 ).textContent =
 gross.toFixed(2);
+
+
 document.getElementById(
 "printGross"
 ).textContent =
 gross.toFixed(2);
+
+
 document.getElementById(
 "printDiscount"
 ).textContent =
 discount.toFixed(2);
+
+
 document.getElementById(
 "printTotal"
 ).textContent =
 total.toFixed(2);
+
+
 document.getElementById(
 "printReceived"
 ).textContent =
 received.toFixed(2);
+
+
 document.getElementById(
 "printDue"
 ).textContent =
 due.toFixed(2);
-/* PAYMENT */
+
+
+/* PAYMENT MODE */
+
 document.getElementById(
 "printPaymentMode"
 ).textContent =
 document.getElementById(
 "paymentMode"
 ).value;
-/* AMOUNT TEXT */
+
+
+/* AMOUNT IN ENGLISH */
+
 document.getElementById(
 "printAmountInEnglish"
 ).textContent =
 total.toFixed(2) +
 " Rupees Only";
+
+
 /* STAFF */
+
 document.getElementById(
 "printPerformedBy"
 ).textContent =
 document.getElementById(
 "performedBy"
 ).value;
+
+
 document.getElementById(
 "printPreparedBy"
 ).textContent =
 document.getElementById(
 "preparedBy"
 ).value;
+
+
 /* REMARKS */
+
 document.getElementById(
 "printRemarks"
 ).textContent =
 document.getElementById(
 "remarks"
 ).value;
+
+
 /* DATE AND TIME */
+
 const now =
 new Date();
+
+
 const formattedDate =
 now.toLocaleDateString(
 "en-IN",
@@ -747,6 +1382,8 @@ month:"2-digit",
 year:"numeric"
 }
 );
+
+
 const formattedTime =
 now.toLocaleTimeString(
 "en-IN",
@@ -756,22 +1393,35 @@ minute:"2-digit",
 hour12:true
 }
 );
+
+
 document.getElementById(
 "printDate"
 ).textContent =
 formattedDate +
 " " +
 formattedTime;
-/* SAVE PDF + PRINT */
-setTimeout(
-async function(){
-try{
-){
+
+
+/* INCREASE RECEIPT NUMBER */
+
 increaseReceiptNumber();
-}else{
-300
+
+
+/* NORMAL PRINT */
+
+setTimeout(
+function(){
+
+window.print();
+
+},
+200
 );
+
 }
+
 </script>
+
 </body>
 </html>
