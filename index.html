@@ -1,372 +1,584 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title> Billing</title>
+<title>KUDI Hospital - Billing</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      color: #222;
-    }
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f2f2f2;
+  color: #111;
+}
 
-    /* FORM */
+/* ================= FORM ================= */
 
-    .form-container {
-      max-width: 700px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-    }
+.form-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 25px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
 
-    h2 {
-      text-align: center;
-      color: #16325c;
-      margin-top: 0;
-    }
+.form-container h2 {
+  text-align: center;
+  margin: 0 0 20px;
+  color: #16325c;
+}
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
 
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
 
-    input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 15px;
-    }
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 15px;
+}
 
-    button {
-      width: 100%;
-      margin-top: 20px;
-      padding: 12px;
-      background: #16325c;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background: #16325c;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    /* RECEIPT */
+button:hover {
+  background: #0e2548;
+}
 
-    .receipt {
-      width: 100%;
-      max-width: 700px;
-      margin: 25px auto;
-      background: white;
-      border: 2px solid #16325c;
-      padding: 20px;
-    }
+/* ================= BILL ================= */
 
-    .hospital-header {
-      text-align: center;
-      border-bottom: 2px solid #16325c;
-      padding-bottom: 10px;
-    }
+.receipt {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  background: #fff;
+  border: 1.5px solid #111;
+  padding: 14px;
+}
 
-    .hospital-header img {
-      width: 65px;
-      height: 65px;
-      object-fit: contain;
-    }
+/* Hospital Header */
 
-    .hospital-header h1 {
-      margin: 5px 0;
-      font-size: 22px;
-      color: #16325c;
-    }
+.hospital-header {
+  text-align: center;
+  border-bottom: 1.5px solid #111;
+  padding-bottom: 7px;
+}
 
-    .hospital-header p {
-      margin: 3px 0;
-      font-size: 12px;
-    }
+.hospital-header h1 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 700;
+  color: #16325c;
+  text-transform: uppercase;
+}
 
-    .bill-title {
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-      margin: 15px 0;
-    }
+.hospital-header .sub-title {
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 2px;
+}
 
-    .patient-info {
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-bottom: 15px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      font-size: 14px;
-    }
+.hospital-header p {
+  margin: 3px 0;
+  font-size: 10px;
+  line-height: 1.3;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
+/* Bill Heading */
 
-    th,
-    td {
-      border: 1px solid #333;
-      padding: 8px;
-      font-size: 14px;
-      text-align: center;
-    }
+.bill-title {
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 7px 0;
+  text-transform: uppercase;
+}
 
-    th {
-      background: #16325c;
-      color: white;
-    }
+/* Patient Information */
 
-    .total {
-      margin-top: 15px;
-      text-align: right;
-      font-size: 18px;
-      font-weight: bold;
-    }
+.patient-info {
+  border: 1px solid #333;
+  padding: 6px 8px;
+  margin-bottom: 7px;
 
-    .footer {
-      margin-top: 25px;
-      border-top: 1px solid #16325c;
-      padding-top: 8px;
-      text-align: center;
-      font-size: 11px;
-    }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
-    @media screen and (max-width: 600px) {
-      .form-grid,
-      .patient-info {
-        grid-template-columns: 1fr;
-      }
+  column-gap: 15px;
+  row-gap: 5px;
 
-      body {
-        padding: 10px;
-      }
-    }
+  font-size: 11px;
+}
 
-    @media print {
-      body {
-        background: white;
-        padding: 0;
-      }
+.patient-info div {
+  min-height: 15px;
+}
 
-      .form-container {
-        display: none;
-      }
+.patient-info strong {
+  font-weight: bold;
+}
 
-      .receipt {
-        border: 2px solid #16325c;
-        margin: 0;
-        width: 100%;
-        max-width: none;
-      }
-    }
-  </style>
+/* Billing Table */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th,
+td {
+  border: 1px solid #222;
+  padding: 5px 4px;
+  font-size: 10.5px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+th {
+  background: #16325c;
+  color: #fff;
+  font-weight: bold;
+}
+
+th:first-child,
+td:first-child {
+  width: 40%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 16%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 20%;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  width: 24%;
+}
+
+/* Total */
+
+.total {
+  margin-top: 7px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.total-box {
+  display: inline-block;
+  border: 1px solid #222;
+  padding: 5px 10px;
+  min-width: 150px;
+}
+
+/* Footer */
+
+.footer {
+  margin-top: 9px;
+  padding-top: 5px;
+  border-top: 1px solid #333;
+  text-align: center;
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+/* ================= MOBILE ================= */
+
+@media screen and (max-width: 600px) {
+
+  body {
+    padding: 10px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .patient-info {
+    grid-template-columns: 1fr;
+  }
+
+  .receipt {
+    padding: 10px;
+  }
+
+  .hospital-header h1 {
+    font-size: 18px;
+  }
+}
+
+/* ================= PRINT ================= */
+
+@media print {
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  .form-container {
+    display: none !important;
+  }
+
+  .receipt {
+    display: block;
+
+    /* HALF A4 HEIGHT */
+    width: 210mm;
+    height: 148.5mm;
+
+    margin: 0;
+    padding: 7mm;
+
+    border: 1px solid #111;
+
+    page-break-inside: avoid;
+    overflow: hidden;
+  }
+
+  .hospital-header {
+    padding-bottom: 4mm;
+  }
+
+  .hospital-header h1 {
+    font-size: 18px;
+  }
+
+  .hospital-header .sub-title {
+    font-size: 10px;
+  }
+
+  .hospital-header p {
+    font-size: 8.5px;
+    margin: 2px 0;
+  }
+
+  .bill-title {
+    font-size: 12px;
+    margin: 3mm 0;
+  }
+
+  .patient-info {
+    padding: 3mm 4mm;
+    margin-bottom: 3mm;
+    row-gap: 2mm;
+    font-size: 9px;
+  }
+
+  th,
+  td {
+    padding: 2.5mm 2mm;
+    font-size: 9px;
+  }
+
+  .total {
+    margin-top: 3mm;
+    font-size: 11px;
+  }
+
+  .total-box {
+    padding: 2mm 4mm;
+    min-width: 42mm;
+  }
+
+  .footer {
+    margin-top: 4mm;
+    padding-top: 2mm;
+    font-size: 7.5px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="form-container">
+<!-- ================= BILL FORM ================= -->
 
-    <h2>Create Bill</h2>
+<div class="form-container">
 
-    <div class="form-grid">
+  <h2>Create Bill</h2>
 
-      <div>
-        <label>Patient Name</label>
-        <input type="text" id="patientName">
-      </div>
+  <div class="form-grid">
 
-      <div>
-        <label>Reg. No.</label>
-        <input type="text" id="regNo">
-      </div>
-
-      <div>
-        <label>Mobile Number</label>
-        <input type="text" id="mobile">
-      </div>
-
-      <div>
-        <label>Treatment</label>
-        <input type="text" id="treatment">
-      </div>
-
-      <div>
-        <label>Sessions</label>
-        <input type="number" id="sessions" oninput="calculateAmount()">
-      </div>
-
-      <div>
-        <label>Rate</label>
-        <input type="number" id="rate" oninput="calculateAmount()">
-      </div>
-
-      <div>
-        <label>Amount</label>
-        <input type="number" id="amount" readonly>
-      </div>
-
-      <div>
-        <label>Total Amount</label>
-        <input type="number" id="totalAmount" readonly>
-      </div>
-
+    <div>
+      <label>Patient Name</label>
+      <input type="text" id="patientName" placeholder="Enter patient name">
     </div>
 
-    <button onclick="printBill()">Print Bill</button>
+    <div>
+      <label>Reg. No.</label>
+      <input type="text" id="regNo" placeholder="Registration number">
+    </div>
+
+    <div>
+      <label>Mobile Number</label>
+      <input type="tel" id="mobile" placeholder="Mobile number">
+    </div>
+
+    <div>
+      <label>Treatment</label>
+      <input type="text" id="treatment" placeholder="Treatment">
+    </div>
+
+    <div>
+      <label>Sessions</label>
+      <input
+        type="number"
+        id="sessions"
+        min="0"
+        oninput="calculateAmount()"
+        placeholder="0"
+      >
+    </div>
+
+    <div>
+      <label>Rate</label>
+      <input
+        type="number"
+        id="rate"
+        min="0"
+        oninput="calculateAmount()"
+        placeholder="0"
+      >
+    </div>
+
+    <div>
+      <label>Amount</label>
+      <input type="number" id="amount" readonly>
+    </div>
+
+    <div>
+      <label>Total Amount</label>
+      <input type="number" id="totalAmount" readonly>
+    </div>
 
   </div>
 
-  <div class="receipt">
+  <button onclick="printBill()">Print Bill</button>
 
-    <div class="hospital-header">
+</div>
 
 
-      <h1>KUDI Hospital And Rehabilitation Center</h1>
+<!-- ================= PRINT BILL ================= -->
 
-      <p>
-        Bheruji Mod, NH52, Near Raghu Palace Hotel,
-        Reengus (Raj.) - 332404
-      </p>
+<div class="receipt">
 
-      <p>
-        Contact: 8504001220 |
-        website: www.kudihospital.in
-      </p>
+  <!-- HEADER -->
 
+  <div class="hospital-header">
+
+    <h1>KUDI HOSPITAL</h1>
+
+    <div class="sub-title">
+      AND REHABILITATION CENTER
     </div>
 
-    <div class="bill-title">
-      BILL / RECEIPT
+    <p>
+      Bheruji Mod, NH-52, Near Raghu Palace Hotel,
+      Reengus (Raj.) - 332404
+    </p>
+
+    <p>
+      Contact: 8504001220 &nbsp; | &nbsp;
+      www.kudihospital.in
+    </p>
+
+  </div>
+
+
+  <!-- BILL TITLE -->
+
+  <div class="bill-title">
+    BILL / RECEIPT
+  </div>
+
+
+  <!-- PATIENT DETAILS -->
+
+  <div class="patient-info">
+
+    <div>
+      <strong>Patient Name:</strong>
+      <span id="printName"></span>
     </div>
 
-    <div class="patient-info">
-
-      <div>
-        <strong>Patient Name:</strong>
-        <span id="printName"></span>
-      </div>
-
-      <div>
-        <strong>Reg. No.:</strong>
-        <span id="printRegNo"></span>
-      </div>
-
-      <div>
-        <strong>Mobile:</strong>
-        <span id="printMobile"></span>
-      </div>
-
-      <div>
-        <strong>Date:</strong>
-        <span id="printDate"></span>
-      </div>
-
+    <div>
+      <strong>Reg. No.:</strong>
+      <span id="printRegNo"></span>
     </div>
 
-    <table>
+    <div>
+      <strong>Mobile:</strong>
+      <span id="printMobile"></span>
+    </div>
 
-      <thead>
-        <tr>
-          <th>Treatment</th>
-          <th>Sessions</th>
-          <th>Rate</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
+    <div>
+      <strong>Date:</strong>
+      <span id="printDate"></span>
+    </div>
 
-      <tbody>
-        <tr>
-          <td id="printTreatment"></td>
-          <td id="printSessions"></td>
-          <td id="printRate"></td>
-          <td id="printAmount"></td>
-        </tr>
-      </tbody>
+  </div>
 
-    </table>
 
-    <div class="total">
+  <!-- BILL TABLE -->
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Treatment</th>
+        <th>Sessions</th>
+        <th>Rate</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td id="printTreatment"></td>
+
+        <td id="printSessions"></td>
+
+        <td id="printRate"></td>
+
+        <td id="printAmount"></td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+
+  <!-- TOTAL -->
+
+  <div class="total">
+
+    <div class="total-box">
       Total Amount: ₹ <span id="printTotal"></span>
     </div>
 
-    <div class="footer">
-      KUDI Hospital And Rehabilitation Center<br>
-      Contact: 8504001220 |
-           website: www.kudihospital.in
-    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+
+  <div class="footer">
+
+    KUDI Hospital And Rehabilitation Center
+
+    <br>
+
+    Contact: 8504001220 |
+    www.kudihospital.in
 
   </div>
 
-  <script>
+</div>
 
-    function calculateAmount() {
-      const sessions =
-        Number(document.getElementById("sessions").value) || 0;
 
-      const rate =
-        Number(document.getElementById("rate").value) || 0;
+<script>
 
-      const amount = sessions * rate;
+/* ================= CALCULATE ================= */
 
-      document.getElementById("amount").value = amount;
-      document.getElementById("totalAmount").value = amount;
-    }
+function calculateAmount() {
 
-    function printBill() {
+  const sessions =
+    Number(document.getElementById("sessions").value) || 0;
 
-      calculateAmount();
+  const rate =
+    Number(document.getElementById("rate").value) || 0;
 
-      document.getElementById("printName").textContent =
-        document.getElementById("patientName").value;
+  const amount = sessions * rate;
 
-      document.getElementById("printRegNo").textContent =
-        document.getElementById("regNo").value;
+  document.getElementById("amount").value = amount;
 
-      document.getElementById("printMobile").textContent =
-        document.getElementById("mobile").value;
+  document.getElementById("totalAmount").value = amount;
+}
 
-      document.getElementById("printTreatment").textContent =
-        document.getElementById("treatment").value;
 
-      document.getElementById("printSessions").textContent =
-        document.getElementById("sessions").value;
+/* ================= PRINT BILL ================= */
 
-      document.getElementById("printRate").textContent =
-        "₹ " + document.getElementById("rate").value;
+function printBill() {
 
-      document.getElementById("printAmount").textContent =
-        "₹ " + document.getElementById("amount").value;
+  calculateAmount();
 
-      document.getElementById("printTotal").textContent =
-        document.getElementById("totalAmount").value;
+  document.getElementById("printName").textContent =
+    document.getElementById("patientName").value;
 
-      document.getElementById("printDate").textContent =
-        new Date().toLocaleDateString("en-IN");
+  document.getElementById("printRegNo").textContent =
+    document.getElementById("regNo").value;
 
-      window.print();
-    }
+  document.getElementById("printMobile").textContent =
+    document.getElementById("mobile").value;
 
-  </script>
+  document.getElementById("printTreatment").textContent =
+    document.getElementById("treatment").value;
+
+  document.getElementById("printSessions").textContent =
+    document.getElementById("sessions").value;
+
+  document.getElementById("printRate").textContent =
+    "₹ " + (document.getElementById("rate").value || "0");
+
+  document.getElementById("printAmount").textContent =
+    "₹ " + (document.getElementById("amount").value || "0");
+
+  document.getElementById("printTotal").textContent =
+    document.getElementById("totalAmount").value || "0";
+
+  document.getElementById("printDate").textContent =
+    new Date().toLocaleDateString("en-IN");
+
+  window.print();
+}
+
+</script>
 
 </body>
 </html>
