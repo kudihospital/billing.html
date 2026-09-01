@@ -69,7 +69,7 @@ cursor:pointer;
 button:hover{
 background:#0e2445;
 }
-/* ================= RECEIPT ================= */
+/* RECEIPT */
 .receipt{
 width:100%;
 max-width:850px;
@@ -166,7 +166,7 @@ padding-top:5px;
 text-align:center;
 font-size:9px;
 }
-/* ================= MOBILE ================= */
+/* MOBILE */
 @media screen and (max-width:600px){
 .form-grid,
 .patient-info,
@@ -176,9 +176,6 @@ grid-template-columns:1fr;
 .top-info{
 flex-direction:column;
 }
-.signature-section{
-flex-direction:row;
-}
 .amount-section{
 width:100%;
 }
@@ -186,7 +183,7 @@ body{
 padding:10px;
 }
 }
-/* ================= PRINT ================= */
+/* PRINT */
 @media print{
 @page{
 size:A4 portrait;
@@ -208,11 +205,6 @@ max-width:none!important;
 margin:0!important;
 padding:5mm!important;
 border:1.5px solid #16325c!important;
-height:auto!important;
-min-height:0!important;
-overflow:visible!important;
-page-break-inside:avoid!important;
-page-break-after:avoid!important;
 }
 .hospital-header{
 padding-bottom:5px;
@@ -272,11 +264,9 @@ margin-top:6px;
 padding-top:4px;
 }
 }
-/* ================= END PRINT ================= */
 </style>
 </head>
 <body>
-<!-- ================= FORM ================= -->
 <div class="form-container">
 <h2>Create Hospital Bill</h2>
 <div class="form-grid">
@@ -286,7 +276,7 @@ padding-top:4px;
 </div>
 <div>
 <label>Patient Reg. No.</label>
-<input type="text" id="regNo" readonly>
+<input type="text" id="regNo" value="KHRC/00">
 </div>
 <div>
 <label>Mobile Number</label>
@@ -304,60 +294,32 @@ padding-top:4px;
 <label>Consultant / Doctor</label>
 <select id="consultant">
 <option value="">Select Doctor</option>
-<option value="Dr Rakesh Kudi (PT)">
-Dr Rakesh Kudi (PT)
-</option>
-<option value="Dr Bhupinder Choudhary (PT)">
-Dr Bhupinder Choudhary (PT)
-</option>
+<option value="Dr Rakesh Kudi (PT)">Dr Rakesh Kudi (PT)</option>
+<option value="Dr Bhupinder Choudhary (PT)">Dr Bhupinder Choudhary (PT)</option>
 </select>
 </div>
 <div>
 <label>Department</label>
 <select id="department">
 <option value="">Select Department</option>
-<option value="Physiotherapy">
-Physiotherapy
-</option>
-<option value="Cardio Exercises">
-Cardio Exercises
-</option>
+<option value="Physiotherapy">Physiotherapy</option>
+<option value="Cardio Exercises">Cardio Exercises</option>
 </select>
 </div>
 <div>
 <label>Treatment / Particulars</label>
 <select id="treatment">
 <option value="">Select Treatment</option>
-<option value="Physiotherapy Session">
-Physiotherapy Session
-</option>
-<option value="Cardio Exercise Session">
-Cardio Exercise Session
-</option>
-<option value="TENS Therapy">
-TENS Therapy
-</option>
-<option value="IFT Therapy">
-IFT Therapy
-</option>
-<option value="Ultrasound Therapy">
-Ultrasound Therapy
-</option>
-<option value="Exercise Therapy">
-Exercise Therapy
-</option>
-<option value="Manual Therapy">
-Manual Therapy
-</option>
-<option value="Heat Therapy">
-Heat Therapy
-</option>
-<option value="Cold Therapy">
-Cold Therapy
-</option>
-<option value="Other">
-Other
-</option>
+<option value="Physiotherapy Session">Physiotherapy Session</option>
+<option value="Cardio Exercise Session">Cardio Exercise Session</option>
+<option value="TENS Therapy">TENS Therapy</option>
+<option value="IFT Therapy">IFT Therapy</option>
+<option value="Ultrasound Therapy">Ultrasound Therapy</option>
+<option value="Exercise Therapy">Exercise Therapy</option>
+<option value="Manual Therapy">Manual Therapy</option>
+<option value="Heat Therapy">Heat Therapy</option>
+<option value="Cold Therapy">Cold Therapy</option>
+<option value="Other">Other</option>
 </select>
 </div>
 <div>
@@ -406,23 +368,21 @@ Other
 <textarea id="remarks"></textarea>
 </div>
 </div>
-<!-- PRINT BUTTON -->
 <button type="button" onclick="printBill()">
 PRINT BILL
 </button>
 </div>
-<!-- ================= RECEIPT ================= -->
+<!-- RECEIPT -->
 <div class="receipt" id="receipt">
 <div class="hospital-header">
-<h1>
-KUDI Hospital And Rehabilitation Center
-</h1>
+<h1>KUDI Hospital And Rehabilitation Center</h1>
 <p>
 Bheruji Mod, NH52, Near Raghu Palace Hotel,
 Reengus (Raj.) - 332404
 </p>
 <p>
-Contact: 8504001220 | Website: www.kudihospital.in
+Contact: 8504001220 |
+Website: www.kudihospital.in
 </p>
 </div>
 <div class="bill-title">
@@ -438,7 +398,6 @@ OPD BILL CUM RECEIPT
 <span id="printDate"></span>
 </div>
 </div>
-<!-- PATIENT DETAILS -->
 <div class="patient-info">
 <div>
 <strong>Patient Name:</strong>
@@ -469,7 +428,6 @@ OPD BILL CUM RECEIPT
 <span id="printAddress"></span>
 </div>
 </div>
-<!-- TREATMENT TABLE -->
 <table>
 <thead>
 <tr>
@@ -490,50 +448,28 @@ OPD BILL CUM RECEIPT
 </tr>
 </tbody>
 </table>
-<!-- AMOUNT SUMMARY -->
 <div class="amount-section">
 <div class="amount-row">
-
 Gross Amount
-
-<span>
-Rs. <span id="printGross"></span>
-</span>
+<span>Rs. <span id="printGross"></span></span>
 </div>
 <div class="amount-row">
-
 Discount
-
-<span>
-Rs. <span id="printDiscount"></span>
-</span>
+<span>Rs. <span id="printDiscount"></span></span>
 </div>
 <div class="amount-row net-total">
-
 Net Amount
-
-<span>
-Rs. <span id="printTotal"></span>
-</span>
+<span>Rs. <span id="printTotal"></span></span>
 </div>
 <div class="amount-row">
-
 Received
-
-<span>
-Rs. <span id="printReceived"></span>
-</span>
+<span>Rs. <span id="printReceived"></span></span>
 </div>
 <div class="amount-row">
-
 Due Amount
-
-<span>
-Rs. <span id="printDue"></span>
-</span>
+<span>Rs. <span id="printDue"></span></span>
 </div>
 </div>
-<!-- EXTRA DETAILS -->
 <div class="extra-info">
 <div>
 <strong>Payment Mode:</strong>
@@ -552,11 +488,10 @@ Rs. <span id="printDue"></span>
 <span id="printPreparedBy"></span>
 </div>
 <div class="full-width">
-
-Invoice Remarks:
+<strong>Invoice Remarks:</strong>
+<span id="printRemarks"></span>
 </div>
 </div>
-<!-- SIGNATURE -->
 <div class="signature-section">
 <div>
 <strong>Prepared By: Saroj</strong>
@@ -565,10 +500,11 @@ Invoice Remarks:
 <strong>Authorized Signature</strong>
 </div>
 </div>
-<!-- FOOTER -->
 <div class="footer">
 
 KUDI Hospital And Rehabilitation Center
+
+<br>
 
 Contact: 8504001220 |
 Website: www.kudihospital.in
@@ -576,64 +512,51 @@ Website: www.kudihospital.in
 </div>
 </div>
 <script>
-/* =====================================================
-   PATIENT REGISTRATION NUMBER
-   KHRC/001 → KHRC/002 → KHRC/003
-   ===================================================== */
-function getPatientRegNumber(){
-let number =
-Number(
-localStorage.getItem("kudiPatientRegNumber")
-) || 1;
-return "KHRC/" +
-String(number).padStart(3,"0");
-}
-function increasePatientRegNumber(){
-let number =
-Number(
-localStorage.getItem("kudiPatientRegNumber")
-) || 1;
-localStorage.setItem(
-"kudiPatientRegNumber",
-number + 1
-);
-}
-/* =====================================================
-   RECEIPT NUMBER
-   ===================================================== */
+/* RECEIPT NUMBER */
 function getReceiptNumber(){
 let number =
 Number(
-localStorage.getItem("kudiReceiptNumber")
+localStorage.getItem(
+"kudiReceiptNumber"
+)
 ) || 1;
 return "KHRC/" +
-String(number).padStart(3,"0");
+String(number).padStart(
+3,
+"0"
+);
 }
 function increaseReceiptNumber(){
 let number =
 Number(
-localStorage.getItem("kudiReceiptNumber")
+localStorage.getItem(
+"kudiReceiptNumber"
+)
 ) || 1;
 localStorage.setItem(
 "kudiReceiptNumber",
 number + 1
 );
 }
-/* =====================================================
-   CALCULATE
-   ===================================================== */
+/* CALCULATE */
 function calculateAmount(){
 const sessions =
 Number(
-document.getElementById("sessions").value
+document.getElementById(
+"sessions"
+).value
 ) || 0;
 const rate =
 Number(
-document.getElementById("rate").value
+document.getElementById(
+"rate"
+).value
 ) || 0;
 const discount =
 Number(
-document.getElementById("discount").value
+document.getElementById(
+"discount"
+).value
 ) || 0;
 const gross =
 sessions * rate;
@@ -642,133 +565,232 @@ Math.max(
 gross - discount,
 0
 );
-document.getElementById("amount").value =
+document.getElementById(
+"amount"
+).value =
 gross;
-document.getElementById("totalAmount").value =
+document.getElementById(
+"totalAmount"
+).value =
 total;
 }
-/* =====================================================
-   PRINT BILL
-   ===================================================== */
-function printBill(){
-/* Calculate first */
+/* PRINT BILL */
+async function printBill(){
 calculateAmount();
-/* Registration */
 const patientReg =
-getPatientRegNumber();
-document.getElementById("regNo").value =
+document.getElementById(
+"regNo"
+).value;
+document.getElementById(
+"printRegNo"
+).textContent =
 patientReg;
-document.getElementById("printRegNo").textContent =
-patientReg;
-/* Receipt */
+/* RECEIPT */
 const receiptNumber =
 getReceiptNumber();
-document.getElementById("printReceiptNo").textContent =
+document.getElementById(
+"printReceiptNo"
+).textContent =
 receiptNumber;
-/* Patient */
-document.getElementById("printName").textContent =
-document.getElementById("patientName").value;
-document.getElementById("printMobile").textContent =
-document.getElementById("mobile").value;
-document.getElementById("printAge").textContent =
-document.getElementById("age").value;
-document.getElementById("printAddress").textContent =
-document.getElementById("address").value;
-document.getElementById("printConsultant").textContent =
-document.getElementById("consultant").value;
-document.getElementById("printDepartment").textContent =
-document.getElementById("department").value;
-/* Treatment */
-document.getElementById("printTreatment").textContent =
-document.getElementById("treatment").value;
-document.getElementById("printSessions").textContent =
-document.getElementById("sessions").value;
-document.getElementById("printRate").textContent =
-document.getElementById("rate").value;
-/* Amount */
+/* PATIENT */
+document.getElementById(
+"printName"
+).textContent =
+document.getElementById(
+"patientName"
+).value;
+document.getElementById(
+"printMobile"
+).textContent =
+document.getElementById(
+"mobile"
+).value;
+document.getElementById(
+"printAge"
+).textContent =
+document.getElementById(
+"age"
+).value;
+document.getElementById(
+"printAddress"
+).textContent =
+document.getElementById(
+"address"
+).value;
+document.getElementById(
+"printConsultant"
+).textContent =
+document.getElementById(
+"consultant"
+).value;
+document.getElementById(
+"printDepartment"
+).textContent =
+document.getElementById(
+"department"
+).value;
+/* TREATMENT */
+document.getElementById(
+"printTreatment"
+).textContent =
+document.getElementById(
+"treatment"
+).value;
+document.getElementById(
+"printSessions"
+).textContent =
+document.getElementById(
+"sessions"
+).value;
+document.getElementById(
+"printRate"
+).textContent =
+document.getElementById(
+"rate"
+).value;
+/* AMOUNT */
 const gross =
 Number(
-document.getElementById("amount").value
+document.getElementById(
+"amount"
+).value
 ) || 0;
 const discount =
 Number(
-document.getElementById("discount").value
+document.getElementById(
+"discount"
+).value
 ) || 0;
 const total =
 Number(
-document.getElementById("totalAmount").value
+document.getElementById(
+"totalAmount"
+).value
 ) || 0;
 const received =
 Number(
-document.getElementById("receivedAmount").value
+document.getElementById(
+"receivedAmount"
+).value
 ) || 0;
 const due =
 Math.max(
 total - received,
 0
 );
-document.getElementById("printAmount").textContent =
+document.getElementById(
+"printAmount"
+).textContent =
 gross.toFixed(2);
-document.getElementById("printGross").textContent =
+document.getElementById(
+"printGross"
+).textContent =
 gross.toFixed(2);
-document.getElementById("printDiscount").textContent =
+document.getElementById(
+"printDiscount"
+).textContent =
 discount.toFixed(2);
-document.getElementById("printTotal").textContent =
+document.getElementById(
+"printTotal"
+).textContent =
 total.toFixed(2);
-document.getElementById("printReceived").textContent =
+document.getElementById(
+"printReceived"
+).textContent =
 received.toFixed(2);
-document.getElementById("printDue").textContent =
+document.getElementById(
+"printDue"
+).textContent =
 due.toFixed(2);
-/* Payment */
-document.getElementById("printPaymentMode").textContent =
-document.getElementById("paymentMode").value;
-/* Amount Text */
-document.getElementById("printAmountInEnglish").textContent =
-total + " Rupees Only";
-/* Performed By */
-document.getElementById("printPerformedBy").textContent =
-document.getElementById("performedBy").value;
-/* Prepared By */
-document.getElementById("printPreparedBy").textContent =
-document.getElementById("preparedBy").value;
-/* Remarks */
-document.getElementById("printRemarks").textContent =
-document.getElementById("remarks").value;
-/* Date */
+/* PAYMENT */
+document.getElementById(
+"printPaymentMode"
+).textContent =
+document.getElementById(
+"paymentMode"
+).value;
+/* AMOUNT TEXT */
+document.getElementById(
+"printAmountInEnglish"
+).textContent =
+total.toFixed(2) +
+" Rupees Only";
+/* STAFF */
+document.getElementById(
+"printPerformedBy"
+).textContent =
+document.getElementById(
+"performedBy"
+).value;
+document.getElementById(
+"printPreparedBy"
+).textContent =
+document.getElementById(
+"preparedBy"
+).value;
+/* REMARKS */
+document.getElementById(
+"printRemarks"
+).textContent =
+document.getElementById(
+"remarks"
+).value;
+/* DATE AND TIME */
 const now =
 new Date();
-document.getElementById("printDate").textContent =
-now.toLocaleString(
+const formattedDate =
+now.toLocaleDateString(
 "en-IN",
 {
 day:"2-digit",
 month:"2-digit",
-year:"numeric",
+year:"numeric"
+}
+);
+const formattedTime =
+now.toLocaleTimeString(
+"en-IN",
+{
 hour:"2-digit",
-minute:"2-digit"
+minute:"2-digit",
+hour12:true
 }
 );
-/* Increase numbers only after preparing bill */
-increasePatientRegNumber();
-increaseReceiptNumber();
-/* Give browser time to update receipt */
+document.getElementById(
+"printDate"
+).textContent =
+formattedDate +
+" " +
+formattedTime;
+/* SAVE PDF + PRINT */
 setTimeout(
-function(){
-window.print();
+async function(){
+try{
+const result =
+await window.electronAPI
+.saveAndPrintBill(
+receiptNumber
+);
+if(
+result.success
+){
+increaseReceiptNumber();
+}else{
+alert(
+"Bill save error: " +
+result.error
+);
+}
+}catch(error){
+alert(
+"Electron App Error: " +
+error.message
+);
+}
 },
-200
+300
 );
 }
-/* =====================================================
-   SHOW NEXT REGISTRATION NUMBER ON FORM
-   ===================================================== */
-window.addEventListener(
-"DOMContentLoaded",
-function(){
-document.getElementById("regNo").value =
-getPatientRegNumber();
-}
-);
 </script>
 </body>
 </html>
