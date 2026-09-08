@@ -294,9 +294,7 @@ padding-top:4px;
 <div>
 <label>Consultant / Doctor</label>
 <select id="consultant">
-<option value="">
-Select Doctor
-</option>
+<option value="">Select Doctor</option>
 <option value="Dr Rakesh Kudi (PT)">
 Dr Rakesh Kudi (PT)
 </option>
@@ -308,9 +306,7 @@ Dr Bhupinder Choudhary (PT)
 <div>
 <label>Department</label>
 <select id="department">
-<option value="">
-Select Department
-</option>
+<option value="">Select Department</option>
 <option value="Physiotherapy">
 Physiotherapy
 </option>
@@ -322,9 +318,7 @@ Cardio Exercises
 <div>
 <label>Treatment / Particulars</label>
 <select id="treatment">
-<option value="">
-Select Treatment
-</option>
+<option value="">Select Treatment</option>
 <option value="Physiotherapy Session">
 Physiotherapy Session
 </option>
@@ -405,18 +399,10 @@ readonly
 <div>
 <label>Payment Mode</label>
 <select id="paymentMode">
-<option value="Cash">
-Cash
-</option>
-<option value="Online">
-Online
-</option>
-<option value="UPI">
-UPI
-</option>
-<option value="Card">
-Card
-</option>
+<option value="Cash">Cash</option>
+<option value="Online">Online</option>
+<option value="UPI">UPI</option>
+<option value="Card">Card</option>
 </select>
 </div>
 <div>
@@ -465,14 +451,60 @@ Website: www.kudihospital.in
 <div class="bill-title">
 OPD BILL CUM RECEIPT
 </div>
-<!-- RECEIPT NUMBER + DATE TIME -->
-<div class="top-info">
+<!-- PATIENT DETAILS -->
+<div class="patient-info">
+<!-- 1. PATIENT NAME -->
+<div>
+<strong>
+Patient Name:
+</strong>
+<span id="printName"></span>
+</div>
+<!-- 2. RECEIPT NUMBER -->
 <div>
 <strong>
 Receipt No:
 </strong>
 <span id="printReceiptNo"></span>
 </div>
+<!-- 3. AGE -->
+<div>
+<strong>
+Age:
+</strong>
+<span id="printAge"></span>
+</div>
+<!-- 4. MOBILE -->
+<div>
+<strong>
+Mobile No:
+</strong>
+<span id="printMobile"></span>
+</div>
+<!-- 5. ADDRESS -->
+<div class="full-width">
+<strong>
+Address:
+</strong>
+<span id="printAddress"></span>
+</div>
+<!-- 6. DEPARTMENT -->
+<div>
+<strong>
+Department:
+</strong>
+<span id="printDepartment"></span>
+</div>
+<!-- 7. CONSULTANT / DOCTOR -->
+<div>
+<strong>
+Consultant:
+</strong>
+<span id="printConsultant"></span>
+</div>
+</div>
+<!-- DATE & TIME -->
+<div class="top-info">
 <div>
 <strong>
 Date & Time:
@@ -480,64 +512,15 @@ Date & Time:
 <span id="printDate"></span>
 </div>
 </div>
-<!-- PATIENT DETAILS -->
-<div class="patient-info">
-<div>
-<strong>
-Patient Name:
-</strong>
-<span id="printName"></span>
-</div>
-<div>
-<strong>
-Mobile No:
-</strong>
-<span id="printMobile"></span>
-</div>
-<div>
-<strong>
-Age:
-</strong>
-<span id="printAge"></span>
-</div>
-<div>
-<strong>
-Consultant:
-</strong>
-<span id="printConsultant"></span>
-</div>
-<div>
-<strong>
-Department:
-</strong>
-<span id="printDepartment"></span>
-</div>
-<div class="full-width">
-<strong>
-Address:
-</strong>
-<span id="printAddress"></span>
-</div>
-</div>
 <!-- TREATMENT TABLE -->
 <table>
 <thead>
 <tr>
-<th>
-S.No.
-</th>
-<th>
-Particulars
-</th>
-<th>
-Qty
-</th>
-<th>
-Rate
-</th>
-<th>
-Amount (Rs.)
-</th>
+<th>S.No.</th>
+<th>Particulars</th>
+<th>Qty</th>
+<th>Rate</th>
+<th>Amount (Rs.)</th>
 </tr>
 </thead>
 <tbody>
@@ -596,12 +579,6 @@ Payment Mode:
 Amount:
 </strong>
 <span id="printAmountInEnglish"></span>
-</div>
-<div>
-<strong>
-Prepared By:
-</strong>
-<span id="printPreparedBy"></span>
 </div>
 <div class="full-width">
 <strong>
@@ -823,37 +800,42 @@ document.getElementById(
 "printReceiptNo"
 ).textContent =
 receiptNumber;
-/* PATIENT DETAILS */
+/* PATIENT NAME */
 document.getElementById(
 "printName"
 ).textContent =
 document.getElementById(
 "patientName"
 ).value;
+/* MOBILE */
 document.getElementById(
 "printMobile"
 ).textContent =
 document.getElementById(
 "mobile"
 ).value;
+/* AGE */
 document.getElementById(
 "printAge"
 ).textContent =
 document.getElementById(
 "age"
 ).value;
+/* ADDRESS */
 document.getElementById(
 "printAddress"
 ).textContent =
 document.getElementById(
 "address"
 ).value;
+/* CONSULTANT */
 document.getElementById(
 "printConsultant"
 ).textContent =
 document.getElementById(
 "consultant"
 ).value;
+/* DEPARTMENT */
 document.getElementById(
 "printDepartment"
 ).textContent =
@@ -867,12 +849,14 @@ document.getElementById(
 document.getElementById(
 "treatment"
 ).value;
+/* SESSIONS */
 document.getElementById(
 "printSessions"
 ).textContent =
 document.getElementById(
 "sessions"
 ).value;
+/* RATE */
 document.getElementById(
 "printRate"
 ).textContent =
@@ -947,10 +931,6 @@ const preparedBy =
 document.getElementById(
 "preparedBy"
 ).value;
-document.getElementById(
-"printPreparedBy"
-).textContent =
-preparedBy;
 document.getElementById(
 "printPreparedBySignature"
 ).textContent =
