@@ -145,12 +145,13 @@ font-size:11px;
 font-size:14px;
 font-weight:bold;
 }
-.received-row{
+.received-total{
+font-size:12px;
 font-weight:bold;
 }
-.due-row{
+.due-total{
+font-size:13px;
 font-weight:bold;
-font-size:12px;
 }
 .extra-info{
 margin-top:8px;
@@ -258,10 +259,10 @@ padding:3px;
 .net-total{
 font-size:11px;
 }
-.received-row{
+.received-total{
 font-size:10px;
 }
-.due-row{
+.due-total{
 font-size:10px;
 }
 .extra-info{
@@ -321,23 +322,33 @@ Dr Bhupinder Choudhary (PT)
 </option>
 </select>
 </div>
-<!-- DEPARTMENT -->
+<!-- ================= DEPARTMENT ================= -->
 <div>
 <label>Department</label>
 <select id="department">
 <option value="">
 Select Department
 </option>
-<optgroup label="Physiotherapy">
-<option value="Physiotherapy - OPD">
-Physiotherapy - OPD
+<option value="Physiotherapy">
+Physiotherapy
 </option>
-<option value="Physiotherapy - IPD">
-Physiotherapy - IPD
-</option>
-</optgroup>
 <option value="Cardio Exercises">
 Cardio Exercises
+</option>
+</select>
+</div>
+<!-- ================= OPD / IPD ================= -->
+<div>
+<label>Physiotherapy Type</label>
+<select id="patientType">
+<option value="">
+Select OPD / IPD
+</option>
+<option value="OPD">
+OPD
+</option>
+<option value="IPD">
+IPD
 </option>
 </select>
 </div>
@@ -430,6 +441,15 @@ id="discountAmount"
 readonly
 >
 </div>
+<!-- NET AMOUNT -->
+<div>
+<label>Net Amount (₹)</label>
+<input
+type="number"
+id="totalAmount"
+readonly
+>
+</div>
 <!-- PAYMENT MODE -->
 <div>
 <label>Payment Mode</label>
@@ -448,16 +468,7 @@ Card
 </option>
 </select>
 </div>
-<!-- NET AMOUNT -->
-<div>
-<label>Net Amount (₹)</label>
-<input
-type="number"
-id="totalAmount"
-readonly
->
-</div>
-<!-- RECEIVED AMOUNT -->
+<!-- ================= RECEIVED AMOUNT ================= -->
 <div>
 <label>Received Amount (₹)</label>
 <input
@@ -468,7 +479,7 @@ min="0"
 oninput="calculateDue()"
 >
 </div>
-<!-- DUE AMOUNT -->
+<!-- ================= DUE AMOUNT ================= -->
 <div>
 <label>Due Amount (₹)</label>
 <input
@@ -515,102 +526,73 @@ Contact: 8504001220 |
 Website: www.kudihospital.in
 </p>
 </div>
-<!-- BILL TITLE -->
 <div class="bill-title">
 OPD BILL CUM RECEIPT
 </div>
-<!-- PATIENT DETAILS -->
+<!-- ================= PATIENT DETAILS ================= -->
 <div class="patient-info">
 <div>
-<strong>
-Patient Name:
-</strong>
+<strong>Patient Name:</strong>
 <span id="printName"></span>
 </div>
 <div>
-<strong>
-Receipt No:
-</strong>
+<strong>Receipt No:</strong>
 <span id="printReceiptNo"></span>
 </div>
 <div>
-<strong>
-Age:
-</strong>
+<strong>Age:</strong>
 <span id="printAge"></span>
 </div>
 <div>
-<strong>
-Mobile No:
-</strong>
+<strong>Mobile No:</strong>
 <span id="printMobile"></span>
 </div>
 <div class="full-width">
-<strong>
-Address:
-</strong>
+<strong>Address:</strong>
 <span id="printAddress"></span>
 </div>
 <div>
-<strong>
-Department:
-</strong>
+<strong>Department:</strong>
 <span id="printDepartment"></span>
 </div>
 <div>
-<strong>
-Consultant:
-</strong>
+<strong>OPD / IPD:</strong>
+<span id="printPatientType"></span>
+</div>
+<div>
+<strong>Consultant:</strong>
 <span id="printConsultant"></span>
 </div>
 </div>
-<!-- DATE & TIME -->
+<!-- DATE -->
 <div class="top-info">
 <div>
-<strong>
-Date & Time:
-</strong>
+<strong>Date & Time:</strong>
 <span id="printDate"></span>
 </div>
 </div>
-<!-- TREATMENT TABLE -->
+<!-- ================= TREATMENT TABLE ================= -->
 <table>
 <thead>
 <tr>
-<th>
-S.No.
-</th>
-<th>
-Particulars
-</th>
-<th>
-Qty
-</th>
-<th>
-Rate
-</th>
-<th>
-Amount (Rs.)
-</th>
+<th>S.No.</th>
+<th>Particulars</th>
+<th>Qty</th>
+<th>Rate</th>
+<th>Amount (Rs.)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>
-1
-</td>
-<td id="printTreatment">
-</td>
-<td id="printSessions">
-</td>
-<td id="printRate">
-</td>
-<td id="printAmount">
-</td>
+<td>1</td>
+<td id="printTreatment"></td>
+<td id="printSessions"></td>
+<td id="printRate"></td>
+<td id="printAmount"></td>
 </tr>
 </tbody>
 </table>
-<!-- AMOUNT SUMMARY -->
+<!-- ================= AMOUNT SUMMARY ================= -->
 <div class="amount-section">
 <div class="amount-row">
 Gross Amount
@@ -636,37 +618,31 @@ Net Amount
 Rs. <span id="printTotal"></span>
 </span>
 </div>
-<div class="amount-row received-row">
+<div class="amount-row received-total">
 Received Amount
 <span>
 Rs. <span id="printReceived"></span>
 </span>
 </div>
-<div class="amount-row due-row">
+<div class="amount-row due-total">
 Due Amount
 <span>
 Rs. <span id="printDue"></span>
 </span>
 </div>
 </div>
-<!-- EXTRA DETAILS -->
+<!-- ================= EXTRA INFO ================= -->
 <div class="extra-info">
 <div>
-<strong>
-Payment Mode:
-</strong>
+<strong>Payment Mode:</strong>
 <span id="printPaymentMode"></span>
 </div>
 <div>
-<strong>
-Amount:
-</strong>
+<strong>Amount:</strong>
 <span id="printAmountInEnglish"></span>
 </div>
 <div class="full-width">
-<strong>
-Invoice Remarks:
-</strong>
+<strong>Invoice Remarks:</strong>
 <span id="printRemarks"></span>
 </div>
 </div>
@@ -695,7 +671,6 @@ Website: www.kudihospital.in
 <script>
 /* =====================================================
 RECEIPT NUMBER
-STARTS FROM KHRC/001
 ===================================================== */
 function getReceiptNumber(){
 let number =
@@ -716,7 +691,7 @@ number + 1
 );
 }
 /* =====================================================
-CALCULATE GROSS, DISCOUNT AND NET
+CALCULATE GROSS / DISCOUNT / NET
 ===================================================== */
 function calculateAmount(){
 const sessions =
@@ -731,46 +706,30 @@ let discountPercent =
 Number(
 document.getElementById("discount").value
 ) || 0;
-/* DISCOUNT LIMIT */
 if(discountPercent > 100){
 discountPercent = 100;
-document.getElementById(
-"discount"
-).value = 100;
+document.getElementById("discount").value = 100;
 }
 if(discountPercent < 0){
 discountPercent = 0;
-document.getElementById(
-"discount"
-).value = 0;
+document.getElementById("discount").value = 0;
 }
-/* GROSS */
 const gross =
 sessions * rate;
-/* DISCOUNT */
 const discountAmount =
 (gross * discountPercent) / 100;
-/* NET */
 const total =
 gross - discountAmount;
-/* DISPLAY */
-document.getElementById(
-"amount"
-).value =
+document.getElementById("amount").value =
 gross.toFixed(2);
-document.getElementById(
-"discountAmount"
-).value =
+document.getElementById("discountAmount").value =
 discountAmount.toFixed(2);
-document.getElementById(
-"totalAmount"
-).value =
+document.getElementById("totalAmount").value =
 total.toFixed(2);
-/* RECALCULATE DUE */
 calculateDue();
 }
 /* =====================================================
-CALCULATE RECEIVED AND DUE AMOUNT
+RECEIVED AMOUNT + DUE AMOUNT
 ===================================================== */
 function calculateDue(){
 const total =
@@ -781,7 +740,12 @@ let received =
 Number(
 document.getElementById("receivedAmount").value
 ) || 0;
-/* RECEIVED CANNOT BE MORE THAN NET */
+if(received < 0){
+received = 0;
+document.getElementById(
+"receivedAmount"
+).value = 0;
+}
 if(received > total){
 received = total;
 document.getElementById(
@@ -789,17 +753,8 @@ document.getElementById(
 ).value =
 total.toFixed(2);
 }
-if(received < 0){
-received = 0;
-document.getElementById(
-"receivedAmount"
-).value =
-"0";
-}
-/* DUE */
 const due =
 total - received;
-/* DISPLAY */
 document.getElementById(
 "dueAmount"
 ).value =
@@ -807,7 +762,6 @@ due.toFixed(2);
 }
 /* =====================================================
 NUMBER TO WORDS
-INDIAN NUMBERING SYSTEM
 ===================================================== */
 function numberToWords(num){
 num = Math.floor(Number(num));
@@ -872,40 +826,32 @@ result += twoDigits(n);
 return result;
 }
 let result = "";
-/* CRORE */
 if(num >= 10000000){
 result +=
 threeDigits(
 Math.floor(num / 10000000)
 ) +
 " Crore ";
-num =
-num % 10000000;
+num %= 10000000;
 }
-/* LAKH */
 if(num >= 100000){
 result +=
 threeDigits(
 Math.floor(num / 100000)
 ) +
 " Lakh ";
-num =
-num % 100000;
+num %= 100000;
 }
-/* THOUSAND */
 if(num >= 1000){
 result +=
 threeDigits(
 Math.floor(num / 1000)
 ) +
 " Thousand ";
-num =
-num % 1000;
+num %= 1000;
 }
-/* HUNDRED */
 if(num > 0){
-result +=
-threeDigits(num);
+result += threeDigits(num);
 }
 return result.trim();
 }
@@ -913,50 +859,37 @@ return result.trim();
 PRINT BILL
 ===================================================== */
 function printBill(){
-/* CALCULATE */
 calculateAmount();
 calculateDue();
 /* RECEIPT NUMBER */
-const receiptNumber =
-getReceiptNumber();
 document.getElementById(
 "printReceiptNo"
 ).textContent =
-receiptNumber;
-/* PATIENT NAME */
+getReceiptNumber();
+/* PATIENT */
 document.getElementById(
 "printName"
 ).textContent =
 document.getElementById(
 "patientName"
 ).value;
-/* MOBILE */
 document.getElementById(
 "printMobile"
 ).textContent =
 document.getElementById(
 "mobile"
 ).value;
-/* AGE */
 document.getElementById(
 "printAge"
 ).textContent =
 document.getElementById(
 "age"
 ).value;
-/* ADDRESS */
 document.getElementById(
 "printAddress"
 ).textContent =
 document.getElementById(
 "address"
-).value;
-/* CONSULTANT */
-document.getElementById(
-"printConsultant"
-).textContent =
-document.getElementById(
-"consultant"
 ).value;
 /* DEPARTMENT */
 document.getElementById(
@@ -965,6 +898,20 @@ document.getElementById(
 document.getElementById(
 "department"
 ).value;
+/* OPD / IPD */
+document.getElementById(
+"printPatientType"
+).textContent =
+document.getElementById(
+"patientType"
+).value;
+/* CONSULTANT */
+document.getElementById(
+"printConsultant"
+).textContent =
+document.getElementById(
+"consultant"
+).value;
 /* TREATMENT */
 document.getElementById(
 "printTreatment"
@@ -972,14 +919,12 @@ document.getElementById(
 document.getElementById(
 "treatment"
 ).value;
-/* SESSIONS */
 document.getElementById(
 "printSessions"
 ).textContent =
 document.getElementById(
 "sessions"
 ).value;
-/* RATE */
 document.getElementById(
 "printRate"
 ).textContent =
@@ -989,39 +934,27 @@ document.getElementById(
 /* AMOUNTS */
 const gross =
 Number(
-document.getElementById(
-"amount"
-).value
+document.getElementById("amount").value
 ) || 0;
 const discountPercent =
 Number(
-document.getElementById(
-"discount"
-).value
+document.getElementById("discount").value
 ) || 0;
 const discountAmount =
 Number(
-document.getElementById(
-"discountAmount"
-).value
+document.getElementById("discountAmount").value
 ) || 0;
 const total =
 Number(
-document.getElementById(
-"totalAmount"
-).value
+document.getElementById("totalAmount").value
 ) || 0;
 const received =
 Number(
-document.getElementById(
-"receivedAmount"
-).value
+document.getElementById("receivedAmount").value
 ) || 0;
 const due =
 Number(
-document.getElementById(
-"dueAmount"
-).value
+document.getElementById("dueAmount").value
 ) || 0;
 /* TREATMENT AMOUNT */
 document.getElementById(
@@ -1033,7 +966,7 @@ document.getElementById(
 "printGross"
 ).textContent =
 gross.toFixed(2);
-/* DISCOUNT % */
+/* DISCOUNT */
 document.getElementById(
 "printDiscountPercent"
 ).textContent =
@@ -1072,14 +1005,12 @@ document.getElementById(
 numberToWords(total) +
 " Rupees Only";
 /* PREPARED BY */
-const preparedBy =
-document.getElementById(
-"preparedBy"
-).value;
 document.getElementById(
 "printPreparedBySignature"
 ).textContent =
-preparedBy;
+document.getElementById(
+"preparedBy"
+).value;
 /* REMARKS */
 document.getElementById(
 "printRemarks"
@@ -1087,11 +1018,8 @@ document.getElementById(
 document.getElementById(
 "remarks"
 ).value;
-/* =====================================================
-DATE & TIME
-===================================================== */
-const now =
-new Date();
+/* DATE */
+const now = new Date();
 const formattedDate =
 now.toLocaleDateString(
 "en-IN",
@@ -1117,14 +1045,9 @@ document.getElementById(
 formattedDate +
 " " +
 formattedTime;
-/* =====================================================
-INCREASE RECEIPT NUMBER
-ONLY AFTER BILL IS CREATED
-===================================================== */
+/* INCREASE RECEIPT NUMBER */
 increaseReceiptNumber();
-/* =====================================================
-PRINT
-===================================================== */
+/* PRINT */
 setTimeout(
 function(){
 window.print();
