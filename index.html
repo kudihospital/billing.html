@@ -145,6 +145,13 @@ font-size:11px;
 font-size:14px;
 font-weight:bold;
 }
+.received-row{
+font-weight:bold;
+}
+.due-row{
+font-weight:bold;
+font-size:12px;
+}
 .extra-info{
 margin-top:8px;
 display:grid;
@@ -251,6 +258,12 @@ padding:3px;
 .net-total{
 font-size:11px;
 }
+.received-row{
+font-size:10px;
+}
+.due-row{
+font-size:10px;
+}
 .extra-info{
 font-size:9px;
 gap:4px;
@@ -275,22 +288,27 @@ padding-top:4px;
 <div class="form-container">
 <h2>Create Hospital Bill</h2>
 <div class="form-grid">
+<!-- PATIENT NAME -->
 <div>
 <label>Patient Name</label>
 <input type="text" id="patientName">
 </div>
+<!-- MOBILE -->
 <div>
 <label>Mobile Number</label>
 <input type="text" id="mobile">
 </div>
+<!-- AGE -->
 <div>
 <label>Age</label>
 <input type="number" id="age">
 </div>
+<!-- ADDRESS -->
 <div class="full-width">
 <label>Address</label>
 <textarea id="address"></textarea>
 </div>
+<!-- CONSULTANT -->
 <div>
 <label>Consultant / Doctor</label>
 <select id="consultant">
@@ -303,22 +321,33 @@ Dr Bhupinder Choudhary (PT)
 </option>
 </select>
 </div>
+<!-- DEPARTMENT -->
 <div>
 <label>Department</label>
 <select id="department">
-<option value="">Select Department</option>
-<option value="Physiotherapy">
-Physiotherapy
+<option value="">
+Select Department
 </option>
+<optgroup label="Physiotherapy">
+<option value="Physiotherapy - OPD">
+Physiotherapy - OPD
+</option>
+<option value="Physiotherapy - IPD">
+Physiotherapy - IPD
+</option>
+</optgroup>
 <option value="Cardio Exercises">
 Cardio Exercises
 </option>
 </select>
 </div>
+<!-- TREATMENT -->
 <div>
 <label>Treatment / Particulars</label>
 <select id="treatment">
-<option value="">Select Treatment</option>
+<option value="">
+Select Treatment
+</option>
 <option value="Physiotherapy Session">
 Physiotherapy Session
 </option>
@@ -351,6 +380,7 @@ Other
 </option>
 </select>
 </div>
+<!-- SESSIONS -->
 <div>
 <label>Qty / Sessions</label>
 <input
@@ -360,6 +390,7 @@ min="0"
 oninput="calculateAmount()"
 >
 </div>
+<!-- RATE -->
 <div>
 <label>Rate</label>
 <input
@@ -369,6 +400,7 @@ min="0"
 oninput="calculateAmount()"
 >
 </div>
+<!-- GROSS -->
 <div>
 <label>Gross Amount (₹)</label>
 <input
@@ -377,6 +409,7 @@ id="amount"
 readonly
 >
 </div>
+<!-- DISCOUNT -->
 <div>
 <label>Discount (%)</label>
 <input
@@ -388,6 +421,7 @@ max="100"
 oninput="calculateAmount()"
 >
 </div>
+<!-- DISCOUNT AMOUNT -->
 <div>
 <label>Discount Amount (₹)</label>
 <input
@@ -396,23 +430,54 @@ id="discountAmount"
 readonly
 >
 </div>
+<!-- PAYMENT MODE -->
 <div>
 <label>Payment Mode</label>
 <select id="paymentMode">
-<option value="Cash">Cash</option>
-<option value="Online">Online</option>
-<option value="UPI">UPI</option>
-<option value="Card">Card</option>
+<option value="Cash">
+Cash
+</option>
+<option value="Online">
+Online
+</option>
+<option value="UPI">
+UPI
+</option>
+<option value="Card">
+Card
+</option>
 </select>
 </div>
+<!-- NET AMOUNT -->
 <div>
-<label>Net Amount</label>
+<label>Net Amount (₹)</label>
 <input
 type="number"
 id="totalAmount"
 readonly
 >
 </div>
+<!-- RECEIVED AMOUNT -->
+<div>
+<label>Received Amount (₹)</label>
+<input
+type="number"
+id="receivedAmount"
+value="0"
+min="0"
+oninput="calculateDue()"
+>
+</div>
+<!-- DUE AMOUNT -->
+<div>
+<label>Due Amount (₹)</label>
+<input
+type="number"
+id="dueAmount"
+readonly
+>
+</div>
+<!-- PREPARED BY -->
 <div>
 <label>Prepared By</label>
 <input
@@ -421,6 +486,7 @@ id="preparedBy"
 value="Saroj"
 >
 </div>
+<!-- REMARKS -->
 <div class="full-width">
 <label>Invoice Remarks</label>
 <textarea id="remarks"></textarea>
@@ -435,6 +501,7 @@ PRINT BILL
 </div>
 <!-- ================= RECEIPT ================= -->
 <div class="receipt" id="receipt">
+<!-- HOSPITAL HEADER -->
 <div class="hospital-header">
 <h1>
 KUDI Hospital And Rehabilitation Center
@@ -448,54 +515,48 @@ Contact: 8504001220 |
 Website: www.kudihospital.in
 </p>
 </div>
+<!-- BILL TITLE -->
 <div class="bill-title">
 OPD BILL CUM RECEIPT
 </div>
 <!-- PATIENT DETAILS -->
 <div class="patient-info">
-<!-- 1. PATIENT NAME -->
 <div>
 <strong>
 Patient Name:
 </strong>
 <span id="printName"></span>
 </div>
-<!-- 2. RECEIPT NUMBER -->
 <div>
 <strong>
 Receipt No:
 </strong>
 <span id="printReceiptNo"></span>
 </div>
-<!-- 3. AGE -->
 <div>
 <strong>
 Age:
 </strong>
 <span id="printAge"></span>
 </div>
-<!-- 4. MOBILE -->
 <div>
 <strong>
 Mobile No:
 </strong>
 <span id="printMobile"></span>
 </div>
-<!-- 5. ADDRESS -->
 <div class="full-width">
 <strong>
 Address:
 </strong>
 <span id="printAddress"></span>
 </div>
-<!-- 6. DEPARTMENT -->
 <div>
 <strong>
 Department:
 </strong>
 <span id="printDepartment"></span>
 </div>
-<!-- 7. CONSULTANT / DOCTOR -->
 <div>
 <strong>
 Consultant:
@@ -516,11 +577,21 @@ Date & Time:
 <table>
 <thead>
 <tr>
-<th>S.No.</th>
-<th>Particulars</th>
-<th>Qty</th>
-<th>Rate</th>
-<th>Amount (Rs.)</th>
+<th>
+S.No.
+</th>
+<th>
+Particulars
+</th>
+<th>
+Qty
+</th>
+<th>
+Rate
+</th>
+<th>
+Amount (Rs.)
+</th>
 </tr>
 </thead>
 <tbody>
@@ -563,6 +634,18 @@ Rs. <span id="printDiscountAmount"></span>
 Net Amount
 <span>
 Rs. <span id="printTotal"></span>
+</span>
+</div>
+<div class="amount-row received-row">
+Received Amount
+<span>
+Rs. <span id="printReceived"></span>
+</span>
+</div>
+<div class="amount-row due-row">
+Due Amount
+<span>
+Rs. <span id="printDue"></span>
 </span>
 </div>
 </div>
@@ -633,7 +716,7 @@ number + 1
 );
 }
 /* =====================================================
-CALCULATE GROSS, DISCOUNT AND NET AMOUNT
+CALCULATE GROSS, DISCOUNT AND NET
 ===================================================== */
 function calculateAmount(){
 const sessions =
@@ -683,6 +766,44 @@ document.getElementById(
 "totalAmount"
 ).value =
 total.toFixed(2);
+/* RECALCULATE DUE */
+calculateDue();
+}
+/* =====================================================
+CALCULATE RECEIVED AND DUE AMOUNT
+===================================================== */
+function calculateDue(){
+const total =
+Number(
+document.getElementById("totalAmount").value
+) || 0;
+let received =
+Number(
+document.getElementById("receivedAmount").value
+) || 0;
+/* RECEIVED CANNOT BE MORE THAN NET */
+if(received > total){
+received = total;
+document.getElementById(
+"receivedAmount"
+).value =
+total.toFixed(2);
+}
+if(received < 0){
+received = 0;
+document.getElementById(
+"receivedAmount"
+).value =
+"0";
+}
+/* DUE */
+const due =
+total - received;
+/* DISPLAY */
+document.getElementById(
+"dueAmount"
+).value =
+due.toFixed(2);
 }
 /* =====================================================
 NUMBER TO WORDS
@@ -792,7 +913,9 @@ return result.trim();
 PRINT BILL
 ===================================================== */
 function printBill(){
+/* CALCULATE */
 calculateAmount();
+calculateDue();
 /* RECEIPT NUMBER */
 const receiptNumber =
 getReceiptNumber();
@@ -888,6 +1011,18 @@ document.getElementById(
 "totalAmount"
 ).value
 ) || 0;
+const received =
+Number(
+document.getElementById(
+"receivedAmount"
+).value
+) || 0;
+const due =
+Number(
+document.getElementById(
+"dueAmount"
+).value
+) || 0;
 /* TREATMENT AMOUNT */
 document.getElementById(
 "printAmount"
@@ -913,6 +1048,16 @@ document.getElementById(
 "printTotal"
 ).textContent =
 total.toFixed(2);
+/* RECEIVED */
+document.getElementById(
+"printReceived"
+).textContent =
+received.toFixed(2);
+/* DUE */
+document.getElementById(
+"printDue"
+).textContent =
+due.toFixed(2);
 /* PAYMENT MODE */
 document.getElementById(
 "printPaymentMode"
