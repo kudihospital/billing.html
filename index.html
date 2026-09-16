@@ -6,16 +6,14 @@
 <title>KUDI Hospital Billing</title>
 
 <style>
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
 margin:0;
 padding:20px;
 font-family:Arial,sans-serif;
 background:#f2f2f2;
-color:#222;
+color:#222
 }
 
 .form-container{
@@ -23,45 +21,41 @@ max-width:850px;
 margin:auto;
 background:#fff;
 padding:25px;
-border-radius:10px;
+border-radius:10px
 }
 
 h2{
 text-align:center;
 color:#16325c;
-margin-top:0;
+margin-top:0
 }
 
 .form-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:15px;
+gap:15px
 }
 
 label{
 display:block;
 font-weight:bold;
-margin-bottom:5px;
+margin-bottom:5px
 }
 
-input,
-select,
-textarea{
+input,select,textarea{
 width:100%;
 padding:10px;
 border:1px solid #ccc;
 border-radius:5px;
-font-size:15px;
+font-size:15px
 }
 
 textarea{
 min-height:45px;
-resize:vertical;
+resize:vertical
 }
 
-.full-width{
-grid-column:1/-1;
-}
+.full-width{grid-column:1/-1}
 
 button{
 display:block;
@@ -74,57 +68,33 @@ border:none;
 border-radius:6px;
 font-size:17px;
 font-weight:bold;
-cursor:pointer;
+cursor:pointer
 }
 
-button:hover{
-background:#0e2445;
-}
+button:hover{background:#0e2445}
 
 button:disabled{
 background:#777;
-cursor:not-allowed;
+cursor:not-allowed
 }
 
-/* ================= TOP BUTTONS ================= */
+/* TOP BUTTON */
 
 .top-buttons{
 max-width:850px;
-margin:0 auto 15px auto;
-display:flex;
-gap:10px;
-}
-
-.top-buttons button{
-margin-top:0;
-flex:1;
+margin:0 auto 15px auto
 }
 
 .history-button{
-background:#198754;
+margin-top:0;
+background:#198754
 }
 
 .history-button:hover{
-background:#146c43;
+background:#146c43
 }
 
-.reset-button{
-background:#dc3545;
-}
-
-.reset-button:hover{
-background:#b02a37;
-}
-
-.back-button{
-background:#6c757d;
-}
-
-.back-button:hover{
-background:#545b62;
-}
-
-/* ================= HISTORY ================= */
+/* HISTORY */
 
 #historySection{
 display:none;
@@ -132,44 +102,40 @@ max-width:1000px;
 margin:auto;
 background:#fff;
 padding:20px;
-border-radius:10px;
+border-radius:10px
 }
 
 .history-title{
 text-align:center;
 color:#16325c;
-margin:0 0 15px 0;
+margin:0 0 15px
 }
 
 .search-box{
 display:flex;
 gap:10px;
-margin-bottom:15px;
+margin-bottom:15px
 }
 
-.search-box input{
-flex:1;
-}
+.search-box input{flex:1}
 
 .search-box button{
 width:auto;
 margin-top:0;
-padding:10px 20px;
+padding:10px 20px
 }
 
-.clear-button{
-background:#6c757d;
-}
+.clear-button{background:#6c757d}
 
 .history-table-wrapper{
 width:100%;
-overflow-x:auto;
+overflow-x:auto
 }
 
 .history-table{
 width:100%;
 border-collapse:collapse;
-min-width:750px;
+min-width:750px
 }
 
 .history-table th,
@@ -177,50 +143,44 @@ min-width:750px;
 border:1px solid #ccc;
 padding:8px;
 font-size:13px;
-text-align:center;
+text-align:center
 }
 
 .history-table th{
 background:#16325c;
-color:white;
+color:white
 }
 
 .history-table tr:nth-child(even){
-background:#f8f8f8;
+background:#f8f8f8
 }
 
-.view-btn,
-.print-btn{
+.view-btn,.print-btn{
 display:inline-block;
 width:auto;
 margin:0 3px;
 padding:7px 12px;
 font-size:12px;
-border-radius:4px;
+border-radius:4px
 }
 
-.view-btn{
-background:#0d6efd;
-}
-
-.print-btn{
-background:#198754;
-}
+.view-btn{background:#0d6efd}
+.print-btn{background:#198754}
 
 .no-bills{
 text-align:center;
 padding:25px;
-color:#666;
+color:#666
 }
 
 .loading{
 text-align:center;
 padding:25px;
 color:#16325c;
-font-weight:bold;
+font-weight:bold
 }
 
-/* ================= RECEIPT ================= */
+/* RECEIPT */
 
 .receipt{
 width:100%;
@@ -229,35 +189,33 @@ margin:25px auto;
 background:white;
 border:2px solid #16325c;
 padding:20px;
-display:none;
+display:none
 }
 
-.receipt.show{
-display:block;
-}
+.receipt.show{display:block}
 
 .hospital-header{
 text-align:center;
 border-bottom:2px solid #16325c;
-padding-bottom:8px;
+padding-bottom:8px
 }
 
 .hospital-header h1{
 margin:4px 0;
 font-size:22px;
-color:#16325c;
+color:#16325c
 }
 
 .hospital-header p{
 margin:3px 0;
-font-size:11px;
+font-size:11px
 }
 
 .bill-title{
 text-align:center;
 font-size:18px;
 font-weight:bold;
-margin:8px 0;
+margin:8px 0
 }
 
 .top-info{
@@ -265,7 +223,7 @@ display:flex;
 justify-content:space-between;
 gap:10px;
 font-size:12px;
-margin-bottom:8px;
+margin-bottom:8px
 }
 
 .patient-info{
@@ -275,31 +233,31 @@ margin-bottom:8px;
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:6px;
-font-size:11px;
+font-size:11px
 }
 
-table{
+.receipt table{
 width:100%;
-border-collapse:collapse;
+border-collapse:collapse
 }
 
-th,
-td{
+.receipt th,
+.receipt td{
 border:1px solid #333;
 padding:5px;
 font-size:11px;
-text-align:center;
+text-align:center
 }
 
-th{
+.receipt th{
 background:#16325c;
-color:#fff;
+color:#fff
 }
 
 .amount-section{
 margin-top:8px;
 margin-left:auto;
-width:300px;
+width:300px
 }
 
 .amount-row{
@@ -307,22 +265,22 @@ display:flex;
 justify-content:space-between;
 padding:5px;
 border-bottom:1px solid #ccc;
-font-size:11px;
+font-size:11px
 }
 
 .net-total{
 font-size:14px;
-font-weight:bold;
+font-weight:bold
 }
 
 .received-total{
 font-size:12px;
-font-weight:bold;
+font-weight:bold
 }
 
 .due-total{
 font-size:13px;
-font-weight:bold;
+font-weight:bold
 }
 
 .extra-info{
@@ -330,7 +288,7 @@ margin-top:8px;
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:6px;
-font-size:11px;
+font-size:11px
 }
 
 .signature-section{
@@ -338,7 +296,7 @@ margin-top:18px;
 display:flex;
 justify-content:space-between;
 font-size:11px;
-min-height:25px;
+min-height:25px
 }
 
 .footer{
@@ -346,69 +304,63 @@ margin-top:10px;
 border-top:1px solid #16325c;
 padding-top:5px;
 text-align:center;
-font-size:9px;
+font-size:9px
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media screen and (max-width:600px){
 
 .form-grid,
 .patient-info,
 .extra-info{
-grid-template-columns:1fr;
+grid-template-columns:1fr
 }
 
 .top-info{
-flex-direction:column;
+flex-direction:column
 }
 
 .amount-section{
-width:100%;
+width:100%
 }
 
 body{
-padding:10px;
+padding:10px
 }
 
 .form-container{
-padding:15px;
-}
-
-.top-buttons{
-flex-direction:column;
+padding:15px
 }
 
 .search-box{
-flex-direction:column;
+flex-direction:column
 }
 
 .search-box button{
-width:100%;
+width:100%
+}
 }
 
-}
-
-/* ================= PRINT ================= */
+/* PRINT */
 
 @media print{
 
 @page{
 size:A4 portrait;
-margin:5mm;
+margin:5mm
 }
 
-html,
-body{
+html,body{
 margin:0!important;
 padding:0!important;
-background:#fff!important;
+background:#fff!important
 }
 
 .form-container,
 .top-buttons,
 #historySection{
-display:none!important;
+display:none!important
 }
 
 .receipt{
@@ -421,96 +373,85 @@ border:1.5px solid #16325c!important;
 height:auto!important;
 min-height:0!important;
 overflow:visible!important;
-page-break-inside:avoid!important;
+page-break-inside:avoid!important
 }
 
 .hospital-header{
-padding-bottom:5px;
+padding-bottom:5px
 }
 
 .hospital-header h1{
 font-size:19px;
-margin:2px 0;
+margin:2px 0
 }
 
 .hospital-header p{
 font-size:9px;
-margin:2px 0;
+margin:2px 0
 }
 
 .bill-title{
 font-size:15px;
-margin:5px 0;
+margin:5px 0
 }
 
 .top-info{
 font-size:9px;
-margin-bottom:5px;
+margin-bottom:5px
 }
 
 .patient-info{
 font-size:9px;
 padding:5px;
 gap:4px;
-margin-bottom:5px;
+margin-bottom:5px
 }
 
-th,
-td{
+.receipt th,
+.receipt td{
 font-size:9px;
-padding:3px;
+padding:3px
 }
 
 .amount-section{
 width:230px;
-margin-top:5px;
+margin-top:5px
 }
 
 .amount-row{
 font-size:9px;
-padding:3px;
+padding:3px
 }
 
-.net-total{
-font-size:11px;
-}
-
-.received-total{
-font-size:10px;
-}
-
-.due-total{
-font-size:10px;
-}
+.net-total{font-size:11px}
+.received-total{font-size:10px}
+.due-total{font-size:10px}
 
 .extra-info{
 font-size:9px;
 gap:4px;
-margin-top:5px;
+margin-top:5px
 }
 
 .signature-section{
 font-size:9px;
 margin-top:12px;
 display:flex!important;
-justify-content:space-between!important;
+justify-content:space-between!important
 }
 
 .footer{
 font-size:8px;
 margin-top:6px;
-padding-top:4px;
+padding-top:4px
 }
-
 }
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-TOP BUTTONS
-===================================================== -->
+<!-- TOP BUTTON -->
 
 <div class="top-buttons" id="topButtons">
 
@@ -521,19 +462,10 @@ onclick="openHistory()">
 BILL HISTORY
 </button>
 
-<button
-type="button"
-class="reset-button"
-onclick="resetAllBills()">
-RESET ALL BILLS
-</button>
-
 </div>
 
 
-<!-- =====================================================
-BILLING FORM
-===================================================== -->
+<!-- BILLING FORM -->
 
 <div class="form-container" id="billingSection">
 
@@ -565,7 +497,6 @@ BILLING FORM
 <label>Consultant / Doctor</label>
 
 <select id="consultant">
-
 <option value="">Select Doctor</option>
 
 <option value="Dr Rakesh Kudi (PT)">
@@ -579,15 +510,12 @@ Dr Bhupinder Choudhary (PT)
 </select>
 </div>
 
-
 <div>
 <label>Department</label>
 
 <select id="department">
 
-<option value="">
-Select Department
-</option>
+<option value="">Select Department</option>
 
 <option value="Physiotherapy">
 Physiotherapy
@@ -596,15 +524,12 @@ Physiotherapy
 </select>
 </div>
 
-
 <div>
 <label>Physiotherapy Type</label>
 
 <select id="patientType">
 
-<option value="">
-Select OPD / IPD
-</option>
+<option value="">Select OPD / IPD</option>
 
 <option value="Physiotherapy OPD">
 Physiotherapy OPD
@@ -616,16 +541,13 @@ Physiotherapy IPD
 
 </select>
 </div>
-
 
 <div>
 <label>Treatment / Particulars</label>
 
 <select id="treatment">
 
-<option value="">
-Select Treatment
-</option>
+<option value="">Select Treatment</option>
 
 <option value="Physiotherapy OPD">
 Physiotherapy OPD
@@ -637,7 +559,6 @@ Physiotherapy IPD
 
 </select>
 </div>
-
 
 <div>
 <label>Qty / Sessions</label>
@@ -650,7 +571,6 @@ oninput="calculateAmount()">
 
 </div>
 
-
 <div>
 <label>Rate</label>
 
@@ -662,7 +582,6 @@ oninput="calculateAmount()">
 
 </div>
 
-
 <div>
 <label>Gross Amount (₹)</label>
 
@@ -672,7 +591,6 @@ id="amount"
 readonly>
 
 </div>
-
 
 <div>
 <label>Discount (%)</label>
@@ -687,7 +605,6 @@ oninput="calculateAmount()">
 
 </div>
 
-
 <div>
 <label>Discount Amount (₹)</label>
 
@@ -698,7 +615,6 @@ readonly>
 
 </div>
 
-
 <div>
 <label>Net Amount (₹)</label>
 
@@ -708,7 +624,6 @@ id="totalAmount"
 readonly>
 
 </div>
-
 
 <div>
 <label>Payment Mode</label>
@@ -721,9 +636,7 @@ readonly>
 <option value="Card">Card</option>
 
 </select>
-
 </div>
-
 
 <div>
 <label>Received Amount (₹)</label>
@@ -737,7 +650,6 @@ oninput="calculateDue()">
 
 </div>
 
-
 <div>
 <label>Due Amount (₹)</label>
 
@@ -747,7 +659,6 @@ id="dueAmount"
 readonly>
 
 </div>
-
 
 <div>
 <label>Prepared By</label>
@@ -759,7 +670,6 @@ value="Saroj">
 
 </div>
 
-
 <div class="full-width">
 
 <label>Invoice Remarks</label>
@@ -769,7 +679,6 @@ value="Saroj">
 </div>
 
 </div>
-
 
 <button
 type="button"
@@ -783,16 +692,13 @@ SAVE & PRINT BILL
 </div>
 
 
-<!-- =====================================================
-BILL HISTORY
-===================================================== -->
+<!-- BILL HISTORY -->
 
 <div id="historySection">
 
 <h2 class="history-title">
 BILL HISTORY
 </h2>
-
 
 <div class="search-box">
 
@@ -802,13 +708,11 @@ id="historySearch"
 placeholder="Search Receipt No / Patient Name / Mobile"
 onkeydown="if(event.key==='Enter') searchBills()">
 
-
 <button
 type="button"
 onclick="searchBills()">
 SEARCH
 </button>
-
 
 <button
 type="button"
@@ -819,7 +723,6 @@ ALL BILLS
 
 </div>
 
-
 <div id="historyResults">
 
 <div class="loading">
@@ -828,10 +731,9 @@ Loading bills...
 
 </div>
 
-
 <button
 type="button"
-class="back-button"
+class="clear-button"
 onclick="backToBilling()">
 
 BACK TO BILLING
@@ -841,9 +743,7 @@ BACK TO BILLING
 </div>
 
 
-<!-- =====================================================
-RECEIPT
-===================================================== -->
+<!-- RECEIPT -->
 
 <div class="receipt" id="receipt">
 
@@ -865,11 +765,9 @@ Website: www.kudihospital.in
 
 </div>
 
-
 <div class="bill-title">
 OPD BILL CUM RECEIPT
 </div>
-
 
 <div class="patient-info">
 
@@ -915,7 +813,6 @@ OPD BILL CUM RECEIPT
 
 </div>
 
-
 <div class="top-info">
 
 <div>
@@ -925,23 +822,19 @@ OPD BILL CUM RECEIPT
 
 </div>
 
-
 <table>
 
 <thead>
 
 <tr>
-
 <th>S.No.</th>
 <th>Particulars</th>
 <th>Qty</th>
 <th>Rate</th>
 <th>Amount (Rs.)</th>
-
 </tr>
 
 </thead>
-
 
 <tbody>
 
@@ -963,7 +856,6 @@ OPD BILL CUM RECEIPT
 
 </table>
 
-
 <div class="amount-section">
 
 <div class="amount-row">
@@ -976,7 +868,6 @@ Rs. <span id="printGross"></span>
 
 </div>
 
-
 <div class="amount-row">
 
 Discount
@@ -986,7 +877,6 @@ Discount
 </span>
 
 </div>
-
 
 <div class="amount-row">
 
@@ -998,7 +888,6 @@ Rs. <span id="printDiscountAmount"></span>
 
 </div>
 
-
 <div class="amount-row net-total">
 
 Net Amount
@@ -1009,7 +898,6 @@ Rs. <span id="printTotal"></span>
 
 </div>
 
-
 <div class="amount-row received-total">
 
 Received Amount
@@ -1019,7 +907,6 @@ Rs. <span id="printReceived"></span>
 </span>
 
 </div>
-
 
 <div class="amount-row due-total">
 
@@ -1033,60 +920,41 @@ Rs. <span id="printDue"></span>
 
 </div>
 
-
 <div class="extra-info">
 
 <div>
-
 <strong>Payment Mode:</strong>
-
 <span id="printPaymentMode"></span>
-
 </div>
-
 
 <div>
-
 <strong>Amount:</strong>
-
 <span id="printAmountInEnglish"></span>
-
 </div>
-
 
 <div class="full-width">
-
 <strong>Invoice Remarks:</strong>
-
 <span id="printRemarks"></span>
-
 </div>
 
 </div>
-
 
 <div class="signature-section">
 
 <div>
-
 <strong>
 Prepared By:
 <span id="printPreparedBySignature"></span>
 </strong>
-
 </div>
 
-
 <div>
-
 <strong>
 Authorized Signature
 </strong>
-
 </div>
 
 </div>
-
 
 <div class="footer">
 
@@ -1104,9 +972,9 @@ Website: www.kudihospital.in
 
 <script>
 
-/* =====================================================
+/* =========================
 CALCULATE AMOUNT
-===================================================== */
+========================= */
 
 function calculateAmount(){
 
@@ -1119,57 +987,41 @@ Number(document.getElementById("rate").value) || 0;
 let discountPercent =
 Number(document.getElementById("discount").value) || 0;
 
-
 if(discountPercent > 100){
-
 discountPercent = 100;
-
 document.getElementById("discount").value = 100;
-
 }
-
 
 if(discountPercent < 0){
-
 discountPercent = 0;
-
 document.getElementById("discount").value = 0;
-
 }
 
-
-const gross =
-sessions * rate;
-
+const gross = sessions * rate;
 
 const discountAmount =
 (gross * discountPercent) / 100;
 
-
 const total =
 gross - discountAmount;
-
 
 document.getElementById("amount").value =
 gross.toFixed(2);
 
-
 document.getElementById("discountAmount").value =
 discountAmount.toFixed(2);
 
-
 document.getElementById("totalAmount").value =
 total.toFixed(2);
-
 
 calculateDue();
 
 }
 
 
-/* =====================================================
-DUE
-===================================================== */
+/* =========================
+CALCULATE DUE
+========================= */
 
 function calculateDue(){
 
@@ -1179,15 +1031,14 @@ Number(document.getElementById("totalAmount").value) || 0;
 let received =
 Number(document.getElementById("receivedAmount").value) || 0;
 
-
 if(received < 0){
 
 received = 0;
 
-document.getElementById("receivedAmount").value = 0;
+document.getElementById("receivedAmount").value =
+"0";
 
 }
-
 
 if(received > total){
 
@@ -1198,10 +1049,7 @@ total.toFixed(2);
 
 }
 
-
-const due =
-total - received;
-
+const due = total - received;
 
 document.getElementById("dueAmount").value =
 due.toFixed(2);
@@ -1209,129 +1057,19 @@ due.toFixed(2);
 }
 
 
-/* =====================================================
-RESET ALL BILLS
-===================================================== */
-
-async function resetAllBills(){
-
-const confirmReset = confirm(
-
-"WARNING!\n\n" +
-
-"This will permanently DELETE ALL OLD BILLS.\n\n" +
-
-"After reset, the next bill will start from KHRC/001.\n\n" +
-
-"Are you absolutely sure?"
-
-);
-
-
-if(!confirmReset){
-
-return;
-
-}
-
-
-try{
-
-const response =
-await fetch("/api/reset-bills",{
-
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-}
-
-});
-
-
-const data =
-await response.json();
-
-
-if(!response.ok || !data.success){
-
-throw new Error(
-data.message || "Reset failed."
-);
-
-}
-
-
-alert(
-
-"SUCCESS!\n\n" +
-
-"All old bills have been deleted.\n\n" +
-
-"The next new bill will start from KHRC/001."
-
-);
-
-
-/* Clear current form */
-
-document.getElementById("patientName").value = "";
-document.getElementById("mobile").value = "";
-document.getElementById("age").value = "";
-document.getElementById("address").value = "";
-document.getElementById("consultant").value = "";
-document.getElementById("department").value = "";
-document.getElementById("patientType").value = "";
-document.getElementById("treatment").value = "";
-document.getElementById("sessions").value = "";
-document.getElementById("rate").value = "";
-document.getElementById("amount").value = "";
-document.getElementById("discount").value = "0";
-document.getElementById("discountAmount").value = "";
-document.getElementById("totalAmount").value = "";
-document.getElementById("paymentMode").value = "Cash";
-document.getElementById("receivedAmount").value = "0";
-document.getElementById("dueAmount").value = "";
-document.getElementById("preparedBy").value = "Saroj";
-document.getElementById("remarks").value = "";
-
-
-}catch(error){
-
-console.error("Reset Error:",error);
-
-
-alert(
-
-"RESET FAILED.\n\n" +
-
-(error.message || "Please check Vercel deployment.")
-
-);
-
-}
-
-}
-
-
-/* =====================================================
+/* =========================
 NUMBER TO WORDS
-===================================================== */
+========================= */
 
 function numberToWords(num){
 
 num = Math.floor(Number(num));
 
-
 if(num === 0){
-
 return "Zero";
-
 }
 
-
 const ones = [
-
 "",
 "One",
 "Two",
@@ -1352,12 +1090,9 @@ const ones = [
 "Seventeen",
 "Eighteen",
 "Nineteen"
-
 ];
 
-
 const tens = [
-
 "",
 "",
 "Twenty",
@@ -1368,30 +1103,22 @@ const tens = [
 "Seventy",
 "Eighty",
 "Ninety"
-
 ];
-
 
 function twoDigits(n){
 
 if(n < 20){
-
 return ones[n];
-
 }
 
-
 return tens[Math.floor(n / 10)] +
-
 (n % 10 ? " " + ones[n % 10] : "");
 
 }
 
-
 function threeDigits(n){
 
 let result = "";
-
 
 if(n >= 100){
 
@@ -1401,30 +1128,21 @@ ones[Math.floor(n / 100)] +
 
 n = n % 100;
 
-
 if(n){
-
 result += " ";
-
 }
 
 }
-
 
 if(n > 0){
-
 result += twoDigits(n);
-
 }
-
 
 return result;
 
 }
 
-
 let result = "";
-
 
 if(num >= 10000000){
 
@@ -1436,7 +1154,6 @@ num %= 10000000;
 
 }
 
-
 if(num >= 100000){
 
 result +=
@@ -1446,7 +1163,6 @@ threeDigits(Math.floor(num / 100000)) +
 num %= 100000;
 
 }
-
 
 if(num >= 1000){
 
@@ -1458,22 +1174,20 @@ num %= 1000;
 
 }
 
-
 if(num > 0){
 
 result += threeDigits(num);
 
 }
 
-
 return result.trim();
 
 }
 
 
-/* =====================================================
-FILL RECEIPT FROM FORM
-===================================================== */
+/* =========================
+FILL RECEIPT
+========================= */
 
 function fillReceipt(receiptNo){
 
@@ -1510,7 +1224,6 @@ document.getElementById("sessions").value;
 document.getElementById("printRate").textContent =
 document.getElementById("rate").value;
 
-
 const gross =
 Number(document.getElementById("amount").value) || 0;
 
@@ -1528,7 +1241,6 @@ Number(document.getElementById("receivedAmount").value) || 0;
 
 const due =
 Number(document.getElementById("dueAmount").value) || 0;
-
 
 document.getElementById("printAmount").textContent =
 gross.toFixed(2);
@@ -1563,9 +1275,7 @@ document.getElementById("preparedBy").value;
 document.getElementById("printRemarks").textContent =
 document.getElementById("remarks").value;
 
-
 const now = new Date();
-
 
 document.getElementById("printDate").textContent =
 
@@ -1577,9 +1287,9 @@ month:"2-digit",
 year:"numeric"
 }
 )
-
-+ " " +
-
++
+" "
++
 now.toLocaleTimeString(
 "en-IN",
 {
@@ -1590,15 +1300,14 @@ hour12:true
 }
 );
 
-
 document.getElementById("receipt").classList.add("show");
 
 }
 
 
-/* =====================================================
-FILL RECEIPT FROM DATABASE BILL
-===================================================== */
+/* =========================
+FILL OLD BILL
+========================= */
 
 function fillReceiptFromBill(bill){
 
@@ -1619,7 +1328,6 @@ Number(bill.received_amount) || 0;
 
 const due =
 Number(bill.due_amount) || 0;
-
 
 document.getElementById("printReceiptNo").textContent =
 bill.receipt_no || "";
@@ -1687,15 +1395,11 @@ bill.prepared_by || "";
 document.getElementById("printRemarks").textContent =
 bill.remarks || "";
 
-
 let billDate = "";
-
 
 if(bill.created_at){
 
-const d =
-new Date(bill.created_at);
-
+const d = new Date(bill.created_at);
 
 billDate =
 
@@ -1707,9 +1411,9 @@ month:"2-digit",
 year:"numeric"
 }
 )
-
-+ " " +
-
++
+" "
++
 d.toLocaleTimeString(
 "en-IN",
 {
@@ -1722,29 +1426,25 @@ hour12:true
 
 }
 
-
 document.getElementById("printDate").textContent =
 billDate;
-
 
 document.getElementById("receipt").classList.add("show");
 
 }
 
 
-/* =====================================================
+/* =========================
 SAVE BILL
-===================================================== */
+========================= */
 
 async function saveBill(){
 
 calculateAmount();
 calculateDue();
 
-
 const patientName =
 document.getElementById("patientName").value.trim();
-
 
 if(!patientName){
 
@@ -1755,7 +1455,6 @@ document.getElementById("patientName").focus();
 return null;
 
 }
-
 
 const billData = {
 
@@ -1818,7 +1517,6 @@ document.getElementById("remarks").value.trim()
 
 };
 
-
 try{
 
 const response =
@@ -1834,10 +1532,8 @@ body:JSON.stringify(billData)
 
 });
 
-
 const data =
 await response.json();
-
 
 if(!response.ok || !data.success){
 
@@ -1847,23 +1543,15 @@ data.message || "Bill could not be saved."
 
 }
 
-
 return data;
-
 
 }catch(error){
 
 console.error("Save Bill Error:",error);
 
-
 alert(
-
-"Bill save नहीं हुआ.\n\n" +
-
-"Please check Vercel deployment and Neon connection."
-
+"Bill save नहीं हुआ.\n\nPlease check Vercel deployment."
 );
-
 
 return null;
 
@@ -1872,46 +1560,35 @@ return null;
 }
 
 
-/* =====================================================
+/* =========================
 SAVE & PRINT
-===================================================== */
+========================= */
 
 async function saveAndPrintBill(){
 
 const button =
 document.getElementById("savePrintButton");
 
-
 button.disabled = true;
-
-button.textContent =
-"Saving Bill...";
-
+button.textContent = "Saving Bill...";
 
 try{
 
 const savedBill =
 await saveBill();
 
-
 if(!savedBill){
 
 button.disabled = false;
-
-button.textContent =
-"SAVE & PRINT BILL";
+button.textContent = "SAVE & PRINT BILL";
 
 return;
 
 }
 
-
 fillReceipt(savedBill.receiptNo);
 
-
-button.textContent =
-"Saved Successfully";
-
+button.textContent = "Saved Successfully";
 
 setTimeout(function(){
 
@@ -1919,40 +1596,32 @@ window.print();
 
 },300);
 
-
 setTimeout(function(){
 
 button.disabled = false;
-
-button.textContent =
-"SAVE & PRINT BILL";
+button.textContent = "SAVE & PRINT BILL";
 
 },1500);
-
 
 }catch(error){
 
 console.error(error);
 
-
 alert(
 "Something went wrong while saving the bill."
 );
 
-
 button.disabled = false;
-
-button.textContent =
-"SAVE & PRINT BILL";
+button.textContent = "SAVE & PRINT BILL";
 
 }
 
 }
 
 
-/* =====================================================
-OPEN BILL HISTORY
-===================================================== */
+/* =========================
+OPEN HISTORY
+========================= */
 
 function openHistory(){
 
@@ -1967,27 +1636,21 @@ document.getElementById("topButtons").style.display =
 document.getElementById("historySection").style.display =
 "block";
 
-
 document.getElementById("historySearch").value = "";
-
 
 loadBills();
 
-
 window.scrollTo({
-
 top:0,
-
 behavior:"smooth"
-
 });
 
 }
 
 
-/* =====================================================
+/* =========================
 BACK TO BILLING
-===================================================== */
+========================= */
 
 function backToBilling(){
 
@@ -1995,46 +1658,40 @@ document.getElementById("historySection").style.display =
 "none";
 
 document.getElementById("topButtons").style.display =
-"flex";
+"block";
 
 document.getElementById("billingSection").style.display =
 "block";
 
+document.getElementById("receipt").classList.remove("show");
 
 window.scrollTo({
-
 top:0,
-
 behavior:"smooth"
-
 });
 
 }
 
 
-/* =====================================================
-LOAD ALL BILLS
-===================================================== */
+/* =========================
+LOAD BILLS
+========================= */
 
 async function loadBills(){
 
 const results =
 document.getElementById("historyResults");
 
-
 results.innerHTML =
 '<div class="loading">Loading bills...</div>';
-
 
 try{
 
 const response =
 await fetch("/api/get-bills");
 
-
 const data =
 await response.json();
-
 
 if(!response.ok || !data.success){
 
@@ -2044,14 +1701,11 @@ data.message || "Bills could not be loaded."
 
 }
 
-
 displayBills(data.bills || []);
-
 
 }catch(error){
 
 console.error("Load Bills Error:",error);
-
 
 results.innerHTML = `
 
@@ -2059,7 +1713,7 @@ results.innerHTML = `
 
 Unable to load bills.<br><br>
 
-Please check Vercel deployment and Neon connection.
+Please check Vercel deployment and database connection.
 
 </div>
 
@@ -2070,32 +1724,27 @@ Please check Vercel deployment and Neon connection.
 }
 
 
-/* =====================================================
+/* =========================
 SEARCH BILLS
-===================================================== */
+========================= */
 
 async function searchBills(){
 
 const search =
 document.getElementById("historySearch").value.trim();
 
-
 if(!search){
 
 loadBills();
-
 return;
 
 }
 
-
 const results =
 document.getElementById("historyResults");
 
-
 results.innerHTML =
 '<div class="loading">Searching...</div>';
-
 
 try{
 
@@ -2105,10 +1754,8 @@ await fetch(
 encodeURIComponent(search)
 );
 
-
 const data =
 await response.json();
-
 
 if(!response.ok || !data.success){
 
@@ -2118,14 +1765,11 @@ data.message || "Search failed."
 
 }
 
-
 displayBills(data.bills || []);
-
 
 }catch(error){
 
 console.error("Search Bills Error:",error);
-
 
 results.innerHTML = `
 
@@ -2144,24 +1788,21 @@ Please try again.
 }
 
 
-/* =====================================================
+/* =========================
 DISPLAY BILLS
-===================================================== */
+========================= */
 
 function displayBills(bills){
 
 const results =
 document.getElementById("historyResults");
 
-
 if(!bills.length){
 
 results.innerHTML = `
 
 <div class="no-bills">
-
 No bills found.
-
 </div>
 
 `;
@@ -2169,7 +1810,6 @@ No bills found.
 return;
 
 }
-
 
 let html = `
 
@@ -2199,12 +1839,9 @@ let html = `
 
 `;
 
-
 bills.forEach(function(bill){
 
-const date =
-
-bill.created_at
+const date = bill.created_at
 
 ?
 
@@ -2221,54 +1858,43 @@ year:"numeric"
 
 : "";
 
-
 html += `
 
 <tr>
 
 <td>
-
 <strong>
 ${escapeHtml(bill.receipt_no || "")}
 </strong>
-
 </td>
-
 
 <td>
 ${escapeHtml(date)}
 </td>
 
-
 <td>
 ${escapeHtml(bill.patient_name || "")}
 </td>
-
 
 <td>
 ${escapeHtml(bill.mobile || "")}
 </td>
 
-
 <td>
 ${escapeHtml(bill.patient_type || "")}
 </td>
-
 
 <td>
 ₹${Number(bill.net_amount || 0).toFixed(2)}
 </td>
 
-
 <td>
 ₹${Number(bill.received_amount || 0).toFixed(2)}
 </td>
 
-
 <td>
 ₹${Number(bill.due_amount || 0).toFixed(2)}
 </td>
-
 
 <td>
 
@@ -2280,7 +1906,6 @@ onclick='viewBill(${JSON.stringify(bill)})'>
 VIEW
 
 </button>
-
 
 <button
 type="button"
@@ -2299,26 +1924,22 @@ PRINT
 
 });
 
-
 html += `
 
 </tbody>
-
 </table>
-
 </div>
 
 `;
-
 
 results.innerHTML = html;
 
 }
 
 
-/* =====================================================
+/* =========================
 VIEW OLD BILL
-===================================================== */
+========================= */
 
 function viewBill(bill){
 
@@ -2326,29 +1947,24 @@ document.getElementById("historySection").style.display =
 "none";
 
 document.getElementById("topButtons").style.display =
-"flex";
+"block";
 
 document.getElementById("billingSection").style.display =
 "none";
 
-
 fillReceiptFromBill(bill);
 
-
 window.scrollTo({
-
 top:0,
-
 behavior:"smooth"
-
 });
 
 }
 
 
-/* =====================================================
+/* =========================
 PRINT OLD BILL
-===================================================== */
+========================= */
 
 function printOldBill(bill){
 
@@ -2361,9 +1977,7 @@ document.getElementById("topButtons").style.display =
 document.getElementById("billingSection").style.display =
 "none";
 
-
 fillReceiptFromBill(bill);
-
 
 setTimeout(function(){
 
@@ -2374,22 +1988,18 @@ window.print();
 }
 
 
-/* =====================================================
+/* =========================
 ESCAPE HTML
-===================================================== */
+========================= */
 
 function escapeHtml(value){
 
 return String(value ?? "")
 
 .replace(/&/g,"&amp;")
-
 .replace(/</g,"&lt;")
-
 .replace(/>/g,"&gt;")
-
 .replace(/"/g,"&quot;")
-
 .replace(/'/g,"&#039;");
 
 }
