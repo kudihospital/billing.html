@@ -33,8 +33,29 @@ module.exports = async (req, res) => {
       remarks
     } = req.body;
 
+    // Get the next bill number
+    const lastBill = await sql`
+      SELECT receipt_no
+      FROM bills
+      ORDER BY id DESC
+      LIMIT 1
+    `;
+
+    let nextNumber = 1;
+
+    if (lastBill.length > 0 && lastBill[0].receipt_no) {
+      const match = String(lastBill[0].receipt_no).match(/(\d+)$/);
+
+      if (match) {
+        nextNumber = parseInt(match[1], 10) + 1;
+      }
+    }
+
+    const receiptNo = `KHRC/${String(nextNumber).padStart(3, "0")}`;
+
     const result = await sql`
       INSERT INTO bills (
+        receipt_no,
         patient_name,
         mobile,
         age,
@@ -56,6 +77,7 @@ module.exports = async (req, res) => {
         remarks
       )
       VALUES (
+        ${receiptNo},
         ${patientName},
         ${mobile},
         ${age || null},
@@ -86,7 +108,7 @@ module.exports = async (req, res) => {
     });
 
   } catch (error) {
-    console.error(error);
+    console.error("SAVE BILL ERROR:", error);
 
     return res.status(500).json({
       success: false,
