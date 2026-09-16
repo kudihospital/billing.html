@@ -33,10 +33,11 @@ module.exports = async (req, res) => {
       remarks
     } = req.body;
 
-    // Get the next bill number
+    // Find the latest KHRC receipt number
     const lastBill = await sql`
       SELECT receipt_no
       FROM bills
+      WHERE receipt_no LIKE 'KHRC/%'
       ORDER BY id DESC
       LIMIT 1
     `;
@@ -51,7 +52,8 @@ module.exports = async (req, res) => {
       }
     }
 
-    const receiptNo = `KHRC/${String(nextNumber).padStart(3, "0")}`;
+    const receiptNo =
+      `KHRC/${String(nextNumber).padStart(3, "0")}`;
 
     const result = await sql`
       INSERT INTO bills (
