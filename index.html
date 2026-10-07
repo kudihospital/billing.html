@@ -4,1269 +4,1155 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KUDI Hospital Billing</title>
-
 <style>
 *{
-box-sizing:border-box
+    box-sizing:border-box;
 }
-
 body{
-margin:0;
-padding:20px;
-font-family:Arial,sans-serif;
-background:#f2f2f2;
-color:#222
+    margin:0;
+    padding:20px;
+    font-family:Arial,sans-serif;
+    background:#f2f2f2;
+    color:#222;
 }
-
 .form-container{
-max-width:850px;
-margin:auto;
-background:#fff;
-padding:25px;
-border-radius:10px
+    max-width:900px;
+    margin:auto;
+    background:#fff;
+    padding:25px;
+    border-radius:10px;
 }
-
 h2{
-text-align:center;
-color:#16325c;
-margin-top:0
+    text-align:center;
+    color:#16325c;
+    margin-top:0;
 }
-
+.section-title{
+    margin-top:25px;
+    margin-bottom:15px;
+    padding:10px;
+    background:#16325c;
+    color:#fff;
+    border-radius:5px;
+    font-size:17px;
+}
 .form-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
-
 label{
-display:block;
-font-weight:bold;
-margin-bottom:5px
+    display:block;
+    font-weight:bold;
+    margin-bottom:5px;
 }
-
 input,
 select,
 textarea{
-width:100%;
-padding:10px;
-border:1px solid #ccc;
-border-radius:5px;
-font-size:15px
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:15px;
 }
-
 textarea{
-min-height:45px;
-resize:vertical
+    min-height:45px;
+    resize:vertical;
 }
-
 .full-width{
-grid-column:1/-1
+    grid-column:1/-1;
 }
-
 button{
-display:block;
-width:100%;
-margin-top:20px;
-padding:14px;
-background:#16325c;
-color:white;
-border:none;
-border-radius:6px;
-font-size:17px;
-font-weight:bold;
-cursor:pointer
+    display:block;
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    background:#16325c;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
 }
-
 button:hover{
-background:#0e2445
+    background:#0e2445;
 }
-
 button:disabled{
-background:#777;
-cursor:not-allowed
+    background:#777;
+    cursor:not-allowed;
 }
-
 /* TOP BUTTON */
-
 .top-buttons{
-max-width:850px;
-margin:0 auto 15px auto
+    max-width:900px;
+    margin:0 auto 15px auto;
 }
-
 .history-button{
-margin-top:0;
-background:#198754
+    margin-top:0;
+    background:#198754;
 }
-
 .history-button:hover{
-background:#146c43
+    background:#146c43;
 }
-
+/* MATERIAL */
+.material-box{
+    border:1px solid #ddd;
+    padding:15px;
+    border-radius:8px;
+    background:#fafafa;
+}
+.material-list{
+    margin-top:15px;
+}
+.material-row{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr auto;
+    gap:8px;
+    align-items:end;
+    margin-bottom:10px;
+}
+.material-row button{
+    margin:0;
+    padding:10px;
+    width:auto;
+    background:#dc3545;
+}
+.material-row button:hover{
+    background:#b02a37;
+}
+.add-material{
+    background:#198754;
+    margin-top:10px;
+}
+.add-material:hover{
+    background:#146c43;
+}
+.material-summary{
+    margin-top:15px;
+    margin-left:auto;
+    max-width:350px;
+    border-top:2px solid #16325c;
+    padding-top:10px;
+}
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    padding:5px 0;
+}
+.summary-total{
+    font-weight:bold;
+    font-size:17px;
+}
 /* HISTORY */
-
 #historySection{
-display:none;
-max-width:1100px;
-margin:auto;
-background:#fff;
-padding:20px;
-border-radius:10px
+    display:none;
+    max-width:1100px;
+    margin:auto;
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
 }
-
 .history-title{
-text-align:center;
-color:#16325c;
-margin:0 0 15px
+    text-align:center;
+    color:#16325c;
+    margin:0 0 15px;
 }
-
 .search-box{
-display:flex;
-gap:10px;
-margin-bottom:15px
+    display:flex;
+    gap:10px;
+    margin-bottom:15px;
 }
-
 .search-box input{
-flex:1
+    flex:1;
 }
-
 .search-box button{
-width:auto;
-margin-top:0;
-padding:10px 20px
+    width:auto;
+    margin-top:0;
+    padding:10px 20px;
 }
-
 .clear-button{
-background:#6c757d
+    background:#6c757d;
 }
-
 .history-table-wrapper{
-width:100%;
-overflow-x:auto
+    width:100%;
+    overflow-x:auto;
 }
-
 .history-table{
-width:100%;
-border-collapse:collapse;
-min-width:850px
+    width:100%;
+    border-collapse:collapse;
+    min-width:900px;
 }
-
 .history-table th,
 .history-table td{
-border:1px solid #ccc;
-padding:8px;
-font-size:13px;
-text-align:center
+    border:1px solid #ccc;
+    padding:8px;
+    font-size:13px;
+    text-align:center;
 }
-
 .history-table th{
-background:#16325c;
-color:white
+    background:#16325c;
+    color:white;
 }
-
 .history-table tr:nth-child(even){
-background:#f8f8f8
+    background:#f8f8f8;
 }
-
 .view-btn,
 .print-btn{
-display:inline-block;
-width:auto;
-margin:0 3px;
-padding:7px 12px;
-font-size:12px;
-border-radius:4px
+    display:inline-block;
+    width:auto;
+    margin:0 3px;
+    padding:7px 12px;
+    font-size:12px;
+    border-radius:4px;
 }
-
 .view-btn{
-background:#0d6efd
+    background:#0d6efd;
 }
-
 .print-btn{
-background:#198754
+    background:#198754;
 }
-
 .no-bills{
-text-align:center;
-padding:25px;
-color:#666
+    text-align:center;
+    padding:25px;
+    color:#666;
 }
-
 .loading{
-text-align:center;
-padding:25px;
-color:#16325c;
-font-weight:bold
+    text-align:center;
+    padding:25px;
+    color:#16325c;
+    font-weight:bold;
 }
-
 /* RECEIPT */
-
 .receipt{
-width:100%;
-max-width:850px;
-margin:25px auto;
-background:white;
-border:2px solid #16325c;
-padding:20px;
-display:none
+    width:100%;
+    max-width:850px;
+    margin:25px auto;
+    background:white;
+    border:2px solid #16325c;
+    padding:20px;
+    display:none;
 }
-
 .receipt.show{
-display:block
+    display:block;
 }
-
 .hospital-header{
-text-align:center;
-border-bottom:2px solid #16325c;
-padding-bottom:8px
+    text-align:center;
+    border-bottom:2px solid #16325c;
+    padding-bottom:8px;
 }
-
 .hospital-header h1{
-margin:4px 0;
-font-size:22px;
-color:#16325c
+    margin:4px 0;
+    font-size:22px;
+    color:#16325c;
 }
-
 .hospital-header p{
-margin:3px 0;
-font-size:11px
+    margin:3px 0;
+    font-size:11px;
 }
-
 .bill-title{
-text-align:center;
-font-size:18px;
-font-weight:bold;
-margin:8px 0
+    text-align:center;
+    font-size:18px;
+    font-weight:bold;
+    margin:8px 0;
 }
-
 .top-info{
-display:flex;
-justify-content:space-between;
-gap:10px;
-font-size:12px;
-margin-bottom:8px
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    font-size:12px;
+    margin-bottom:8px;
 }
-
 .patient-info{
-border:1px solid #333;
-padding:7px;
-margin-bottom:8px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:6px;
-font-size:11px
+    border:1px solid #333;
+    padding:7px;
+    margin-bottom:8px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+    font-size:11px;
 }
-
 .receipt table{
-width:100%;
-border-collapse:collapse
+    width:100%;
+    border-collapse:collapse;
 }
-
 .receipt th,
 .receipt td{
-border:1px solid #333;
-padding:5px;
-font-size:11px;
-text-align:center
+    border:1px solid #333;
+    padding:5px;
+    font-size:11px;
+    text-align:center;
 }
-
 .receipt th{
-background:#16325c;
-color:#fff
+    background:#16325c;
+    color:#fff;
 }
-
+.receipt .material-table{
+    margin-top:8px;
+}
 .amount-section{
-margin-top:8px;
-margin-left:auto;
-width:300px
+    margin-top:8px;
+    margin-left:auto;
+    width:300px;
 }
-
 .amount-row{
-display:flex;
-justify-content:space-between;
-padding:5px;
-border-bottom:1px solid #ccc;
-font-size:11px
+    display:flex;
+    justify-content:space-between;
+    padding:5px;
+    border-bottom:1px solid #ccc;
+    font-size:11px;
 }
-
 .net-total{
-font-size:14px;
-font-weight:bold
+    font-size:14px;
+    font-weight:bold;
 }
-
+.discount-total{
+    color:#b02a37;
+    font-weight:bold;
+}
 .received-total{
-font-size:12px;
-font-weight:bold
+    font-size:12px;
+    font-weight:bold;
 }
-
 .due-total{
-font-size:13px;
-font-weight:bold
+    font-size:13px;
+    font-weight:bold;
 }
-
 .extra-info{
-margin-top:8px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:6px;
-font-size:11px
+    margin-top:8px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+    font-size:11px;
 }
-
 .signature-section{
-margin-top:18px;
-display:flex;
-justify-content:space-between;
-font-size:11px;
-min-height:25px
+    margin-top:18px;
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    min-height:25px;
 }
-
 .footer{
-margin-top:10px;
-border-top:1px solid #16325c;
-padding-top:5px;
-text-align:center;
-font-size:9px
+    margin-top:10px;
+    border-top:1px solid #16325c;
+    padding-top:5px;
+    text-align:center;
+    font-size:9px;
 }
-
 /* MOBILE */
-
 @media screen and (max-width:600px){
-
-.form-grid,
-.patient-info,
-.extra-info{
-grid-template-columns:1fr
+    .form-grid,
+    .patient-info,
+    .extra-info{
+        grid-template-columns:1fr;
+    }
+    .top-info{
+        flex-direction:column;
+    }
+    .amount-section{
+        width:100%;
+    }
+    body{
+        padding:10px;
+    }
+    .form-container{
+        padding:15px;
+    }
+    .search-box{
+        flex-direction:column;
+    }
+    .search-box button{
+        width:100%;
+    }
+    .material-row{
+        grid-template-columns:1fr;
+    }
+    .material-row button{
+        width:100%;
+    }
 }
-
-.top-info{
-flex-direction:column
-}
-
-.amount-section{
-width:100%
-}
-
-body{
-padding:10px
-}
-
-.form-container{
-padding:15px
-}
-
-.search-box{
-flex-direction:column
-}
-
-.search-box button{
-width:100%
-}
-
-}
-
 /* PRINT */
-
 @media print{
-
-@page{
-size:A4 portrait;
-margin:5mm
-}
-
-html,
-body{
-margin:0!important;
-padding:0!important;
-background:#fff!important
-}
-
-.form-container,
-.top-buttons,
-#historySection{
-display:none!important
-}
-
-.receipt{
-display:block!important;
-width:100%!important;
-max-width:none!important;
-margin:0!important;
-padding:5mm!important;
-border:1.5px solid #16325c!important;
-height:auto!important;
-min-height:0!important;
-overflow:visible!important;
-page-break-inside:avoid!important
-}
-
-.hospital-header{
-padding-bottom:5px
-}
-
-.hospital-header h1{
-font-size:19px;
-margin:2px 0
-}
-
-.hospital-header p{
-font-size:9px;
-margin:2px 0
-}
-
-.bill-title{
-font-size:15px;
-margin:5px 0
-}
-
-.top-info{
-font-size:9px;
-margin-bottom:5px
-}
-
-.patient-info{
-font-size:9px;
-padding:5px;
-gap:4px;
-margin-bottom:5px
-}
-
-.receipt th,
-.receipt td{
-font-size:9px;
-padding:3px
-}
-
-.amount-section{
-width:230px;
-margin-top:5px
-}
-
-.amount-row{
-font-size:9px;
-padding:3px
-}
-
-.net-total{
-font-size:11px
-}
-
-.received-total{
-font-size:10px
-}
-
-.due-total{
-font-size:10px
-}
-
-.extra-info{
-font-size:9px;
-gap:4px;
-margin-top:5px
-}
-
-.signature-section{
-font-size:9px;
-margin-top:12px;
-display:flex!important;
-justify-content:space-between!important
-}
-
-.footer{
-font-size:8px;
-margin-top:6px;
-padding-top:4px
-}
-
+    @page{
+        size:A4 portrait;
+        margin:5mm;
+    }
+    html,
+    body{
+        margin:0!important;
+        padding:0!important;
+        background:#fff!important;
+    }
+    .form-container,
+    .top-buttons,
+    #historySection{
+        display:none!important;
+    }
+    .receipt{
+        display:block!important;
+        width:100%!important;
+        max-width:none!important;
+        margin:0!important;
+        padding:5mm!important;
+        border:1.5px solid #16325c!important;
+        height:auto!important;
+        min-height:0!important;
+        overflow:visible!important;
+        page-break-inside:avoid!important;
+    }
+    .hospital-header{
+        padding-bottom:5px;
+    }
+    .hospital-header h1{
+        font-size:19px;
+        margin:2px 0;
+    }
+    .hospital-header p{
+        font-size:9px;
+        margin:2px 0;
+    }
+    .bill-title{
+        font-size:15px;
+        margin:5px 0;
+    }
+    .top-info{
+        font-size:9px;
+        margin-bottom:5px;
+    }
+    .patient-info{
+        font-size:9px;
+        padding:5px;
+        gap:4px;
+        margin-bottom:5px;
+    }
+    .receipt th,
+    .receipt td{
+        font-size:9px;
+        padding:3px;
+    }
+    .amount-section{
+        width:230px;
+        margin-top:5px;
+    }
+    .amount-row{
+        font-size:9px;
+        padding:3px;
+    }
+    .net-total{
+        font-size:11px;
+    }
+    .discount-total{
+        font-size:9px;
+    }
+    .received-total{
+        font-size:10px;
+    }
+    .due-total{
+        font-size:10px;
+    }
+    .extra-info{
+        font-size:9px;
+        gap:4px;
+        margin-top:5px;
+    }
+    .signature-section{
+        font-size:9px;
+        margin-top:12px;
+        display:flex!important;
+        justify-content:space-between!important;
+    }
+    .footer{
+        font-size:8px;
+        margin-top:6px;
+        padding-top:4px;
+    }
 }
 </style>
 </head>
-
 <body>
-
-<!-- =====================================================
-     TOP BUTTON
-===================================================== -->
-
+<!-- TOP BUTTON -->
 <div class="top-buttons" id="topButtons">
-
 <button
 type="button"
 class="history-button"
 onclick="openHistory()">
-
 BILL HISTORY
-
 </button>
-
 </div>
-
-
-<!-- =====================================================
-     BILLING FORM
-===================================================== -->
-
+<!-- BILLING FORM -->
 <div
 class="form-container"
 id="billingSection">
-
 <h2>Create Hospital Bill</h2>
-
+<!-- PATIENT INFORMATION -->
+<div class="section-title">
+Patient Information
+</div>
 <div class="form-grid">
-
-<!-- PATIENT NAME -->
-
 <div>
-
 <label>Patient Name</label>
-
 <input
 type="text"
 id="patientName"
 autocomplete="off">
-
 </div>
-
-
-<!-- MOBILE -->
-
 <div>
-
 <label>Mobile Number</label>
-
 <input
 type="text"
 id="mobile"
 maxlength="10"
 autocomplete="off">
-
 </div>
-
-
-<!-- AGE -->
-
 <div>
-
 <label>Age</label>
-
 <input
 type="number"
 id="age"
 min="0">
-
 </div>
-
-
-<!-- ADDRESS -->
-
 <div class="full-width">
-
 <label>Address</label>
-
-<textarea
-id="address"></textarea>
-
+<textarea id="address"></textarea>
 </div>
-
-
-<!-- CONSULTANT / DOCTOR -->
-
 <div>
-
 <label>Consultant / Doctor</label>
-
 <select id="consultant">
-
-<option value="">
-Select Doctor
-</option>
-
+<option value="">Select Doctor</option>
 <option value="Dr Rakesh Kudi (PT)">
 Dr Rakesh Kudi (PT)
 </option>
-
 <option value="Dr Bhupinder Choudhary (PT)">
 Dr Bhupinder Choudhary (PT)
 </option>
-
 </select>
-
 </div>
-
-
-<!-- DEPARTMENT -->
-
 <div>
-
 <label>Department</label>
-
 <select id="department">
-
-<option value="">
-Select Department
-</option>
-
+<option value="">Select Department</option>
 <option value="Physiotherapy Department">
 Physiotherapy Department
 </option>
-
 <option value="Orthopedic Department">
 Orthopedic Department
 </option>
-
 <option value="Neuro Department">
 Neuro Department
 </option>
-
 <option value="Dermatology Department">
 Dermatology Department
 </option>
-
 </select>
-
 </div>
-
-
-<!-- TREATMENT / PARTICULARS -->
-
+</div>
+<!-- PHYSIOTHERAPY -->
+<div class="section-title">
+Physiotherapy Treatment
+</div>
+<div class="form-grid">
 <div>
-
 <label>Treatment / Particulars</label>
-
 <select id="treatment">
-
 <option value="">
 Select Treatment
 </option>
-
 <option value="Physiotherapy OPD">
 Physiotherapy OPD
 </option>
-
 <option value="Physiotherapy IPD">
 Physiotherapy IPD
 </option>
-
 </select>
-
 </div>
-
-
-<!-- SESSIONS -->
-
 <div>
-
 <label>Sessions</label>
-
 <input
 type="number"
 id="sessions"
 min="0"
 value="0"
-oninput="calculateAmount()">
-
+oninput="calculateTotal()">
 </div>
-
-
-<!-- RATE -->
-
 <div>
-
-<label>Rate</label>
-
+<label>Rate / Session (₹)</label>
 <input
 type="number"
 id="rate"
 min="0"
 value="0"
-oninput="calculateAmount()">
-
+oninput="calculateTotal()">
 </div>
-
-
-<!-- NET AMOUNT -->
-
 <div>
-
-<label>Net Amount (₹)</label>
-
+<label>Physiotherapy Amount (₹)</label>
+<input
+type="number"
+id="physioAmount"
+readonly>
+</div>
+</div>
+<!-- MATERIALS -->
+<div class="section-title">
+Materials / Items
+</div>
+<div class="material-box">
+<div class="material-row">
+<div>
+<label>Material / Item</label>
+<select id="materialName">
+<option value="">
+Select Material
+</option>
+<option value="Tynor Knee Cap">
+Tynor Knee Cap
+</option>
+<option value="Tynor LS Belt">
+Tynor LS Belt
+</option>
+<option value="Hot Pack">
+Hot Pack
+</option>
+<option value="Cold Pack">
+Cold Pack
+</option>
+<option value="Epsom Salt">
+Epsom Salt
+</option>
+</select>
+</div>
+<div>
+<label>Qty</label>
+<input
+type="number"
+id="materialQty"
+min="1"
+value="1">
+</div>
+<div>
+<label>Price (₹)</label>
+<input
+type="number"
+id="materialPrice"
+min="0"
+placeholder="Manual">
+</div>
+<div>
+<label>Discount %</label>
+<input
+type="number"
+id="materialDiscount"
+min="0"
+max="100"
+step="0.01"
+value="0"
+oninput="calculateMaterialPreview()">
+</div>
+<div>
+<button
+type="button"
+onclick="addMaterial()">
+ADD
+</button>
+</div>
+</div>
+<div id="materialList" class="material-list"></div>
+<div class="material-summary">
+<div class="summary-row">
+<span>Material Subtotal</span>
+<strong>
+₹<span id="materialSubtotal">0.00</span>
+</strong>
+</div>
+<div class="summary-row">
+<span>
+Material Discount
+(<span id="materialDiscountDisplay">0</span>%)
+</span>
+<strong>
+₹<span id="materialDiscountAmount">0.00</span>
+</strong>
+</div>
+<div class="summary-row summary-total">
+<span>
+Final Material Amount
+</span>
+<strong>
+₹<span id="materialFinalAmount">0.00</span>
+</strong>
+</div>
+</div>
+</div>
+<!-- PAYMENT -->
+<div class="section-title">
+Payment Details
+</div>
+<div class="form-grid">
+<div>
+<label>Payment Mode</label>
+<select id="paymentMode">
+<option value="Cash">
+Cash
+</option>
+<option value="Online">
+Online
+</option>
+<option value="UPI">
+UPI
+</option>
+<option value="Card">
+Card
+</option>
+</select>
+</div>
+<div>
+<label>Grand Total (₹)</label>
 <input
 type="number"
 id="totalAmount"
 readonly>
-
 </div>
-
-
-<!-- PAYMENT MODE -->
-
 <div>
-
-<label>Payment Mode</label>
-
-<select id="paymentMode">
-
-<option value="Cash">
-Cash
-</option>
-
-<option value="Online">
-Online
-</option>
-
-<option value="UPI">
-UPI
-</option>
-
-<option value="Card">
-Card
-</option>
-
-</select>
-
-</div>
-
-
-<!-- RECEIVED -->
-
-<div>
-
 <label>Received Amount (₹)</label>
-
 <input
 type="number"
 id="receivedAmount"
 value="0"
 min="0"
 oninput="calculateDue()">
-
 </div>
-
-
-<!-- DUE -->
-
 <div>
-
 <label>Due Amount (₹)</label>
-
 <input
 type="number"
 id="dueAmount"
 readonly>
-
 </div>
-
-
-<!-- PREPARED BY -->
-
 <div>
-
 <label>Prepared By</label>
-
 <input
 type="text"
 id="preparedBy"
 value="Saroj">
-
 </div>
-
-
-<!-- REMARKS -->
-
 <div class="full-width">
-
 <label>Invoice Remarks</label>
-
-<textarea
-id="remarks"></textarea>
-
+<textarea id="remarks"></textarea>
 </div>
-
 </div>
-
-
 <button
 type="button"
 id="savePrintButton"
 onclick="saveAndPrintBill()">
-
 SAVE & PRINT BILL
-
 </button>
-
 </div>
-
-
-<!-- =====================================================
-     BILL HISTORY
-===================================================== -->
-
-<div
-id="historySection">
-
+<!-- BILL HISTORY -->
+<div id="historySection">
 <h2 class="history-title">
 BILL HISTORY
 </h2>
-
-
 <div class="search-box">
-
 <input
 type="text"
 id="historySearch"
 placeholder="Search Receipt No / Patient Name / Mobile"
 onkeydown="if(event.key==='Enter') searchBills()">
-
-
 <button
 type="button"
 onclick="searchBills()">
-
 SEARCH
-
 </button>
-
-
 <button
 type="button"
 class="clear-button"
 onclick="loadBills()">
-
 ALL BILLS
-
 </button>
-
 </div>
-
-
 <div id="historyResults">
-
 <div class="loading">
 Loading bills...
 </div>
-
 </div>
-
-
 <button
 type="button"
 class="clear-button"
 onclick="backToBilling()">
-
 BACK TO BILLING
-
 </button>
-
 </div>
-
-
-<!-- =====================================================
-     RECEIPT
-===================================================== -->
-
+<!-- RECEIPT -->
 <div
 class="receipt"
 id="receipt">
-
-
-<!-- HOSPITAL HEADER -->
-
 <div class="hospital-header">
-
 <h1>
 KUDI Hospital And Rehabilitation Center
 </h1>
-
 <p>
 Bheruji Mod, NH52, Near Raghu Palace Hotel,
 Reengus (Raj.) - 332404
 </p>
-
 <p>
 Contact: 8504001220 |
 Website: www.kudihospital.in
 </p>
-
 </div>
-
-
 <div class="bill-title">
 OPD BILL CUM RECEIPT
 </div>
-
-
-<!-- PATIENT INFORMATION -->
-
 <div class="patient-info">
-
-
 <div>
-
-<strong>
-Patient Name:
-</strong>
-
+<strong>Patient Name:</strong>
 <span id="printName"></span>
-
 </div>
-
-
 <div>
-
-<strong>
-Receipt No:
-</strong>
-
+<strong>Receipt No:</strong>
 <span id="printReceiptNo"></span>
-
 </div>
-
-
 <div>
-
-<strong>
-Age:
-</strong>
-
+<strong>Age:</strong>
 <span id="printAge"></span>
-
 </div>
-
-
 <div>
-
-<strong>
-Mobile No:
-</strong>
-
+<strong>Mobile No:</strong>
 <span id="printMobile"></span>
-
 </div>
-
-
 <div class="full-width">
-
-<strong>
-Address:
-</strong>
-
+<strong>Address:</strong>
 <span id="printAddress"></span>
-
 </div>
-
-
 <div>
-
-<strong>
-Department:
-</strong>
-
+<strong>Department:</strong>
 <span id="printDepartment"></span>
-
 </div>
-
-
 <div>
-
-<strong>
-Consultant:
-</strong>
-
+<strong>Consultant:</strong>
 <span id="printConsultant"></span>
-
 </div>
-
 </div>
-
-
-<!-- DATE -->
-
 <div class="top-info">
-
 <div>
-
-<strong>
-Date & Time:
-</strong>
-
+<strong>Date & Time:</strong>
 <span id="printDate"></span>
-
 </div>
-
 </div>
-
-
-<!-- PARTICULARS TABLE -->
-
+<!-- PHYSIO TABLE -->
 <table>
-
 <thead>
-
 <tr>
-
 <th>S.No.</th>
-
 <th>Particulars</th>
-
 <th>Sessions</th>
-
 <th>Rate</th>
-
-<th>Amount (Rs.)</th>
-
+<th>Amount (₹)</th>
 </tr>
-
 </thead>
-
-
 <tbody>
-
 <tr>
-
-<td>
-1
-</td>
-
+<td>1</td>
 <td id="printTreatment"></td>
-
 <td id="printSessions"></td>
-
 <td id="printRate"></td>
-
-<td id="printAmount"></td>
-
+<td id="printPhysioAmount"></td>
 </tr>
-
 </tbody>
-
 </table>
-
-
+<!-- MATERIAL TABLE -->
+<table class="material-table">
+<thead>
+<tr>
+<th>S.No.</th>
+<th>Material / Item</th>
+<th>Qty</th>
+<th>Price</th>
+<th>Discount</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody id="printMaterials">
+</tbody>
+</table>
 <!-- TOTAL -->
-
 <div class="amount-section">
-
-
+<div class="amount-row">
+Physiotherapy Amount
+<span>
+₹<span id="printPhysioTotal">0.00</span>
+</span>
+</div>
+<div class="amount-row">
+Material Subtotal
+<span>
+₹<span id="printMaterialSubtotal">0.00</span>
+</span>
+</div>
+<div class="amount-row discount-total">
+Material Discount
+<span>
+- ₹<span id="printMaterialDiscount">0.00</span>
+</span>
+</div>
+<div class="amount-row">
+Final Material Amount
+<span>
+₹<span id="printMaterialFinal">0.00</span>
+</span>
+</div>
 <div class="amount-row net-total">
-
-Net Amount
-
+Grand Total
 <span>
-Rs.
-<span id="printTotal"></span>
+₹<span id="printTotal">0.00</span>
 </span>
-
 </div>
-
-
 <div class="amount-row received-total">
-
 Received Amount
-
 <span>
-Rs.
-<span id="printReceived"></span>
+₹<span id="printReceived">0.00</span>
 </span>
-
 </div>
-
-
 <div class="amount-row due-total">
-
 Due Amount
-
 <span>
-Rs.
-<span id="printDue"></span>
+₹<span id="printDue">0.00</span>
 </span>
-
 </div>
-
 </div>
-
-
-<!-- EXTRA INFORMATION -->
-
 <div class="extra-info">
-
-
 <div>
-
-<strong>
-Payment Mode:
-</strong>
-
+<strong>Payment Mode:</strong>
 <span id="printPaymentMode"></span>
-
 </div>
-
-
 <div>
-
-<strong>
-Amount:
-</strong>
-
+<strong>Amount in Words:</strong>
 <span id="printAmountInEnglish"></span>
-
 </div>
-
-
 <div class="full-width">
-
-<strong>
-Invoice Remarks:
-</strong>
-
+<strong>Invoice Remarks:</strong>
 <span id="printRemarks"></span>
-
 </div>
-
 </div>
-
-
-<!-- SIGNATURE -->
-
 <div class="signature-section">
-
 <div>
-
 <strong>
 Prepared By:
 <span id="printPreparedBySignature"></span>
 </strong>
-
 </div>
-
-
 <div>
-
 <strong>
 Authorized Signature
 </strong>
-
 </div>
-
 </div>
-
-
-<!-- FOOTER -->
-
 <div class="footer">
-
 KUDI Hospital And Rehabilitation Center
-
 <br>
-
 Contact: 8504001220 |
 Website: www.kudihospital.in
-
 </div>
-
 </div>
-
-
 <script>
-
 /* =====================================================
-   CALCULATE AMOUNT
-   Sessions × Rate = Net Amount
+   MATERIAL ARRAY
 ===================================================== */
-
-function calculateAmount(){
-
+let materials = [];
+/* =====================================================
+   PHYSIO AMOUNT
+===================================================== */
+function calculateTotal(){
 const sessions =
-Number(
-document.getElementById("sessions").value
-) || 0;
-
-
+Number(document.getElementById("sessions").value) || 0;
 const rate =
-Number(
-document.getElementById("rate").value
-) || 0;
-
-
-const total =
+Number(document.getElementById("rate").value) || 0;
+const physioAmount =
 sessions * rate;
-
-
-document.getElementById("totalAmount").value =
-total.toFixed(2);
-
-
-calculateDue();
-
+document.getElementById("physioAmount").value =
+physioAmount.toFixed(2);
+calculateMaterialTotal();
 }
-
-
 /* =====================================================
-   CALCULATE DUE
+   MATERIAL PREVIEW
 ===================================================== */
-
+function calculateMaterialPreview(){
+let discount =
+Number(document.getElementById("materialDiscount").value) || 0;
+if(discount < 0){
+    discount = 0;
+}
+if(discount > 100){
+    discount = 100;
+}
+document.getElementById("materialDiscount").value =
+discount;
+document.getElementById("materialDiscountDisplay").textContent =
+discount.toFixed(2).replace(/\.00$/,"");
+calculateMaterialTotal();
+}
+/* =====================================================
+   ADD MATERIAL
+===================================================== */
+function addMaterial(){
+const name =
+document.getElementById("materialName").value;
+const qty =
+Number(document.getElementById("materialQty").value) || 0;
+const price =
+Number(document.getElementById("materialPrice").value) || 0;
+const discount =
+Number(document.getElementById("materialDiscount").value) || 0;
+if(!name){
+alert("Please select Material / Item.");
+return;
+}
+if(qty <= 0){
+alert("Please enter valid Quantity.");
+return;
+}
+if(price < 0){
+alert("Please enter valid Price.");
+return;
+}
+materials.push({
+name:name,
+qty:qty,
+price:price,
+discount:discount
+});
+renderMaterials();
+document.getElementById("materialName").value = "";
+document.getElementById("materialQty").value = "1";
+document.getElementById("materialPrice").value = "";
+}
+/* =====================================================
+   REMOVE MATERIAL
+===================================================== */
+function removeMaterial(index){
+materials.splice(index,1);
+renderMaterials();
+}
+/* =====================================================
+   RENDER MATERIALS
+===================================================== */
+function renderMaterials(){
+const list =
+document.getElementById("materialList");
+if(!materials.length){
+list.innerHTML =
+'<div class="no-bills">No material added.</div>';
+calculateMaterialTotal();
+return;
+}
+let html = "";
+materials.forEach(function(item,index){
+const gross =
+item.qty * item.price;
+const discountAmount =
+gross * item.discount / 100;
+const finalAmount =
+gross - discountAmount;
+html += `
+<div class="material-row">
+<div>
+<strong>${escapeHtml(item.name)}</strong>
+</div>
+<div>
+Qty:
+<strong>${item.qty}</strong>
+</div>
+<div>
+Price:
+<strong>₹${item.price.toFixed(2)}</strong>
+</div>
+<div>
+${item.discount}% OFF<br>
+<strong>
+₹${finalAmount.toFixed(2)}
+</strong>
+</div>
+<div>
+<button
+type="button"
+onclick="removeMaterial(${index})">
+REMOVE
+</button>
+</div>
+</div>
+`;
+});
+list.innerHTML = html;
+calculateMaterialTotal();
+}
+/* =====================================================
+   MATERIAL TOTAL
+===================================================== */
+function getMaterialTotals(){
+let subtotal = 0;
+let discountAmount = 0;
+let finalAmount = 0;
+materials.forEach(function(item){
+const gross =
+item.qty * item.price;
+const discount =
+gross * item.discount / 100;
+subtotal += gross;
+discountAmount += discount;
+finalAmount += gross - discount;
+});
+return {
+subtotal:subtotal,
+discount:discountAmount,
+finalAmount:finalAmount
+};
+}
+function calculateMaterialTotal(){
+const totals =
+getMaterialTotals();
+document.getElementById("materialSubtotal").textContent =
+totals.subtotal.toFixed(2);
+document.getElementById("materialDiscountAmount").textContent =
+totals.discount.toFixed(2);
+document.getElementById("materialFinalAmount").textContent =
+totals.finalAmount.toFixed(2);
+const physio =
+Number(document.getElementById("physioAmount").value) || 0;
+const grandTotal =
+physio + totals.finalAmount;
+document.getElementById("totalAmount").value =
+grandTotal.toFixed(2);
+calculateDue();
+}
+/* =====================================================
+   DUE
+===================================================== */
 function calculateDue(){
-
 const total =
-Number(
-document.getElementById("totalAmount").value
-) || 0;
-
-
+Number(document.getElementById("totalAmount").value) || 0;
 let received =
-Number(
-document.getElementById("receivedAmount").value
-) || 0;
-
-
+Number(document.getElementById("receivedAmount").value) || 0;
 if(received < 0){
-
 received = 0;
-
 document.getElementById("receivedAmount").value =
 "0";
-
 }
-
-
 if(received > total){
-
 received = total;
-
 document.getElementById("receivedAmount").value =
 total.toFixed(2);
-
 }
-
-
 const due =
 total - received;
-
-
 document.getElementById("dueAmount").value =
 due.toFixed(2);
-
 }
-
-
 /* =====================================================
    NUMBER TO WORDS
 ===================================================== */
-
 function numberToWords(num){
-
-num =
-Math.floor(
-Number(num)
-);
-
-
+num = Math.floor(Number(num));
 if(num === 0){
-
-return "Zero";
-
+    return "Zero";
 }
-
-
 const ones = [
-
 "",
 "One",
 "Two",
@@ -1287,12 +1173,8 @@ const ones = [
 "Seventeen",
 "Eighteen",
 "Nineteen"
-
 ];
-
-
 const tens = [
-
 "",
 "",
 "Twenty",
@@ -1303,22 +1185,12 @@ const tens = [
 "Seventy",
 "Eighty",
 "Ninety"
-
 ];
-
-
 function twoDigits(n){
-
 if(n < 20){
-
-return ones[n];
-
+    return ones[n];
 }
-
-return tens[
-Math.floor(n / 10)
-]
-+
+return tens[Math.floor(n/10)] +
 (
 n % 10
 ?
@@ -1326,294 +1198,154 @@ n % 10
 :
 ""
 );
-
 }
-
-
 function threeDigits(n){
-
 let result = "";
-
-
 if(n >= 100){
-
 result +=
-ones[
-Math.floor(n / 100)
-]
+ones[Math.floor(n/100)]
 +
 " Hundred";
-
-
-n =
-n % 100;
-
-
+n %= 100;
 if(n){
-
-result += " ";
-
+    result += " ";
 }
-
 }
-
-
 if(n > 0){
-
-result +=
-twoDigits(n);
-
+    result += twoDigits(n);
 }
-
-
 return result;
-
 }
-
-
 let result = "";
-
-
 if(num >= 10000000){
-
 result +=
 threeDigits(
-Math.floor(
-num / 10000000
-)
+Math.floor(num / 10000000)
 )
 +
 " Crore ";
-
-num %=
-10000000;
-
+num %= 10000000;
 }
-
-
 if(num >= 100000){
-
 result +=
 threeDigits(
-Math.floor(
-num / 100000
-)
+Math.floor(num / 100000)
 )
 +
 " Lakh ";
-
-num %=
-100000;
-
+num %= 100000;
 }
-
-
 if(num >= 1000){
-
 result +=
 threeDigits(
-Math.floor(
-num / 1000
-)
+Math.floor(num / 1000)
 )
 +
 " Thousand ";
-
-num %=
-1000;
-
+num %= 1000;
 }
-
-
 if(num > 0){
-
 result +=
 threeDigits(num);
-
 }
-
-
 return result.trim();
-
 }
-
-
 /* =====================================================
    FILL RECEIPT
 ===================================================== */
-
 function fillReceipt(receiptNo){
-
-calculateAmount();
+calculateTotal();
 calculateDue();
-
-
-document.getElementById(
-"printReceiptNo"
-).textContent =
+document.getElementById("printReceiptNo").textContent =
 receiptNo;
-
-
-document.getElementById(
-"printName"
-).textContent =
-document.getElementById(
-"patientName"
-).value;
-
-
-document.getElementById(
-"printMobile"
-).textContent =
-document.getElementById(
-"mobile"
-).value;
-
-
-document.getElementById(
-"printAge"
-).textContent =
-document.getElementById(
-"age"
-).value;
-
-
-document.getElementById(
-"printAddress"
-).textContent =
-document.getElementById(
-"address"
-).value;
-
-
-document.getElementById(
-"printDepartment"
-).textContent =
-document.getElementById(
-"department"
-).value;
-
-
-document.getElementById(
-"printConsultant"
-).textContent =
-document.getElementById(
-"consultant"
-).value;
-
-
-document.getElementById(
-"printTreatment"
-).textContent =
-document.getElementById(
-"treatment"
-).value;
-
-
-document.getElementById(
-"printSessions"
-).textContent =
-document.getElementById(
-"sessions"
-).value;
-
-
-document.getElementById(
-"printRate"
-).textContent =
-document.getElementById(
-"rate"
-).value;
-
-
+document.getElementById("printName").textContent =
+document.getElementById("patientName").value;
+document.getElementById("printMobile").textContent =
+document.getElementById("mobile").value;
+document.getElementById("printAge").textContent =
+document.getElementById("age").value;
+document.getElementById("printAddress").textContent =
+document.getElementById("address").value;
+document.getElementById("printDepartment").textContent =
+document.getElementById("department").value;
+document.getElementById("printConsultant").textContent =
+document.getElementById("consultant").value;
+document.getElementById("printTreatment").textContent =
+document.getElementById("treatment").value;
+document.getElementById("printSessions").textContent =
+document.getElementById("sessions").value;
+document.getElementById("printRate").textContent =
+document.getElementById("rate").value;
+const physio =
+Number(document.getElementById("physioAmount").value) || 0;
+const totals =
+getMaterialTotals();
 const total =
-Number(
-document.getElementById(
-"totalAmount"
-).value
-) || 0;
-
-
+Number(document.getElementById("totalAmount").value) || 0;
 const received =
-Number(
-document.getElementById(
-"receivedAmount"
-).value
-) || 0;
-
-
+Number(document.getElementById("receivedAmount").value) || 0;
 const due =
-Number(
-document.getElementById(
-"dueAmount"
-).value
-) || 0;
-
-
-document.getElementById(
-"printAmount"
-).textContent =
+Number(document.getElementById("dueAmount").value) || 0;
+document.getElementById("printPhysioAmount").textContent =
+physio.toFixed(2);
+document.getElementById("printPhysioTotal").textContent =
+physio.toFixed(2);
+document.getElementById("printMaterialSubtotal").textContent =
+totals.subtotal.toFixed(2);
+document.getElementById("printMaterialDiscount").textContent =
+totals.discount.toFixed(2);
+document.getElementById("printMaterialFinal").textContent =
+totals.finalAmount.toFixed(2);
+document.getElementById("printTotal").textContent =
 total.toFixed(2);
-
-
-document.getElementById(
-"printTotal"
-).textContent =
-total.toFixed(2);
-
-
-document.getElementById(
-"printReceived"
-).textContent =
+document.getElementById("printReceived").textContent =
 received.toFixed(2);
-
-
-document.getElementById(
-"printDue"
-).textContent =
+document.getElementById("printDue").textContent =
 due.toFixed(2);
-
-
-document.getElementById(
-"printPaymentMode"
-).textContent =
-document.getElementById(
-"paymentMode"
-).value;
-
-
-document.getElementById(
-"printAmountInEnglish"
-).textContent =
-numberToWords(total)
-+
-" Rupees Only";
-
-
-document.getElementById(
-"printPreparedBySignature"
-).textContent =
-document.getElementById(
-"preparedBy"
-).value;
-
-
-document.getElementById(
-"printRemarks"
-).textContent =
-document.getElementById(
-"remarks"
-).value;
-
-
-const now =
-new Date();
-
-
-document.getElementById(
-"printDate"
-).textContent =
-
+document.getElementById("printPaymentMode").textContent =
+document.getElementById("paymentMode").value;
+document.getElementById("printAmountInEnglish").textContent =
+numberToWords(total) + " Rupees Only";
+document.getElementById("printPreparedBySignature").textContent =
+document.getElementById("preparedBy").value;
+document.getElementById("printRemarks").textContent =
+document.getElementById("remarks").value;
+/* MATERIAL RECEIPT */
+const printMaterials =
+document.getElementById("printMaterials");
+let materialHTML = "";
+if(materials.length){
+materials.forEach(function(item,index){
+const gross =
+item.qty * item.price;
+const discountAmount =
+gross * item.discount / 100;
+const finalAmount =
+gross - discountAmount;
+materialHTML += `
+<tr>
+<td>${index + 1}</td>
+<td>${escapeHtml(item.name)}</td>
+<td>${item.qty}</td>
+<td>₹${item.price.toFixed(2)}</td>
+<td>${item.discount}%</td>
+<td>₹${finalAmount.toFixed(2)}</td>
+</tr>
+`;
+});
+}else{
+materialHTML = `
+<tr>
+<td colspan="6">
+No Materials / Items
+</td>
+</tr>
+`;
+}
+printMaterials.innerHTML =
+materialHTML;
+const now = new Date();
+document.getElementById("printDate").textContent =
 now.toLocaleDateString(
 "en-IN",
 {
@@ -1622,12 +1354,9 @@ month:"2-digit",
 year:"numeric"
 }
 )
-
 +
 " "
-
 +
-
 now.toLocaleTimeString(
 "en-IN",
 {
@@ -1637,793 +1366,292 @@ second:"2-digit",
 hour12:true
 }
 );
-
-
-document.getElementById(
-"receipt"
-).classList.add(
-"show"
-);
-
+document.getElementById("receipt").classList.add("show");
 }
-
-
-/* =====================================================
-   FILL OLD BILL
-===================================================== */
-
-function fillReceiptFromBill(bill){
-
-const total =
-Number(
-bill.net_amount
-) || 0;
-
-
-const received =
-Number(
-bill.received_amount
-) || 0;
-
-
-const due =
-Number(
-bill.due_amount
-) || 0;
-
-
-document.getElementById(
-"printReceiptNo"
-).textContent =
-bill.receipt_no || "";
-
-
-document.getElementById(
-"printName"
-).textContent =
-bill.patient_name || "";
-
-
-document.getElementById(
-"printMobile"
-).textContent =
-bill.mobile || "";
-
-
-document.getElementById(
-"printAge"
-).textContent =
-bill.age || "";
-
-
-document.getElementById(
-"printAddress"
-).textContent =
-bill.address || "";
-
-
-document.getElementById(
-"printDepartment"
-).textContent =
-bill.department || "";
-
-
-document.getElementById(
-"printConsultant"
-).textContent =
-bill.consultant || "";
-
-
-document.getElementById(
-"printTreatment"
-).textContent =
-bill.treatment || "";
-
-
-document.getElementById(
-"printSessions"
-).textContent =
-bill.sessions || 0;
-
-
-document.getElementById(
-"printRate"
-).textContent =
-bill.rate || 0;
-
-
-document.getElementById(
-"printAmount"
-).textContent =
-total.toFixed(2);
-
-
-document.getElementById(
-"printTotal"
-).textContent =
-total.toFixed(2);
-
-
-document.getElementById(
-"printReceived"
-).textContent =
-received.toFixed(2);
-
-
-document.getElementById(
-"printDue"
-).textContent =
-due.toFixed(2);
-
-
-document.getElementById(
-"printPaymentMode"
-).textContent =
-bill.payment_mode || "";
-
-
-document.getElementById(
-"printAmountInEnglish"
-).textContent =
-numberToWords(total)
-+
-" Rupees Only";
-
-
-document.getElementById(
-"printPreparedBySignature"
-).textContent =
-bill.prepared_by || "";
-
-
-document.getElementById(
-"printRemarks"
-).textContent =
-bill.remarks || "";
-
-
-let billDate = "";
-
-
-if(bill.created_at){
-
-const d =
-new Date(
-bill.created_at
-);
-
-
-billDate =
-
-d.toLocaleDateString(
-"en-IN",
-{
-day:"2-digit",
-month:"2-digit",
-year:"numeric"
-}
-)
-
-+
-" "
-
-+
-
-d.toLocaleTimeString(
-"en-IN",
-{
-hour:"2-digit",
-minute:"2-digit",
-second:"2-digit",
-hour12:true
-}
-);
-
-}
-
-
-document.getElementById(
-"printDate"
-).textContent =
-billDate;
-
-
-document.getElementById(
-"receipt"
-).classList.add(
-"show"
-);
-
-}
-
-
 /* =====================================================
    SAVE BILL
 ===================================================== */
-
 async function saveBill(){
-
-calculateAmount();
+calculateTotal();
 calculateDue();
-
-
 const patientName =
-document.getElementById(
-"patientName"
-).value.trim();
-
-
+document.getElementById("patientName").value.trim();
 if(!patientName){
-
-alert(
-"Please enter Patient Name."
-);
-
-document.getElementById(
-"patientName"
-).focus();
-
+alert("Please enter Patient Name.");
+document.getElementById("patientName").focus();
 return null;
-
 }
-
-
+const totals =
+getMaterialTotals();
 const billData = {
-
 patientName:
 patientName,
-
 mobile:
-document.getElementById(
-"mobile"
-).value.trim(),
-
+document.getElementById("mobile").value.trim(),
 age:
-document.getElementById(
-"age"
-).value || null,
-
+document.getElementById("age").value || null,
 address:
-document.getElementById(
-"address"
-).value.trim(),
-
+document.getElementById("address").value.trim(),
 consultant:
-document.getElementById(
-"consultant"
-).value,
-
+document.getElementById("consultant").value,
 department:
-document.getElementById(
-"department"
-).value,
-
+document.getElementById("department").value,
 treatment:
-document.getElementById(
-"treatment"
-).value,
-
+document.getElementById("treatment").value,
 sessions:
-Number(
-document.getElementById(
-"sessions"
-).value
-) || 0,
-
+Number(document.getElementById("sessions").value) || 0,
 rate:
-Number(
-document.getElementById(
-"rate"
-).value
-) || 0,
-
+Number(document.getElementById("rate").value) || 0,
+physioAmount:
+Number(document.getElementById("physioAmount").value) || 0,
+materialItems:
+materials,
+materialSubtotal:
+totals.subtotal,
+materialDiscount:
+totals.discount,
+materialFinalAmount:
+totals.finalAmount,
 netAmount:
-Number(
-document.getElementById(
-"totalAmount"
-).value
-) || 0,
-
+Number(document.getElementById("totalAmount").value) || 0,
 paymentMode:
-document.getElementById(
-"paymentMode"
-).value,
-
+document.getElementById("paymentMode").value,
 receivedAmount:
-Number(
-document.getElementById(
-"receivedAmount"
-).value
-) || 0,
-
+Number(document.getElementById("receivedAmount").value) || 0,
 dueAmount:
-Number(
-document.getElementById(
-"dueAmount"
-).value
-) || 0,
-
+Number(document.getElementById("dueAmount").value) || 0,
 preparedBy:
-document.getElementById(
-"preparedBy"
-).value.trim(),
-
+document.getElementById("preparedBy").value.trim(),
 remarks:
-document.getElementById(
-"remarks"
-).value.trim()
-
+document.getElementById("remarks").value.trim()
 };
-
-
 try{
-
 const response =
 await fetch(
 "/api/save-bill",
 {
-
 method:"POST",
-
 headers:{
-"Content-Type":
-"application/json"
+"Content-Type":"application/json"
 },
-
-body:
-JSON.stringify(
-billData
-)
-
+body:JSON.stringify(billData)
 }
 );
-
-
 const data =
 await response.json();
-
-
-if(
-!response.ok ||
-!data.success
-){
-
+if(!response.ok || !data.success){
 throw new Error(
 data.message ||
 "Bill could not be saved."
 );
-
 }
-
-
 return data;
-
-
 }catch(error){
-
 console.error(
 "Save Bill Error:",
 error
 );
-
-
 alert(
 "Bill save नहीं हुआ.\n\nPlease check Vercel deployment."
 );
-
-
 return null;
-
 }
-
 }
-
-
 /* =====================================================
    SAVE & PRINT
 ===================================================== */
-
 async function saveAndPrintBill(){
-
 const button =
-document.getElementById(
-"savePrintButton"
-);
-
-
-button.disabled =
-true;
-
-
+document.getElementById("savePrintButton");
+button.disabled = true;
 button.textContent =
 "Saving Bill...";
-
-
 try{
-
 const savedBill =
 await saveBill();
-
-
 if(!savedBill){
-
-button.disabled =
-false;
-
+button.disabled = false;
 button.textContent =
 "SAVE & PRINT BILL";
-
 return;
-
 }
-
-
 fillReceipt(
 savedBill.receiptNo
 );
-
-
 button.textContent =
 "Saved Successfully";
-
-
 setTimeout(
 function(){
-
-window.print();
-
+    window.print();
 },
 300
 );
-
-
 setTimeout(
 function(){
-
-button.disabled =
-false;
-
+button.disabled = false;
 button.textContent =
 "SAVE & PRINT BILL";
-
 },
 1500
 );
-
-
 }catch(error){
-
 console.error(error);
-
-
 alert(
 "Something went wrong while saving the bill."
 );
-
-
-button.disabled =
-false;
-
-
+button.disabled = false;
 button.textContent =
 "SAVE & PRINT BILL";
-
 }
-
 }
-
-
 /* =====================================================
-   OPEN HISTORY
+   HISTORY
 ===================================================== */
-
 function openHistory(){
-
-document.getElementById(
-"billingSection"
-).style.display =
+document.getElementById("billingSection").style.display =
 "none";
-
-
-document.getElementById(
-"receipt"
-).classList.remove(
-"show"
-);
-
-
-document.getElementById(
-"topButtons"
-).style.display =
+document.getElementById("receipt").classList.remove("show");
+document.getElementById("topButtons").style.display =
 "none";
-
-
-document.getElementById(
-"historySection"
-).style.display =
+document.getElementById("historySection").style.display =
 "block";
-
-
-document.getElementById(
-"historySearch"
-).value =
-"";
-
-
+document.getElementById("historySearch").value = "";
 loadBills();
-
-
 window.scrollTo({
 top:0,
 behavior:"smooth"
 });
-
 }
-
-
-/* =====================================================
-   BACK TO BILLING
-===================================================== */
-
 function backToBilling(){
-
-document.getElementById(
-"historySection"
-).style.display =
+document.getElementById("historySection").style.display =
 "none";
-
-
-document.getElementById(
-"topButtons"
-).style.display =
+document.getElementById("topButtons").style.display =
 "block";
-
-
-document.getElementById(
-"billingSection"
-).style.display =
+document.getElementById("billingSection").style.display =
 "block";
-
-
-document.getElementById(
-"receipt"
-).classList.remove(
-"show"
-);
-
-
+document.getElementById("receipt").classList.remove("show");
 window.scrollTo({
 top:0,
 behavior:"smooth"
 });
-
 }
-
-
 /* =====================================================
    LOAD BILLS
 ===================================================== */
-
 async function loadBills(){
-
 const results =
-document.getElementById(
-"historyResults"
-);
-
-
+document.getElementById("historyResults");
 results.innerHTML =
 '<div class="loading">Loading bills...</div>';
-
-
 try{
-
 const response =
-await fetch(
-"/api/get-bills"
-);
-
-
+await fetch("/api/get-bills");
 const data =
 await response.json();
-
-
-if(
-!response.ok ||
-!data.success
-){
-
+if(!response.ok || !data.success){
 throw new Error(
 data.message ||
 "Bills could not be loaded."
 );
-
 }
-
-
 displayBills(
 data.bills || []
 );
-
-
 }catch(error){
-
 console.error(
 "Load Bills Error:",
 error
 );
-
-
 results.innerHTML = `
-
 <div class="no-bills">
-
 Unable to load bills.<br><br>
-
 Please check Vercel deployment and database connection.
-
 </div>
-
 `;
-
 }
-
 }
-
-
 /* =====================================================
-   SEARCH BILLS
+   SEARCH
 ===================================================== */
-
 async function searchBills(){
-
 const search =
-document.getElementById(
-"historySearch"
-).value.trim();
-
-
+document.getElementById("historySearch").value.trim();
 if(!search){
-
 loadBills();
-
 return;
-
 }
-
-
 const results =
-document.getElementById(
-"historyResults"
-);
-
-
+document.getElementById("historyResults");
 results.innerHTML =
 '<div class="loading">Searching...</div>';
-
-
 try{
-
 const response =
 await fetch(
 "/api/get-bills?search=" +
 encodeURIComponent(search)
 );
-
-
 const data =
 await response.json();
-
-
-if(
-!response.ok ||
-!data.success
-){
-
+if(!response.ok || !data.success){
 throw new Error(
 data.message ||
 "Search failed."
 );
-
 }
-
-
 displayBills(
 data.bills || []
 );
-
-
 }catch(error){
-
 console.error(
 "Search Bills Error:",
 error
 );
-
-
 results.innerHTML = `
-
 <div class="no-bills">
-
 Search failed.<br><br>
-
 Please try again.
-
 </div>
-
 `;
-
 }
-
 }
-
-
 /* =====================================================
-   DISPLAY BILLS
+   DISPLAY HISTORY
 ===================================================== */
-
 function displayBills(bills){
-
 const results =
-document.getElementById(
-"historyResults"
-);
-
-
+document.getElementById("historyResults");
 if(!bills.length){
-
 results.innerHTML = `
-
 <div class="no-bills">
 No bills found.
 </div>
-
 `;
-
 return;
-
 }
-
-
 let html = `
-
 <div class="history-table-wrapper">
-
 <table class="history-table">
-
 <thead>
-
 <tr>
-
 <th>Receipt No.</th>
 <th>Date</th>
 <th>Patient Name</th>
 <th>Mobile</th>
 <th>Department</th>
 <th>Particulars</th>
-<th>Sessions</th>
+<th>Materials</th>
 <th>Net Amount</th>
 <th>Received</th>
 <th>Due</th>
 <th>Action</th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 `;
-
-
-bills.forEach(
-function(bill){
-
+bills.forEach(function(bill){
 const date =
 bill.created_at
-
 ?
-
 new Date(
 bill.created_at
 ).toLocaleDateString(
@@ -2434,247 +1662,264 @@ month:"2-digit",
 year:"numeric"
 }
 )
-
 :
-
 "";
-
-
+let materialText = "";
+if(Array.isArray(bill.material_items)){
+materialText =
+bill.material_items
+.map(function(item){
+    return item.name;
+})
+.join(", ");
+}
 html += `
-
 <tr>
-
 <td>
 <strong>
-${escapeHtml(
-bill.receipt_no || ""
-)}
+${escapeHtml(bill.receipt_no || "")}
 </strong>
 </td>
-
 <td>
 ${escapeHtml(date)}
 </td>
-
 <td>
-${escapeHtml(
-bill.patient_name || ""
-)}
+${escapeHtml(bill.patient_name || "")}
 </td>
-
 <td>
-${escapeHtml(
-bill.mobile || ""
-)}
+${escapeHtml(bill.mobile || "")}
 </td>
-
 <td>
-${escapeHtml(
-bill.department || ""
-)}
+${escapeHtml(bill.department || "")}
 </td>
-
 <td>
-${escapeHtml(
-bill.treatment || ""
-)}
+${escapeHtml(bill.treatment || "")}
 </td>
-
 <td>
-${escapeHtml(
-bill.sessions || 0
-)}
+${escapeHtml(materialText)}
 </td>
-
 <td>
-₹${Number(
-bill.net_amount || 0
-).toFixed(2)}
+₹${Number(bill.net_amount || 0).toFixed(2)}
 </td>
-
 <td>
-₹${Number(
-bill.received_amount || 0
-).toFixed(2)}
+₹${Number(bill.received_amount || 0).toFixed(2)}
 </td>
-
 <td>
-₹${Number(
-bill.due_amount || 0
-).toFixed(2)}
+₹${Number(bill.due_amount || 0).toFixed(2)}
 </td>
-
 <td>
-
 <button
 type="button"
 class="view-btn"
 onclick='viewBill(${JSON.stringify(bill)})'>
-
 VIEW
-
 </button>
-
-
 <button
 type="button"
 class="print-btn"
 onclick='printOldBill(${JSON.stringify(bill)})'>
-
 PRINT
-
 </button>
-
 </td>
-
 </tr>
-
 `;
-
-}
-);
-
-
+});
 html += `
-
 </tbody>
-
 </table>
-
 </div>
-
 `;
-
-
 results.innerHTML =
 html;
-
 }
-
-
+/* =====================================================
+   OLD BILL
+===================================================== */
+function fillReceiptFromBill(bill){
+const total =
+Number(bill.net_amount) || 0;
+const received =
+Number(bill.received_amount) || 0;
+const due =
+Number(bill.due_amount) || 0;
+const physio =
+Number(bill.physio_amount) || 0;
+const materialSubtotal =
+Number(bill.material_subtotal) || 0;
+const materialDiscount =
+Number(bill.material_discount) || 0;
+const materialFinal =
+Number(bill.material_final_amount) || 0;
+document.getElementById("printReceiptNo").textContent =
+bill.receipt_no || "";
+document.getElementById("printName").textContent =
+bill.patient_name || "";
+document.getElementById("printMobile").textContent =
+bill.mobile || "";
+document.getElementById("printAge").textContent =
+bill.age || "";
+document.getElementById("printAddress").textContent =
+bill.address || "";
+document.getElementById("printDepartment").textContent =
+bill.department || "";
+document.getElementById("printConsultant").textContent =
+bill.consultant || "";
+document.getElementById("printTreatment").textContent =
+bill.treatment || "";
+document.getElementById("printSessions").textContent =
+bill.sessions || 0;
+document.getElementById("printRate").textContent =
+bill.rate || 0;
+document.getElementById("printPhysioAmount").textContent =
+physio.toFixed(2);
+document.getElementById("printPhysioTotal").textContent =
+physio.toFixed(2);
+document.getElementById("printMaterialSubtotal").textContent =
+materialSubtotal.toFixed(2);
+document.getElementById("printMaterialDiscount").textContent =
+materialDiscount.toFixed(2);
+document.getElementById("printMaterialFinal").textContent =
+materialFinal.toFixed(2);
+document.getElementById("printTotal").textContent =
+total.toFixed(2);
+document.getElementById("printReceived").textContent =
+received.toFixed(2);
+document.getElementById("printDue").textContent =
+due.toFixed(2);
+document.getElementById("printPaymentMode").textContent =
+bill.payment_mode || "";
+document.getElementById("printAmountInEnglish").textContent =
+numberToWords(total) +
+" Rupees Only";
+document.getElementById("printPreparedBySignature").textContent =
+bill.prepared_by || "";
+document.getElementById("printRemarks").textContent =
+bill.remarks || "";
+/* OLD MATERIALS */
+let oldMaterials = [];
+if(Array.isArray(bill.material_items)){
+oldMaterials =
+bill.material_items;
+}
+const printMaterials =
+document.getElementById("printMaterials");
+let materialHTML = "";
+if(oldMaterials.length){
+oldMaterials.forEach(function(item,index){
+const qty =
+Number(item.qty) || 0;
+const price =
+Number(item.price) || 0;
+const discount =
+Number(item.discount) || 0;
+const gross =
+qty * price;
+const discountAmount =
+gross * discount / 100;
+const finalAmount =
+gross - discountAmount;
+materialHTML += `
+<tr>
+<td>${index + 1}</td>
+<td>${escapeHtml(item.name || "")}</td>
+<td>${qty}</td>
+<td>₹${price.toFixed(2)}</td>
+<td>${discount}%</td>
+<td>₹${finalAmount.toFixed(2)}</td>
+</tr>
+`;
+});
+}else{
+materialHTML = `
+<tr>
+<td colspan="6">
+No Materials / Items
+</td>
+</tr>
+`;
+}
+printMaterials.innerHTML =
+materialHTML;
+let billDate = "";
+if(bill.created_at){
+const d =
+new Date(bill.created_at);
+billDate =
+d.toLocaleDateString(
+"en-IN",
+{
+day:"2-digit",
+month:"2-digit",
+year:"numeric"
+}
+)
++
+" "
++
+d.toLocaleTimeString(
+"en-IN",
+{
+hour:"2-digit",
+minute:"2-digit",
+second:"2-digit",
+hour12:true
+}
+);
+}
+document.getElementById("printDate").textContent =
+billDate;
+document.getElementById("receipt").classList.add("show");
+}
 /* =====================================================
    VIEW OLD BILL
 ===================================================== */
-
 function viewBill(bill){
-
-document.getElementById(
-"historySection"
-).style.display =
+document.getElementById("historySection").style.display =
 "none";
-
-
-document.getElementById(
-"topButtons"
-).style.display =
+document.getElementById("topButtons").style.display =
 "block";
-
-
-document.getElementById(
-"billingSection"
-).style.display =
+document.getElementById("billingSection").style.display =
 "none";
-
-
-fillReceiptFromBill(
-bill
-);
-
-
+fillReceiptFromBill(bill);
 window.scrollTo({
 top:0,
 behavior:"smooth"
 });
-
 }
-
-
 /* =====================================================
    PRINT OLD BILL
 ===================================================== */
-
 function printOldBill(bill){
-
-document.getElementById(
-"historySection"
-).style.display =
+document.getElementById("historySection").style.display =
 "none";
-
-
-document.getElementById(
-"topButtons"
-).style.display =
+document.getElementById("topButtons").style.display =
 "none";
-
-
-document.getElementById(
-"billingSection"
-).style.display =
+document.getElementById("billingSection").style.display =
 "none";
-
-
-fillReceiptFromBill(
-bill
-);
-
-
+fillReceiptFromBill(bill);
 setTimeout(
 function(){
-
-window.print();
-
+    window.print();
 },
 300
 );
-
 }
-
-
 /* =====================================================
    ESCAPE HTML
 ===================================================== */
-
 function escapeHtml(value){
-
-return String(
-value ?? ""
-)
-
-.replace(
-/&/g,
-"&amp;"
-)
-
-.replace(
-/</g,
-"&lt;"
-)
-
-.replace(
-/>/g,
-"&gt;"
-)
-
-.replace(
-/"/g,
-"&quot;"
-)
-
-.replace(
-/'/g,
-"&#039;"
-);
-
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 }
-
-
 /* =====================================================
-   INITIAL CALCULATION
+   INITIAL
 ===================================================== */
-
-calculateAmount();
-
+calculateTotal();
+renderMaterials();
 </script>
-
 </body>
 </html>
